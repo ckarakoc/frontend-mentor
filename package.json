@@ -4,10 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:main && npm run flatten",
+    "build": "npm run build:main && npm run build:libs && npm run flatten",
     "build:main": "ng build main --configuration production",
+    "build:libs": "ng build shared-404 --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
+    "http-server": "http-server dist -s -p 4200",
     "flatten": "powershell -ExecutionPolicy Bypass -File shell/flatten-dist.ps1"
   },
   "prettier": {
@@ -46,6 +48,7 @@
     "karma-coverage": "~2.2.0",
     "karma-jasmine": "~5.1.0",
     "karma-jasmine-html-reporter": "~2.1.0",
+    "ng-packagr": "^20.1.0",
     "typescript": "~5.8.2"
   }
 }

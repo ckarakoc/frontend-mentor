@@ -23,6 +23,11 @@
               {
                 "glob": "**/*",
                 "input": "projects/main/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist/shared-404/assets",
+                "output": "/assets/shared-404/"
               }
             ],
             "styles": [
@@ -36,11 +41,6 @@
                   "type": "initial",
                   "maximumWarning": "500kB",
                   "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
                 }
               ],
               "outputHashing": "all"
@@ -84,6 +84,41 @@
             ],
             "styles": [
               "projects/main/src/styles.css"
+            ]
+          }
+        }
+      }
+    },
+    "shared-404": {
+      "projectType": "library",
+      "root": "projects/shared-404",
+      "sourceRoot": "projects/shared-404/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/shared-404/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/shared-404/tsconfig.lib.json"
+            },
+            "budgets": {
+              "type": "initial",
+              "maximumWarning": "20kb",
+              "maximumError": "25kb"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/shared-404/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
             ]
           }
         }
