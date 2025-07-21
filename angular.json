@@ -27,7 +27,7 @@
               {
                 "glob": "**/*",
                 "input": "dist/shared-404/assets",
-                "output": "/assets/shared-404/"
+                "output": "/shared-404/assets"
               }
             ],
             "styles": [

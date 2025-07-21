@@ -4,12 +4,13 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run build:main && npm run build:libs && npm run flatten",
-    "build:main": "ng build main --configuration production",
+    "build": "npm run clean && npm run build:apps && npm run build:libs && npm run flatten",
+    "build:apps": "ng build main --configuration production",
     "build:libs": "ng build shared-404 --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "http-server": "http-server dist -s -p 4200",
+    "clean": "powershell -ExecutionPolicy Bypass -File shell/clean.ps1",
     "flatten": "powershell -ExecutionPolicy Bypass -File shell/flatten-dist.ps1"
   },
   "prettier": {
