@@ -1,3 +1,48 @@
-<div class="flex justify-center bg-amber-300 align-middle">
-  <p class="bg-amber-500">home works!</p>
+<div class="relative h-full" (window:scroll)="checkScrollTop(masonry)">
+  <div #masonry class="flex flex-auto flex-row flex-wrap gap-4 overflow-y-auto [scrollbar-width:none]"
+       (scroll)="checkScrollTop(masonry)">
+    <div class="columns-4 gap-4">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
+
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
+
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
+      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+    </div>
+
+    <div class="bottom-5 left-1/2"
+         [class.fixed]="!isElementScrolled()"
+         [class.absolute]="isElementScrolled()">
+      <fa-icon [icon]="faChevronCircleUp" class="transition-opacity duration-300 hover:opacity-100"
+               [size]="'3x'"
+               [class.opacity-0]="isScrollAtTop()"
+               [class.opacity-50]="!isScrollAtTop()"
+               [class.pointer-events-none]="isScrollAtTop()"
+               (click)="scrollToTop(masonry)"></fa-icon>
+    </div>
+  </div>
 </div>
