@@ -1,39 +1,20 @@
-<div class="relative h-full" (window:scroll)="checkScrollTop(masonry)">
-  <div #masonry class="flex flex-auto flex-row flex-wrap gap-4 overflow-y-auto [scrollbar-width:none]"
+<div class="relative" (window:scroll)="checkScrollTop(masonry)">
+  <div #masonry class="flex justify-center flex-auto flex-row flex-wrap gap-4 overflow-y-auto [scrollbar-width:none]"
        (scroll)="checkScrollTop(masonry)">
-    <div class="columns-4 gap-4">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="">
-
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-6.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-7.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-8.jpg" alt="">
-
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-10.jpg" alt="">
-      <img class="mb-4 rounded-lg" src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-9.jpg" alt="">
+    <!-- Main Grid -->
+    <div class="columns-2 gap-4 md:columns-4 xl:columns-6 m-4">
+      @for (_ of [].constructor(30); track $index) {
+        @let i = ($index % 11) + 1;
+        <div class="break-inside-avoid mb-4 animate-pulse">
+          <app-home-card imgUrl="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-{{i}}.jpg"
+                         link=""
+                         cardContent="card {{ i }}">
+          </app-home-card>
+        </div>
+      }
     </div>
 
+    <!-- Circular Up-Button -->
     <div class="bottom-5 left-1/2"
          [class.fixed]="!isElementScrolled()"
          [class.absolute]="isElementScrolled()">

@@ -1,0 +1,47 @@
+<div class="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-2 shadow shadow-blue-500 ring-4 ring-blue-300 min-w-52 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-blue-500">
+  <!-- todo: create image modal that shows zoomed in image when pressed -->
+  <!-- Image -->
+  <div>
+    <img [src]="imgUrl()" class="rounded-lg"/>
+  </div>
+
+  <!-- Title -->
+  <div class="flex flex-row items-center justify-between px-2 pt-1 text-center align-middle">
+    <div class="mb-2 select-none overflow-hidden break-all text-2xl font-bold tracking-tight text-gray-900"> {{ cardTitle() }}</div>
+    <div class="h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-blue-50"
+         [routerLink]="link()">
+      <svg
+        style="color: black;"
+        xmlns="http://www.w3.org/2000/svg"
+        width="2em"
+        height="2em"
+        color="black"
+        stroke-linejoin="round"
+        stroke-linecap="round"
+        viewBox="0 0 24 24"
+        stroke-width="2"
+        fill="none"
+        stroke="currentColor"
+      >
+        <line y2="12" x2="19" y1="12" x1="5"></line>
+        <polyline points="12 5 19 12 12 19"></polyline>
+      </svg>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="hover:cursor-pointer"
+       [routerLink]="link()">
+    <p class="mb-3 select-none rounded-xl px-2 font-normal leading-tight text-gray-700 hover:bg-blue-50"> {{ cardContent() }} </p>
+  </div>
+
+  <!-- todo: make colors randomly assignable, i.e. new TailwindColors(...colors).between(...range).pick(); Do the same with the fa-symbols -->
+  <!-- todo: something like this: <app-tag-badge label="C++" iconClass="fa-cogs" bgColor="bg-gray-300"></app-tag-badge> -->
+  <!-- Tags -->
+  <div class="flex flex-wrap items-center justify-start gap-1">
+    <div class="inline select-none rounded-full bg-violet-400 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-microchip"></i> Assembly</div>
+    <div class="inline select-none rounded-full bg-red-300 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-coffee"></i> Java</div>
+    <div class="inline rounded-full bg-blue-300 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-terminal"></i> C#</div>
+    <div class="inline rounded-full bg-gray-300 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-cogs"></i> C++</div>
+  </div>
+</div>
