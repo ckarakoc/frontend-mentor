@@ -1,5 +1,8 @@
-<div class="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-2 shadow shadow-blue-500 ring-4 ring-blue-300 min-w-52 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-blue-500">
+<div
+  class="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-2
+  shadow shadow-{{getBorderColor(cardTitle())}}-500 ring-4 ring-{{getBorderColor(cardTitle())}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{getBorderColor(cardTitle())}}-500">
   <!-- todo: create image modal that shows zoomed in image when pressed -->
+  <!-- todo: beautify -->
   <!-- Image -->
   <div>
     <img [src]="imgUrl()" class="rounded-lg"/>
@@ -8,7 +11,7 @@
   <!-- Title -->
   <div class="flex flex-row items-center justify-between px-2 pt-1 text-center align-middle">
     <div class="mb-2 select-none overflow-hidden break-all text-2xl font-bold tracking-tight text-gray-900"> {{ cardTitle() }}</div>
-    <div class="h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-blue-50"
+    <div class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-blue-50 sm:block"
          [routerLink]="link()">
       <svg
         style="color: black;"
@@ -39,9 +42,13 @@
   <!-- todo: something like this: <app-tag-badge label="C++" iconClass="fa-cogs" bgColor="bg-gray-300"></app-tag-badge> -->
   <!-- Tags -->
   <div class="flex flex-wrap items-center justify-start gap-1">
-    <div class="inline select-none rounded-full bg-violet-400 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-microchip"></i> Assembly</div>
-    <div class="inline select-none rounded-full bg-red-300 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-coffee"></i> Java</div>
-    <div class="inline rounded-full bg-blue-300 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-terminal"></i> C#</div>
-    <div class="inline rounded-full bg-gray-300 px-2 py-1 text-center align-middle text-xs font-bold"><i class="mr-2 fa-solid fa-cogs"></i> C++</div>
+    @for (tag of tags(); track $index) {
+      <div class="inline select-none rounded-full bg-{{ getBorderColor(tag) }}-300 px-2 py-1 text-center align-middle text-xs font-bold">
+        <div class="tag animated-gradient-text-{{ quickHash(tag) % 5 + 1 }} flex justify-center items-center gap-2 align-middle">
+          <fa-icon [icon]="fontAwesomeIcons[quickHash(tag) % fontAwesomeIcons.length]" [size]="'xs'" class="text-{{ getBorderColor(tag) }}-300 invert"></fa-icon>
+          {{ tag | titlecase }}
+        </div>
+      </div>
+    }
   </div>
 </div>

@@ -1,0 +1,113 @@
+:host {
+  /* 🔴 Red - from light pink to dark crimson */
+  --red-1: #ffc1c1;
+  --red-2: #f43f5e;
+  --red-3: #c81e3b;
+  --red-4: #991b1b;
+  --red-5: #660d0d;
+
+  /* 🔵 Blue - from icy to deep navy */
+  --blue-1: #c7e0ff;
+  --blue-2: #3b82f6;
+  --blue-3: #1e3a8a;
+  --blue-4: #1e293b;
+  --blue-5: #0f172a;
+
+  /* 🟢 Green - mint to dark forest */
+  --green-1: #d1fae5;
+  --green-2: #10b981;
+  --green-3: #047857;
+  --green-4: #065f46;
+  --green-5: #064e3b;
+
+  /* 🟡 Yellow - pastel to gold */
+  --yellow-1: #fef9c3;
+  --yellow-2: #facc15;
+  --yellow-3: #eab308;
+  --yellow-4: #ca8a04;
+  --yellow-5: #78350f;
+
+  /* 🟣 Violet - lavender to plum */
+  --violet-1: #e9d5ff;
+  --violet-2: #8b5cf6;
+  --violet-3: #7e22ce;
+  --violet-4: #5b21b6;
+  --violet-5: #3c096c;
+}
+
+.animated-gradient-text-1 {
+  background: linear-gradient(
+    270deg,
+    var(--red-1),
+    var(--blue-1),
+    var(--green-1),
+    var(--yellow-1),
+    var(--violet-1)
+  );
+}
+
+.animated-gradient-text-2 {
+  background: linear-gradient(
+    270deg,
+    var(--red-2),
+    var(--blue-2),
+    var(--green-2),
+    var(--yellow-2),
+    var(--violet-2)
+  );
+}
+
+.animated-gradient-text-3 {
+  background: linear-gradient(
+    270deg,
+    var(--red-3),
+    var(--blue-3),
+    var(--green-3),
+    var(--yellow-3),
+    var(--violet-3)
+  );
+}
+
+.animated-gradient-text-4 {
+  background: linear-gradient(
+    270deg,
+    var(--red-4),
+    var(--blue-4),
+    var(--green-4),
+    var(--yellow-4),
+    var(--violet-4)
+  );
+}
+
+.animated-gradient-text-5 {
+  background: linear-gradient(
+    270deg,
+    var(--red-5),
+    var(--blue-5),
+    var(--green-5),
+    var(--yellow-5),
+    var(--violet-5)
+  );
+}
+
+.animated-gradient-text-1, .animated-gradient-text-2, .animated-gradient-text-3, .animated-gradient-text-4, .animated-gradient-text-5 {
+  background-size: 600% 600%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: animatedGradient 5s ease infinite;
+  font-weight: bold;
+}
+
+@keyframes animatedGradient {
+  0% {
+    background-position: 0 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+

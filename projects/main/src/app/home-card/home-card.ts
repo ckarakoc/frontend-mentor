@@ -1,12 +1,32 @@
-import { Component, HostBinding, input } from '@angular/core';
+import { Component, HostBinding, input, OnInit } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { NgStyle } from '@angular/common';
+import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
+import {
+  faBolt,
+  faBug,
+  faCloud,
+  faCode,
+  faCogs,
+  faCube,
+  faDatabase,
+  faFileCode,
+  faLaptopCode,
+  faLightbulb,
+  faMicrochip,
+  faProjectDiagram,
+  faPuzzlePiece,
+  faServer,
+  faTerminal,
+  faWrench,
+} from '@fortawesome/free-solid-svg-icons';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home-card',
   imports: [
     RouterLink,
-    NgStyle
+    FaIconComponent,
+    TitleCasePipe
   ],
   templateUrl: './home-card.html',
   styleUrl: './home-card.css'
@@ -18,4 +38,34 @@ export class HomeCard {
   imgUrl = input.required<string>();
   cardContent = input<string>('Card content goes here.');
   link = input.required<string>();
+  tags = input.required<string[]>();
+
+  protected readonly tailwindColors = [
+    // Note: These classes need to be safelisted in the tailwind config
+    'red',
+    'blue',
+    'green',
+    'yellow',
+    'pink',
+    'purple',
+    'orange',
+    'teal',
+    'indigo',
+    'lime',
+  ];
+
+  protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];
+
+  quickHash(str: string): number {
+    let hash = 0;
+    for (let i = 0; i < str.length; i++) {
+      hash = ((hash << 5) - hash) + str.charCodeAt(i);
+      hash = hash & hash;
+    }
+    return Math.abs(hash);
+  }
+
+  getBorderColor(s: string): string {
+    return this.tailwindColors[this.quickHash(s) % this.tailwindColors.length];
+  }
 }
