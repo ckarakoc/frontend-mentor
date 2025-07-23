@@ -89,6 +89,93 @@
         }
       }
     },
+    "jellynote": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "projects/jellynote",
+      "sourceRoot": "projects/jellynote/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "browser": "projects/jellynote/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/jellynote/tsconfig.app.json",
+            "assets": [
+              "projects/jellynote/src/assets/icons/favicon.ico",
+              "projects/jellynote/src/assets",
+              {
+                "glob": "**/*",
+                "input": "projects/jellynote/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "dist/shared-404/assets",
+                "output": "/shared-404/assets"
+              }
+            ],
+            "styles": [
+              "projects/jellynote/src/styles.css"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "jellynote:build:production"
+            },
+            "development": {
+              "buildTarget": "jellynote:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/jellynote/tsconfig.spec.json",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/jellynote/public"
+              }
+            ],
+            "styles": [
+              "projects/jellynote/src/styles.css"
+            ]
+          }
+        }
+      }
+    },
     "shared-404": {
       "projectType": "library",
       "root": "projects/shared-404",

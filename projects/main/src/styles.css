@@ -11,3 +11,7 @@
 @source inline("{hover:,sm:,md:,lg:,xl:,}text-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
 @source inline("{hover:,sm:,md:,lg:,xl:,}ring-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
 @source inline("{hover:,sm:,md:,lg:,xl:,}shadow-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
+
+:root {
+  background-color: mistyrose;
+}

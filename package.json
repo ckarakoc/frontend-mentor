@@ -4,12 +4,19 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "npm run clean && npm run build:apps && npm run build:libs && npm run flatten",
-    "build:apps": "ng build main --configuration production",
-    "build:libs": "ng build shared-404 --configuration production",
+    "build": "npm run clean && npm run build:app:all && npm run build:lib:all && npm run flatten",
+
+    "build:app:all": "npm run build:app:main && npm run build:app:jellynote",
+    "build:app:main": "ng build main --configuration production",
+    "build:app:jellynote": "ng build jellynote --configuration production",
+
+    "build:lib:all": "npm run build:lib:404",
+    "build:lib:404": "ng build shared-404 --configuration production",
+
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "http-server": "http-server dist -s -p 4200",
+    "http-server": "http-server ./dist/ -p 4200",
+
     "clean": "powershell -ExecutionPolicy Bypass -File shell/clean.ps1",
     "flatten": "powershell -ExecutionPolicy Bypass -File shell/flatten-dist.ps1"
   },

@@ -1,11 +1,11 @@
 <div class="relative" (window:scroll)="checkScrollTop(masonry)">
-  <div #masonry class="flex justify-center flex-auto flex-row flex-wrap gap-4 [scrollbar-width:none]"
+  <div #masonry class="flex flex-auto flex-row flex-wrap justify-center gap-4 [scrollbar-width:none]"
        (scroll)="checkScrollTop(masonry)">
     <!-- Main Grid -->
-    <div class="columns-2 sm:columns-2 gap-4 md:columns-4 xl:columns-6 m-4 max-w-screen">
+    <div class="m-4 columns-2 gap-4 max-w-screen sm:columns-2 md:columns-4 xl:columns-6">
       @for (_ of [].constructor(30); track $index) {
         @let i = ($index % 11) + 1;
-        <div class="break-inside-avoid mb-4">
+        <div class="mb-4 break-inside-avoid">
           <app-home-card imgUrl="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-{{i}}.jpg"
                          link=""
                          cardContent="Card Content {{ i }}"

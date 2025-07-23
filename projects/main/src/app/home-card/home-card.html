@@ -1,5 +1,5 @@
 <div
-  class="flex flex-col justify-between rounded-lg border border-gray-200 bg-white p-2
+  class="flex flex-col rounded-lg justify-between  border border-fuchsia-200 bg-fuchsia-50 hover:bg-fuchsia-200 p-2
   shadow shadow-{{getBorderColor(cardTitle())}}-500 ring-4 ring-{{getBorderColor(cardTitle())}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{getBorderColor(cardTitle())}}-500">
   <!-- todo: create image modal that shows zoomed in image when pressed -->
   <!-- todo: beautify -->
@@ -35,7 +35,7 @@
   <!-- Content -->
   <div class="hover:cursor-pointer"
        [routerLink]="link()">
-    <p class="mb-3 select-none rounded-xl px-2 font-normal leading-tight text-gray-700 hover:bg-blue-50"> {{ cardContent() }} </p>
+    <p class="mb-3 select-none rounded-xl px-2 font-normal leading-tight text-gray-700"> {{ cardContent() }} </p>
   </div>
 
   <!-- todo: make colors randomly assignable, i.e. new TailwindColors(...colors).between(...range).pick(); Do the same with the fa-symbols -->

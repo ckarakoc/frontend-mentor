@@ -65,6 +65,11 @@ export class HomeCard {
     return Math.abs(hash);
   }
 
+  /**
+   * Gets the tailwind color class based on a hash.
+   * @Note Make sure that the classes are safelisted ande preloaded by tailwind in you use it inline.
+   * @param s string to be hashed
+   */
   getBorderColor(s: string): string {
     return this.tailwindColors[this.quickHash(s) % this.tailwindColors.length];
   }

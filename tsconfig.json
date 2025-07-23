@@ -13,7 +13,7 @@
     "experimentalDecorators": true,
     "paths": {
       "shared-404": [
-        "./dist/shared-404"
+        "./projects/shared-404/src/public-api.ts"
       ]
     },
     "importHelpers": true,
@@ -40,6 +40,12 @@
     },
     {
       "path": "./projects/shared-404/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/jellynote/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/jellynote/tsconfig.spec.json"
     }
   ]
 }
