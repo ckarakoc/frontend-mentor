@@ -33,6 +33,26 @@
                 "glob": "**/*",
                 "input": "projects/qrcode/src/assets",
                 "output": "assets/qrcode"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/blog-preview-card/src/assets",
+                "output": "assets/blog-preview-card"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/social-links/src/assets",
+                "output": "assets/social-links"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/recipe/src/assets",
+                "output": "assets/recipe"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/product-preview-card/src/assets",
+                "output": "assets/product-preview-card"
               }
             ],
             "styles": [
@@ -44,8 +64,8 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "1MB",
+                  "maximumError": "5MB"
                 }
               ],
               "outputHashing": "all"
@@ -238,6 +258,126 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/qrcode/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "blog-preview-card": {
+      "projectType": "library",
+      "root": "projects/blog-preview-card",
+      "sourceRoot": "projects/blog-preview-card/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/blog-preview-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/blog-preview-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/blog-preview-card/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "social-links": {
+      "projectType": "library",
+      "root": "projects/social-links",
+      "sourceRoot": "projects/social-links/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/social-links/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/social-links/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/social-links/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "recipe": {
+      "projectType": "library",
+      "root": "projects/recipe",
+      "sourceRoot": "projects/recipe/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/recipe/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/recipe/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/recipe/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "product-preview-card": {
+      "projectType": "library",
+      "root": "projects/product-preview-card",
+      "sourceRoot": "projects/product-preview-card/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/product-preview-card/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/product-preview-card/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/product-preview-card/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

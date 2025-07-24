@@ -1,0 +1,11 @@
+name: Deploy to DigitalOcean Droplet
+on:
+  push:
+    branches: [ "master" ]
+
+jobs:
+  placeholder:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Placeholder step
+        run: echo "This is a placeholder workflow for DigitalOcean deployment."

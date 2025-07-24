@@ -12,11 +12,23 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "paths": {
+      "blog-preview-card": [
+        "./dist/blog-preview-card"
+      ],
+      "product-preview-card": [
+        "./dist/product-preview-card"
+      ],
       "qrcode": [
         "./projects/qrcode/src/public-api.ts"
       ],
+      "recipe": [
+        "./dist/recipe"
+      ],
       "shared-404": [
         "./projects/shared-404/src/public-api.ts"
+      ],
+      "social-links": [
+        "./dist/social-links"
       ]
     },
     "importHelpers": true,
@@ -55,6 +67,30 @@
     },
     {
       "path": "./projects/qrcode/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/blog-preview-card/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/blog-preview-card/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/social-links/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/social-links/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/recipe/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/recipe/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/product-preview-card/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/product-preview-card/tsconfig.spec.json"
     }
   ]
 }
