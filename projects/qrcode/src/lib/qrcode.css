@@ -1,56 +1,27 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+  --color-white: oklch(1 0 0);
+
+  --color-blue-600: oklch(0.611 0.203 259.337);
+  --color-blue-500: oklch(0.634 0.197 259.165);
+
+  --color-slate-300: oklch(0.905 0.023 252.184);
+  --color-slate-500: oklch(0.565 0.039 257.866);
+  --color-slate-900: oklch(0.313 0.059 260.169);
+
+  --spacing-200: 16px; /* m-4 */
+  --spacing-300: 24px; /* m-6 */
+  --spacing-500: 40px; /* m-10 */
+}
+
+
 :host {
-  --qr-white: #ffffff;
-  --qr-slate-300: #d5e1ef;
-  --qr-slate-500: #68778d;
-  --qr-slate-900: #1f314f;
-  --qr-blue-600: #2c7dfa;
-  --qr-blue-500: #3685ff;
-  --qr-spacing-500: 40px;
-  --qr-spacing-300: 24px;
-  --qr-spacing-200: 16px;
-
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  background-color: var(--qr-slate-300);
-}
-
-.c-container {
-  border-radius: 20px;
-  background-color: var(--qr-white);
-  box-shadow: 0px 25px 25px 0px rgba(0, 0, 0, 0.5);
-}
-
-/* QR Code Header */
-
-.c-header {
-  background-color: pink;
-  overflow: hidden;
-  width: 288px;
-  height: 288px;
-  border-radius: 10px;
-  margin: var(--qr-spacing-200) var(--qr-spacing-200) var(--qr-spacing-300);
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  align-self: stretch;
-}
-
-.qrcode-wrapper {
-  position: relative;
-  display: flex;
-  flex: 1;
-  width: 288px;
-  height: 288px;
-  max-width: 288px;
-  overflow: hidden;
+  @apply flex flex-col items-center justify-center bg-slate-300 h-screen w-screen;
 }
 
 .center {
@@ -65,72 +36,7 @@
   border-radius: 10px;
 }
 
-.qr-rectangle {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  align-self: center;
-  justify-content: center;
-  width: 60%;
-  height: 60%;
-  margin: 60px;
-  background-color: red;
-  opacity: 0;
-  z-index: 2;
-}
-
 .qr-oval {
-  position: absolute;
-  background-color: var(--qr-blue-500);
-  /*background-color: black;*/
-  /*opacity: 0.4;*/
-  /*background-color: rgba(54, 133, 255, 0.6);*/
-  border-radius: 270px;
-  z-index: 1;
   /* Beware: magic incoming. Thanks to the magician: https://bennettfeely.com/clippy/ */
   clip-path: polygon(37% 0, 100% 0, 100% 43%, 100% 67%, 57% 67%, 57% 100%, 0 100%, 0 10%, 37% 10%);
-}
-
-.qr-oval-bottom-right {
-  width: 270px;
-  height: 270px;
-  top: 204.5px;
-  left: 131.5px;
-}
-
-.qr-oval-top-left {
-  width: 328px;
-  height: 328px;
-  bottom: 124.5px;
-  right: 91.5px;
-}
-
-/* QR Code Body */
-
-.c-body {
-  position: relative;
-  /*padding: 0px var(--spacing-200);*/
-  margin: 0 var(--qr-spacing-200) var(--qr-spacing-500);
-  width: 288px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: var(--qr-spacing-200, 16px);
-  align-self: stretch;
-}
-
-.text-preset-1 {
-  font: bold 22px 'Outfit', sans-serif;
-  color: var(--qr-slate-900);
-  line-height: 120%;
-  letter-spacing: 0;
-  text-align: center;
-}
-
-.text-preset-2 {
-  font: normal 15px 'Outfit';
-  color: var(--qr-slate-500);
-  line-height: 140%;
-  letter-spacing: 0.2px;
-  text-align: center;
 }

@@ -4,14 +4,14 @@
 
 ---
 - [qrcode](projects/qrcode/README.md)
-- [blog-preview-card](projects/blog-preview-card/README.md)
-- [social-links](projects/social-links/README.md)
-- [recipe](projects/recipe/README.md)
-- [product-preview-card](projects/product-preview-card/README.md)
 
 ### ✅ Todo
 
 ---
+- [blog-preview-card](projects/blog-preview-card/README.md)
+- [social-links](projects/social-links/README.md)
+- [recipe](projects/recipe/README.md)
+- [product-preview-card](projects/product-preview-card/README.md)
 - [four-card-feature](projects/four-card-feature/README.md)
 - [jellynote](projects/jellynote/README.md)
 

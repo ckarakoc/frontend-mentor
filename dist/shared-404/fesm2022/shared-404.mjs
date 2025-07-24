@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 import { NgStyle } from '@angular/common';
 
 class Shared404 {
-    backgroundImage = 'url("assets/shared-404/war.jpg")';
+    backgroundImage = 'url("shared-404/src/assets/war.jpg")';
     static ɵfac = i0.ɵɵngDeclareFactory({ minVersion: "12.0.0", version: "20.1.2", ngImport: i0, type: Shared404, deps: [], target: i0.ɵɵFactoryTarget.Component });
     static ɵcmp = i0.ɵɵngDeclareComponent({ minVersion: "14.0.0", version: "20.1.2", type: Shared404, isStandalone: true, selector: "lib-shared-404", ngImport: i0, template: `
     <div class="flex h-screen w-full items-center justify-center bg-cover bg-center bg-no-repeat"

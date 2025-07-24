@@ -36,8 +36,7 @@
               }
             ],
             "styles": [
-              "projects/main/src/styles.css",
-              "projects/qrcode/src/lib/qrcode.css"
+              "projects/main/src/styles.css"
             ]
           },
           "configurations": {
