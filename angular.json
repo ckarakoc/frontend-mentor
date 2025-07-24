@@ -26,12 +26,18 @@
               },
               {
                 "glob": "**/*",
-                "input": "dist/shared-404/assets",
-                "output": "/shared-404/assets"
+                "input": "projects/shared-404/src/assets",
+                "output": "assets/shared-404"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/qrcode/src/assets",
+                "output": "assets/qrcode"
               }
             ],
             "styles": [
-              "projects/main/src/styles.css"
+              "projects/main/src/styles.css",
+              "projects/qrcode/src/lib/qrcode.css"
             ]
           },
           "configurations": {
@@ -203,6 +209,36 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/shared-404/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "qrcode": {
+      "projectType": "library",
+      "root": "projects/qrcode",
+      "sourceRoot": "projects/qrcode/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/qrcode/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/qrcode/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/qrcode/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

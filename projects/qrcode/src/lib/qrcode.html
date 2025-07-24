@@ -1,0 +1,31 @@
+<div class="c-container bg-red-500">
+  <div class="c-header">
+    <div class="qrcode-wrapper">
+      <qrcode
+        [elementType]="qr_model.elementType"
+        [errorCorrectionLevel]="qr_model.errorCorrectionLevel"
+        [qrdata]="qr_model.qrdata"
+        [scale]="qr_model.scale"
+        [width]="qr_model.width"
+        [allowEmptyString]="qr_model.allowEmptyString"
+        [className]="qr_model.cssClass"
+        [colorDark]="qr_model.colorDark"
+        [colorLight]="qr_model.colorLight"
+        [margin]="qr_model.margin"
+        [alt]="qr_model.alt"
+        [ariaLabel]="qr_model.ariaLabel"
+        [title]="qr_model.title"
+        [imageSrc]="qr_model.imageSrc"
+        [imageHeight]="qr_model.imageHeight"
+        [imageWidth]="qr_model.imageWidth"
+      ></qrcode>
+      <div class="qr-rectangle"></div>
+      <div class="qr-oval qr-oval-bottom-right"></div>
+      <div class="qr-oval qr-oval-top-left"></div>
+    </div>
+  </div>
+  <div class="c-body">
+    <div class="text-preset-1">Improving my front-end skills by building projects</div>
+    <div class="text-preset-2">Scan the QR code to visit my portfolio website and see all of my project build with my next level coding skills.</div>
+  </div>
+</div>

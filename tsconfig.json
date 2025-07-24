@@ -12,6 +12,9 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "paths": {
+      "qrcode": [
+        "./projects/qrcode/src/public-api.ts"
+      ],
       "shared-404": [
         "./projects/shared-404/src/public-api.ts"
       ]
@@ -46,6 +49,12 @@
     },
     {
       "path": "./projects/jellynote/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/qrcode/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/qrcode/tsconfig.spec.json"
     }
   ]
 }
