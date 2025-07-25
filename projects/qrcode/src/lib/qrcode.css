@@ -19,11 +19,6 @@
   --spacing-500: 40px; /* m-10 */
 }
 
-
-:host {
-  @apply flex flex-col items-center justify-center bg-slate-300 h-screen w-screen;
-}
-
 .center {
   display: flex;
   flex: 1;

@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Outfit:wght@100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-figtree: "Figtree", sans-serif;
+  --color-yellow-x: #F4D04E;
+  --color-gray-x: #6B6B6B;
+  --color-white: #FFFFFF;
+}
+
+:host {
+  --bp-spacing-200: 24px; /* m-6 */
+  --bp-spacing-150: 12px; /* m-3 */
+  --bp-spacing-100: 8px; /* m-2 */
+  --bp-spacing-50: 4px; /* m-1 */
+  @apply font-figtree;
+}
+
+.text-preset-1 {
+  @apply text-2xl leading-[150%] tracking-normal font-extrabold;
+}
+
+.text-preset-2 {
+  @apply text-base leading-[150%] tracking-normal font-normal;
+}
+
+.text-preset-3 {
+  @apply text-sm leading-[150%] tracking-normal font-normal;
+}
+
+.text-preset-4 {
+  @apply text-sm leading-[150%] tracking-normal font-extrabold;
+}

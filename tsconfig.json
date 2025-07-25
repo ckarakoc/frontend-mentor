@@ -13,22 +13,22 @@
     "experimentalDecorators": true,
     "paths": {
       "blog-preview-card": [
-        "./dist/blog-preview-card"
+        "./projects/blog-preview-card/src/public-api.ts"
       ],
       "product-preview-card": [
-        "./dist/product-preview-card"
+        "./projects/product-preview-card/src/public-api.ts"
       ],
       "qrcode": [
         "./projects/qrcode/src/public-api.ts"
       ],
       "recipe": [
-        "./dist/recipe"
+        "./projects/recipe/src/public-api.ts"
       ],
       "shared-404": [
         "./projects/shared-404/src/public-api.ts"
       ],
       "social-links": [
-        "./dist/social-links"
+        "./projects/social-links/src/public-api.ts"
       ]
     },
     "importHelpers": true,
