@@ -3,9 +3,9 @@
 
 @theme {
   --font-figtree: "Figtree", sans-serif;
-  --color-yellow-x: #F4D04E;
-  --color-gray-x: #6B6B6B;
-  --color-white: #FFFFFF;
+  --color-yellow-x: oklch(0.8655 0.1495 93.36);
+  --color-gray-x: oklch(0.5278 0 0);
+  --color-white: oklch(1 0 0);
 }
 
 :host {

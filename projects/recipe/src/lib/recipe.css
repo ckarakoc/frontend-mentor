@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Young+Serif&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-rc-white: oklch(1 0 0);
+  --color-rc-stone-100: oklch(0.9293 0.0242 67.52);
+  --color-rc-stone-150: oklch(0.9006 0.0105 67.69);
+  --color-rc-stone-600: oklch(0.459 0.0185 67.34);
+  --color-rc-stone-900: oklch(0.3036 0.0056 56.18);
+  --color-rc-brown-800: oklch(0.4672 0.0919 38.33);
+  --color-rc-rose-800: oklch(0.4117 0.1206 355.07);
+  --color-rc-rose-50: oklch(0.9834 0.01 345.41);
+
+  --font-outfit: 'Outfit', sans-serif;
+  --font-young: 'Young Serif', serif;
+}
+
+/*
+  spacing-1600: 128px; x-32
+  spacing-600:  48px;  x-12
+  spacing-500:  40px;  x-10
+  spacing-400:  32px;  x-8
+  spacing-300:  24px;  x-6
+  spacing-200:  16px;  x-4
+  spacing-150:  12px;  x-3
+  spacing-100:  8px;   x-2
+*/
+
+h1 {
+  @apply font-young text-[40px] leading-[100%] tracking-normal;
+}
+
+h2 {
+  @apply font-young text-[28px] leading-[100%] tracking-normal text-rc-brown-800;
+}
+
+h3 {
+  @apply font-outfit text-[20px] leading-[100%] tracking-normal text-rc-brown-800 font-semibold;
+}
+
+ol, ul {
+  @apply pl-2;
+}
+
+li {
+  @apply text-rc-rose-800 pl-4;
+}
+
+li::marker {
+  @apply text-rc-rose-800 pl-4;
+}
+
+
+.striped div:nth-child(even) {
+  @apply font-bold text-rc-brown-800;
+}

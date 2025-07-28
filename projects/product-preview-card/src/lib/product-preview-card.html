@@ -1,0 +1,21 @@
+<div class="m-3 flex w-80 max-w-2xl flex-col rounded-xl bg-ppc-white md:w-auto md:flex-row">
+  <div class="md:w-1/2">
+    <picture>
+      <source media="(min-width: 768px)" srcset="assets/product-preview-card/images/image-product-desktop.jpg">
+      <source media="(min-width: 640px)" srcset="assets/product-preview-card/images/image-product-mobile.jpg">
+      <img class="rounded-t-xl object-cover md:h-auto md:rounded-l-xl md:rounded-tr-none" src="assets/product-preview-card/images/image-product-mobile.jpg" alt="IfItDoesntMatchAnyMedia">
+    </picture>
+  </div>
+  <div id="content" class="flex flex-col justify-start gap-4 p-5 md:w-1/2">
+    <div class="text-xs tag tracking-[5px]">{{ 'Perfume' | uppercase }}</div>
+    <div class="text-4xl font-bold font-fraunces">Gabrielle Essence Eau De Parfum</div>
+    <div class="text-ppc-grayish-blue">A floral, solar and voluptuous interpretation composed by Olivier Polge, Perfumer-Creator for the House of CHANEL.</div>
+    <div class="flex flex-row items-center gap-8">
+      <div class="text-3xl font-bold text-ppc-dark-cyan">{{ '149.99' | currency }}</div>
+      <div class="line-through text-ppc-grayish-blue">{{ '169.99' | currency }}</div>
+    </div>
+    <button class="flex flex-row items-center justify-center gap-4 rounded-lg py-2 px-auto text-ppc-white bg-ppc-dark-cyan hover:brightness-90">
+      <img src="assets/product-preview-card/images/icon-cart.svg" alt="cart">Add to Cart
+    </button>
+  </div>
+</div>

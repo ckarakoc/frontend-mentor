@@ -3,12 +3,8 @@ import { Component } from '@angular/core';
 @Component({
   selector: 'lib-recipe',
   imports: [],
-  template: `
-    <p>
-      recipe works!
-    </p>
-  `,
-  styles: ``
+  templateUrl: `./recipe.html`,
+  styleUrl: `./recipe.css`,
 })
 export class Recipe {
 

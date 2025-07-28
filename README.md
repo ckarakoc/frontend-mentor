@@ -5,13 +5,13 @@
 ---
 - [QR Code Component](projects/qrcode/README.md)
 - [Blog Preview Card](projects/blog-preview-card/README.md)
+- [Recipe Page](projects/recipe/README.md)
+- [Product Preview Card](projects/product-preview-card/README.md)
 
 ### ✅ Todo
 
 ---
 - [Social Links Profile](projects/social-links/README.md)
-- [Recipe Page](projects/recipe/README.md)
-- [Product Preview Card](projects/product-preview-card/README.md)
 - [four-card-feature](projects/four-card-feature/README.md)
 - [jellynote](projects/jellynote/README.md)
 
