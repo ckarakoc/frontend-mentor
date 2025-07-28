@@ -15,3 +15,7 @@
 :root {
   background-color: mistyrose;
 }
+
+html, body {
+  height: 100%;
+}

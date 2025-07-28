@@ -7,7 +7,7 @@ import { NgOptimizedImage } from '@angular/common';
     NgOptimizedImage
   ],
   templateUrl: './single-card-feature.html',
-  styleUrl: '../four-card-feature.css',
+  styleUrl: './single-card-feature.css',
 })
 export class SingleCardFeature {
   title = input.required<string>();

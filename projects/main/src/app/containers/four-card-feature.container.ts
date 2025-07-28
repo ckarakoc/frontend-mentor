@@ -8,9 +8,9 @@ import { FourCardFeature } from 'four-card-feature';
     FourCardFeature
   ],
   template: `
-    <div class="h-screen w-screen bg-white flex items-center justify-center">
+    <div class="flex w-full items-center justify-center bg-white md:h-full">
       <lib-four-card-feature></lib-four-card-feature>
     </div>
-  `,
+  `
 })
 export class FourCardFeatureContainer {}

@@ -26,9 +26,11 @@
 }
 
 :host {
-  /* Beware with :host, this is also the css file of single-card-feature :P */
   @apply font-poppins text-[15px];
-  --card-width: 350px;
+  --card-width: 300px;
+  @media screen(sm) {
+    --card-width: 350px;
+  }
   --gap-width: calc(var(--spacing) * 8); /* same as gap-8 */
   --tablet-width: calc(var(--card-width) * 2 + var(--gap-width));
   --desktop-width: calc(var(--card-width) * 3 + var(--gap-width) * 2);

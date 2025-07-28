@@ -6,7 +6,7 @@ import { BlogPreviewCard } from 'blog-preview-card';
   imports: [BlogPreviewCard],
   template: `
     <lib-blog-preview-card
-      class="flex flex-col items-center justify-center bg-[#F4D04E] h-screen w-screen"
+      class="flex flex-col items-center justify-center bg-[#F4D04E] w-full h-full p-1"
       [tags]="['Learning', 'Arrange', 'Act', 'Assert']"
       [profileName]="'Greg Hooper'"
       [profileImg]="'assets/blog-preview-card/images/image-avatar.webp'"
