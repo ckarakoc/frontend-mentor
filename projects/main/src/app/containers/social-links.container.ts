@@ -10,5 +10,5 @@ import { SocialLinks } from 'social-links';
     <lib-social-links class="flex h-screen w-full items-center justify-center"></lib-social-links>
   `
 })
-export default class SocialLinksContainer {
+export class SocialLinksContainer {
 }

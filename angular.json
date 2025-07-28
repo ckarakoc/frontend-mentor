@@ -27,8 +27,18 @@
               },
               {
                 "glob": "**/*",
-                "input": "projects/shared-404/src/assets",
-                "output": "assets/shared-404"
+                "input": "projects/blog-preview-card/src/assets",
+                "output": "assets/blog-preview-card"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/four-card-feature/src/assets",
+                "output": "assets/four-card-feature"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/product-preview-card/src/assets",
+                "output": "assets/product-preview-card"
               },
               {
                 "glob": "**/*",
@@ -37,23 +47,18 @@
               },
               {
                 "glob": "**/*",
-                "input": "projects/blog-preview-card/src/assets",
-                "output": "assets/blog-preview-card"
-              },
-              {
-                "glob": "**/*",
-                "input": "projects/social-links/src/assets",
-                "output": "assets/social-links"
-              },
-              {
-                "glob": "**/*",
                 "input": "projects/recipe/src/assets",
                 "output": "assets/recipe"
               },
               {
                 "glob": "**/*",
-                "input": "projects/product-preview-card/src/assets",
-                "output": "assets/product-preview-card"
+                "input": "projects/shared-404/src/assets",
+                "output": "assets/shared-404"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/social-links/src/assets",
+                "output": "assets/social-links"
               }
             ],
             "styles": [
@@ -379,6 +384,36 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/product-preview-card/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "four-card-feature": {
+      "projectType": "library",
+      "root": "projects/four-card-feature",
+      "sourceRoot": "projects/four-card-feature/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/four-card-feature/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/four-card-feature/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/four-card-feature/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

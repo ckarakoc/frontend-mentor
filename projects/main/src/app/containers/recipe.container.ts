@@ -12,4 +12,4 @@ import { Recipe } from 'recipe';
     </div>
   `
 })
-export default class RecipeContainer {}
+export class RecipeContainer {}

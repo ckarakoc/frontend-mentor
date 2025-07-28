@@ -1,0 +1,13 @@
+<div class="flex h-full flex-col p-8 gap-2">
+  <h1 class="text-xl font-semibold leading-7 text-neutral-grey-500">
+    {{ title() }}
+  </h1>
+  <p class="text-sm font-normal leading-5 tracking-tight text-neutral-grey-400">
+    {{ content() }}
+  </p>
+  <div class="relative block h-full w-full">
+    <div class="absolute right-0 bottom-0">
+      <img ngSrc="assets/four-card-feature/images/icon-{{ icon() }}.svg" alt="{{ icon() }}" width="64" height="64">
+    </div>
+  </div>
+</div>

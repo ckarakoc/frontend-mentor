@@ -1,7 +1,8 @@
-import { AfterViewInit, Component, computed, ElementRef, signal, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, signal, ViewChild } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { HomeCard } from '../home-card/home-card';
+
 
 @Component({
   selector: 'app-home',

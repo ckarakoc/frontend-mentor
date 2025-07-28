@@ -1,0 +1,53 @@
+<div class="relative z-0 overflow-hidden p-1 rounded-4xl">
+  <div id="card" class="absolute top-1/2 left-1/2 -z-10 origin-top-left overflow-hidden min-w-[200%] min-h-[200%] animate-rainbow"></div>
+  <div id="content" class="flex flex-col items-center justify-center gap-20 bg-[#FAFAFA] pt-4 pb-12 px-8 rounded-4xl">
+    <div class="flex flex-col items-center text-center text-neutral-grey-500">
+      <div class="flex w-min flex-col items-center">
+        <div class="w-max">
+          <h1 class="text-4xl font-light tracking-wide leading-12">
+            Reliable, efficient delivery
+          </h1>
+          <h2 class="text-4xl font-semibold tracking-wide leading-12">
+            Powered by Technology
+          </h2>
+        </div>
+        <p class="mt-2 text-sm font-normal tracking-normal text-wrap">
+          Our Artificial Intelligence powered tools use millions of project data points to ensure that your project is successful
+        </p>
+      </div>
+    </div>
+
+
+    <div class="flex flex-col gap-8 w-[var(--card-width)] md:grid md:grid-cols-4 md:grid-rows-6 md:w-[var(--tablet-width)] xl:md:w-[var(--desktop-width)] xl:grid-cols-6 xl:grid-rows-4">
+      <!-- Four Cards: -->
+      <div class="col-span-2 row-span-2 h-64 rounded-md border-t-4 shadow-2xl bg-neutral-white border-t-primary-cyan md:col-start-2 md:row-start-1 xl:col-start-1 xl:row-start-2">
+        <lib-single-card-feature
+          title="Supervisor"
+          content="Monitors activity to identify project roadblocks"
+          icon="supervisor"
+        ></lib-single-card-feature>
+      </div>
+      <div class="col-span-2 row-span-2 h-64 rounded-md border-t-4 shadow-2xl bg-neutral-white border-t-primary-red md:col-start-1 md:row-start-3 xl:col-start-3 xl:row-start-1">
+        <lib-single-card-feature
+          title="Team Builder"
+          content="Scans our talent network to create the optimal team for your project"
+          icon="team-builder"
+        ></lib-single-card-feature>
+      </div>
+      <div class="col-span-2 row-span-2 h-64 rounded-md border-t-4 shadow-2xl bg-neutral-white border-t-primary-orange md:col-start-3 md:row-start-3 xl:col-start-3 xl:row-start-3">
+        <lib-single-card-feature
+          title="Karma"
+          content="Regularly evaluates our talent to ensure quality"
+          icon="karma"
+        ></lib-single-card-feature>
+      </div>
+      <div class="col-span-2 row-span-2 h-64 rounded-md border-t-4 shadow-2xl bg-neutral-white border-t-primary-blue md:col-start-2 md:row-start-5 xl:col-start-5 xl:row-start-2">
+        <lib-single-card-feature
+          title="Calculator"
+          content="Uses data from past projects to provide better delivery estimates"
+          icon="calculator"
+        ></lib-single-card-feature>
+      </div>
+    </div>
+  </div>
+</div>

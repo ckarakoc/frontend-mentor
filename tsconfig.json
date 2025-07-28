@@ -15,6 +15,9 @@
       "blog-preview-card": [
         "./projects/blog-preview-card/src/public-api.ts"
       ],
+      "four-card-feature": [
+        "./projects/four-card-feature/src/public-api.ts"
+      ],
       "product-preview-card": [
         "./projects/product-preview-card/src/public-api.ts"
       ],
@@ -91,6 +94,12 @@
     },
     {
       "path": "./projects/product-preview-card/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/four-card-feature/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/four-card-feature/tsconfig.spec.json"
     }
   ]
 }
