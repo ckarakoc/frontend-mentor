@@ -1,0 +1,37 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+
+  --color-sl-grey-900: oklch(0.1913 0 0);
+  --color-sl-grey-800: oklch(0.2393 0 0);
+  --color-sl-grey-700: oklch(0.3211 0 0);
+  --color-sl-green: oklch(0.9106 0.2167 124.03);
+  --color-sl-white: oklch(1 0 0);
+}
+
+/*
+  spacing-500: 40px; x-10
+  spacing-300: 24px; x-6
+  spacing-200: 16px; x-4
+  spacing-150: 12px; x-3
+  spacing-100: 8px;  x-2
+  spacing-50:  4px;  x-1
+*/
+
+:host {
+  @apply font-inter bg-sl-grey-900;
+}
+
+.text-preset-1 {
+  @apply text-2xl font-normal tracking-normal leading-[150%];
+}
+
+.text-preset-2 {
+  @apply text-sm font-normal tracking-normal leading-[150%];
+}
+
+.text-preset-2-bold {
+  @apply text-sm font-bold tracking-normal leading-[150%];
+}

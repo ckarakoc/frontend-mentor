@@ -12,20 +12,12 @@ This is a solution to the [Product preview card component challenge on Frontend 
 #### Mobile:
 ![Mobile](src/assets/screenshot-mobile.png)
 
-### Links
-
-First do
-```shell
-ng serve 
-```
-URL: http://localhost:4200/blog-preview
-
 ## My process
 
 ### Built with
 
-- TailwindCSS
 - Mobile-first workflow
+- [TailwindCSS](https://tailwindcss.com/)
 - [Angular](https://angular.dev/)
 
 ## Author
