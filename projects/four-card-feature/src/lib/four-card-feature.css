@@ -28,7 +28,7 @@
 :host {
   @apply font-poppins text-[15px];
   --card-width: 300px;
-  @media screen(sm) {
+  @variant sm {
     --card-width: 350px;
   }
   --gap-width: calc(var(--spacing) * 8); /* same as gap-8 */

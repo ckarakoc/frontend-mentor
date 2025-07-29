@@ -21,7 +21,7 @@
 */
 
 :host {
-  @apply font-inter bg-sl-grey-900;
+  @apply font-inter;
 }
 
 .text-preset-1 {
