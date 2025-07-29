@@ -1,6 +1,6 @@
 // todo: make .ps1 file and finish this.
 const sharp = require('sharp');
-const fs = require('fs');
+// const fs = require('fs');
 
 const inputPath = process.argv[2];
 
