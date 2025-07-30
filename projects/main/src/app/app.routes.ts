@@ -7,6 +7,7 @@ import { RecipeContainer } from './containers/recipe.container';
 import { ProductPreviewCardContainer } from './containers/product-preview-card.container';
 import { SocialLinksContainer } from './containers/social-links.container';
 import { FourCardFeatureContainer } from './containers/four-card-feature.container';
+import { TestimonialsGrid } from 'testimonials-grid';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full', title: 'Home | Frontend Mentor' },
@@ -16,6 +17,7 @@ export const routes: Routes = [
   { path: 'product-preview', component: ProductPreviewCardContainer, title: 'Product Preview | Frontend Mentor' },
   { path: 'social-links', component: SocialLinksContainer, title: 'Social Links | Frontend Mentor' },
   { path: 'four-card-feature', component: FourCardFeatureContainer, title: 'Four Card Feature | Frontend Mentor' },
+  { path: 'testimonials-grid', component: TestimonialsGrid, title: 'Testimonials Grid | Frontend Mentor' },
   { path: '404', component: Shared404, title: '404 - Not Found' },
   { path: '**', redirectTo: '/404', pathMatch: 'full' },
 ];

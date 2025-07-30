@@ -32,6 +32,9 @@
       ],
       "social-links": [
         "./projects/social-links/src/public-api.ts"
+      ],
+      "testimonials-grid": [
+        "./projects/testimonials-grid/src/public-api.ts"
       ]
     },
     "importHelpers": true,
@@ -106,6 +109,12 @@
     },
     {
       "path": "./projects/dictionary/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/testimonials-grid/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/testimonials-grid/tsconfig.spec.json"
     }
   ]
 }

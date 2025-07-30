@@ -1,4 +1,4 @@
-import { Component, HostBinding, input, OnInit } from '@angular/core';
+import { Component, ElementRef, HostBinding, input, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
 import {
@@ -55,6 +55,16 @@ export class HomeCard {
   ];
 
   protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];
+
+  @ViewChild('firstDiv', { static: true }) firstDiv!: ElementRef<HTMLDivElement>;
+
+  addClassToFirstDiv(className: string) {
+    this.firstDiv.nativeElement.classList.add(className);
+  }
+
+  removeClassToFirstDiv(className: string) {
+    this.firstDiv.nativeElement.classList.remove(className);
+  }
 
   quickHash(str: string): number {
     let hash = 0;

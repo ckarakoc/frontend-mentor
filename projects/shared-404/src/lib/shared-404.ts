@@ -17,6 +17,5 @@ import { NgStyle } from '@angular/common';
   styleUrl: './shared-404.css'
 })
 export class Shared404 {
-  backgroundImage: string = 'url("shared-404/src/assets/war.jpg")';
-
+  backgroundImage: string = 'url("assets/shared-404/war.jpg")';
 }

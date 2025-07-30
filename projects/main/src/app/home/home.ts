@@ -1,4 +1,4 @@
-import { Component, computed, ElementRef, signal, ViewChild } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, QueryList, signal, ViewChild, viewChildren, ViewChildren } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { HomeCard } from '../home-card/home-card';
@@ -13,8 +13,10 @@ import { HomeCard } from '../home-card/home-card';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home {
+export class Home implements AfterViewInit {
   @ViewChild('masonry') masonry!: ElementRef<HTMLDivElement>;
+  homeCardList = viewChildren(HomeCard);
+  outerHomeCardDivList = viewChildren('outerHomeCardDiv', { read: ElementRef<HTMLDivElement> });
 
   isElementScrolled = signal<boolean>(false);
   isWindowScrolled = signal<boolean>(false);
@@ -31,6 +33,27 @@ export class Home {
     else
       window.scrollTo({ top: 0, behavior: 'smooth' });
   }
+
+  giveOriginToDivs(): void {
+    const outerDivList = this.outerHomeCardDivList();
+    this.homeCardList().map((h, idx) => {
+      if (outerDivList[idx].nativeElement.getBoundingClientRect().top < 50) {
+        h.addClassToFirstDiv('origin-top');
+        h.removeClassToFirstDiv('origin-bottom');
+      } else {
+        h.addClassToFirstDiv('origin-bottom');
+        h.removeClassToFirstDiv('origin-top');
+      }
+    });
+  }
+
+  ngAfterViewInit(): void {
+    this.giveOriginToDivs();
+    setTimeout(() => {
+      this.giveOriginToDivs();
+    }, 3000);
+  }
+
 
   protected readonly faChevronCircleUp = faChevronCircleUp;
 }

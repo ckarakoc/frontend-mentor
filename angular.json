@@ -21,9 +21,15 @@
             ],
             "tsConfig": "projects/main/tsconfig.app.json",
             "assets": [
+              "projects/main/src/assets",
               {
                 "glob": "**/*",
                 "input": "projects/main/public"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/main/src/assets",
+                "output": "assets/"
               },
               {
                 "glob": "**/*",
@@ -59,6 +65,11 @@
                 "glob": "**/*",
                 "input": "projects/social-links/src/assets",
                 "output": "assets/social-links"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/testimonials-grid/src/assets",
+                "output": "assets/testimonials-grid"
               }
             ],
             "styles": [
@@ -503,6 +514,36 @@
             ],
             "styles": [
               "projects/dictionary/src/styles.css"
+            ]
+          }
+        }
+      }
+    },
+    "testimonials-grid": {
+      "projectType": "library",
+      "root": "projects/testimonials-grid",
+      "sourceRoot": "projects/testimonials-grid/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/testimonials-grid/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/testimonials-grid/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/testimonials-grid/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
             ]
           }
         }

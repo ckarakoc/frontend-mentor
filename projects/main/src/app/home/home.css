@@ -7,6 +7,14 @@
   }
 }
 
+:host {
+  /*display: block;*/
+  /*width: 100dvw;*/
+  /*height: 100dvh;*/
+  overflow: initial;
+  box-sizing: border-box;
+}
+
 .scroll-animation {
   animation: scroll 40s linear infinite;
 }

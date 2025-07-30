@@ -1,20 +1,21 @@
-<div
-  class="flex flex-col rounded-lg justify-between  border border-fuchsia-200 bg-fuchsia-50 hover:bg-fuchsia-200 p-2
-  shadow shadow-{{getBorderColor(cardTitle())}}-500 ring-4 ring-{{getBorderColor(cardTitle())}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{getBorderColor(cardTitle())}}-500">
+@let borderColor = getBorderColor(cardTitle());
+<div #firstDiv
+     class="flex flex-col rounded-lg justify-between  border border-fuchsia-200 bg-fuchsia-50 hover:bg-fuchsia-200 p-2 hover:scale-125 duration-300 ease-in group
+       shadow shadow-{{borderColor}}-500 ring-4 ring-{{borderColor}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{borderColor}}-500">
   <!-- todo: create image modal that shows zoomed in image when pressed -->
   <!-- todo: beautify -->
   <!-- Image -->
-  <div>
+  <div class="duration-100 ease-in group-hover:scale-105 hover:cursor-pointer"
+       [routerLink]="link()">
     <img [src]="imgUrl()" class="rounded-lg"/>
   </div>
 
   <!-- Title -->
   <div class="flex flex-row items-center justify-between px-2 pt-1 text-center align-middle">
-    <div class="mb-2 select-none overflow-hidden break-all text-2xl font-bold tracking-tight text-gray-900"> {{ cardTitle() }}</div>
-    <div class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-blue-50 sm:block"
+    <div class="mb-2 overflow-hidden break-all text-2xl font-bold tracking-tight text-{{borderColor}}-900"> {{ cardTitle() }}</div>
+    <div class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
          [routerLink]="link()">
       <svg
-        style="color: black;"
         xmlns="http://www.w3.org/2000/svg"
         width="2em"
         height="2em"
@@ -24,7 +25,6 @@
         viewBox="0 0 24 24"
         stroke-width="2"
         fill="none"
-        stroke="currentColor"
       >
         <line y2="12" x2="19" y1="12" x1="5"></line>
         <polyline points="12 5 19 12 12 19"></polyline>
@@ -33,9 +33,8 @@
   </div>
 
   <!-- Content -->
-  <div class="hover:cursor-pointer"
-       [routerLink]="link()">
-    <p class="mb-3 select-none rounded-xl px-2 font-normal leading-tight text-gray-700"> {{ cardContent() }} </p>
+  <div class="">
+    <p class="mb-3 rounded-xl px-2 font-normal leading-tight text-{{borderColor}}-700"> {{ cardContent() }} </p>
   </div>
 
   <!-- todo: make colors randomly assignable, i.e. new TailwindColors(...colors).between(...range).pick(); Do the same with the fa-symbols -->
