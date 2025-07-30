@@ -56,7 +56,7 @@ export class HomeCard {
 
   protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];
 
-  @ViewChild('firstDiv', { static: true }) firstDiv!: ElementRef<HTMLDivElement>;
+  @ViewChild('firstDiv') firstDiv!: ElementRef<HTMLDivElement>;
 
   addClassToFirstDiv(className: string) {
     this.firstDiv.nativeElement.classList.add(className);

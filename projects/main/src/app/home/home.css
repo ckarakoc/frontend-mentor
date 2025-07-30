@@ -18,3 +18,26 @@
 .scroll-animation {
   animation: scroll 40s linear infinite;
 }
+
+.scroll-container {
+  scrollbar-width: none; /* Firefox */
+}
+
+/* WebKit (Chrome, Safari, Edge) */
+.scroll-container::-webkit-scrollbar {
+  display: none; /* WebKit */
+}
+
+
+/* If you want back-cards to be blurred on hover */
+/*.cards:hover > .card:not(:hover) {
+  filter: blur(10px);
+  transition: all 0.5s ease-in-out;
+}
+
+.card:hover {
+  z-index: 10;
+  position: relative;
+}*/
+
+

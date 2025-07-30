@@ -1,63 +1,36 @@
-# TestimonialsGrid
+# Frontend Mentor - Testimonials grid section solution
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.1.0.
+This is a solution to the [Testimonials grid section challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/testimonials-grid-section-Nnw6J7Un7). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Code scaffolding
+## Overview
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+### The challenge
 
-```bash
-ng generate component component-name
-```
+Users should be able to:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- View the optimal layout for the site depending on their device's screen size
 
-```bash
-ng generate --help
-```
+### Screenshot
 
-## Building
+#### Desktop:
+![Desktop](src/assets/screenshot-desktop.png)
 
-To build the library, run:
+#### Mobile:
+![Mobile](src/assets/screenshot-mobile.png)
 
-```bash
-ng build testimonials-grid
-```
+## My process
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+### Built with
 
-### Publishing the Library
+- CSS Grid
+- [Angular](https://angular.dev/)
 
-Once the project is built, you can publish your library by following these steps:
+## Author
 
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/testimonials-grid
-   ```
+- [Website](https://www.ckarakoc.nl)
+- [LinkedIn](https://www.linkedin.com/in/celal-karakoç/)
 
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
 
-## Running unit tests
+## Acknowledgments
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
-
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
-
-## Additional Resources
-
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+- [Frontend Mentor](https://www.frontendmentor.io)

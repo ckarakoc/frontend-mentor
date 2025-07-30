@@ -1,19 +1,97 @@
-<div class="" (window:scroll)="checkScrollTop(masonry)">
-  <img class="pointer-events-none fixed top-1/12 left-0 -z-20 -rotate-6" src="assets/images/kid-drawing-0.png" alt="truck">
-  <img class="pointer-events-none fixed top-3/4 -z-20 rotate-12 left-4/5" src="assets/images/kid-drawing-1.png" alt="helicopter">
-  <img class="pointer-events-none fixed left-60 -z-20 -rotate-12 top-7/12" src="assets/images/kid-drawing-2.png" alt="train">
-  <img class="pointer-events-none fixed top-1/2 left-1/2 -z-20 rotate-6" src="assets/images/kid-drawing-3.png" alt="tractor">
-  <img class="pointer-events-none fixed right-0 -z-20 -rotate-3" src="assets/images/kid-drawing-4.png" alt="dinosaur">
-  <img class="pointer-events-none fixed top-0 left-1/3 -z-20 rotate-3" src="assets/images/kid-drawing-5.png" alt="helicopter">
+<div #wrapperDiv class="overflow-x-hidden h-full scroll-container" (scroll)="checkScrollTop(wrapperDiv)" (window:scroll)="checkScrollTop(masonry)">
+  <img class="pointer-events-none fixed left-0 -z-20 -rotate-6 top-1/12 sm:visible" src="assets/images/kid-drawing-0.png" alt="truck">
+  <img class="pointer-events-none invisible fixed top-3/4 -z-20 rotate-12 left-4/5 sm:visible" src="assets/images/kid-drawing-1.png" alt="helicopter">
+  <img class="pointer-events-none fixed left-60 -z-20 -rotate-12 top-7/12 sm:visible" src="assets/images/kid-drawing-2.png" alt="train">
+  <img class="pointer-events-none invisible fixed top-1/2 left-1/2 -z-20 rotate-6 sm:visible" src="assets/images/kid-drawing-3.png" alt="tractor">
+  <img class="pointer-events-none invisible fixed right-0 -z-20 -rotate-3 sm:visible" src="assets/images/kid-drawing-4.png" alt="dinosaur">
+  <img class="pointer-events-none invisible fixed top-0 left-1/3 -z-20 rotate-3 sm:visible" src="assets/images/kid-drawing-5.png" alt="helicopter">
 
-  <div #masonry class="flex flex-auto flex-row flex-wrap justify-center gap-4 [scrollbar-width:none]"
+  <div #masonry class="flex flex-auto flex-row flex-wrap justify-center gap-4 pb-4"
        (scroll)="checkScrollTop(masonry)">
     <!-- Main Grid -->
-    <div class="m-4 columns-2 gap-4 sm:columns-2 md:columns-4 xl:columns-6">
-      @for (_ of [].constructor(25); track $index) {
+    <div class="m-4 columns-2 gap-4 cards sm:columns-2 md:columns-4 xl:columns-6">
+      <!-- QR Code -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/qrcode/screenshot-desktop.png"
+          link="qrcode"
+          cardContent="Generate and display a QR code using modern layout techniques."
+          cardTitle="QR Code Card"
+          [tags]="['HTML', 'CSS', 'QR-code Generator']">
+        </app-home-card>
+      </div>
+
+      <!-- Blog Preview -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/blog-preview-card/screenshot-mobile.png"
+          link="blog-preview"
+          cardContent="A clean blog post preview card with responsive design and hover effects."
+          cardTitle="Blog Preview Card"
+          [tags]="['HTML', 'TailwindCSS', 'Responsive Design']">
+        </app-home-card>
+      </div>
+
+      <!-- Recipe -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/recipe/screenshot-desktop.png"
+          link="recipe"
+          cardContent="A recipe page layout featuring ingredients, instructions, and nutritional info."
+          cardTitle="Recipe Page"
+          [tags]="['Angular', 'TypeScript', 'TailwindCSS']">
+        </app-home-card>
+      </div>
+
+      <!-- Product Preview -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/product-preview-card/screenshot-desktop.png"
+          link="product-preview"
+          cardContent="An elegant product preview card highlighting details and call-to-action."
+          cardTitle="Product Preview"
+          [tags]="['Angular', 'HTML', 'Figma']">
+        </app-home-card>
+      </div>
+
+      <!-- Social Links -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/social-links/screenshot-mobile.png"
+          link="social-links"
+          cardContent="User profile card with social media links and personal details."
+          cardTitle="Social Links Profile"
+          [tags]="['Angular', 'HTML', 'TailwindCSS']">
+        </app-home-card>
+      </div>
+
+      <!-- Four Card Feature -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/four-card-feature/screenshot-desktop.png"
+          link="four-card-feature"
+          cardContent="A layout showcasing four feature cards in a clean grid design."
+          cardTitle="Four Card Feature"
+          [tags]="['Angular', 'CSS Grid', 'Responsive Layout']">
+        </app-home-card>
+      </div>
+
+      <!-- Testimonials Grid -->
+      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+        <app-home-card
+          imgUrl="assets/testimonials-grid/screenshot-desktop.png"
+          link="testimonials-grid"
+          cardContent="Grid-based testimonials layout with user reviews and ratings."
+          cardTitle="Testimonials Grid"
+          [tags]="['Angular', 'CSS', 'CSS Grid']">
+        </app-home-card>
+      </div>
+
+      <!-- For Testing Purposes -->
+      <!-- @for (_ of [].constructor(25); track $index) {
         @let i = ($index % 6);
         <div #outerHomeCardDiv
-             class="mb-4 break-inside-avoid">
+             class="mb-4 break-inside-avoid card">
           <app-home-card imgUrl="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-{{i}}.jpg"
                          link="qrcode"
                          cardContent="Card Content {{ i }}"
@@ -21,7 +99,8 @@
                          [tags]="['Java', 'C#', 'Assembly']">
           </app-home-card>
         </div>
-      }
+      } -->
+
     </div>
 
     <!-- Circular Up-Button -->
@@ -33,7 +112,7 @@
                [class.opacity-0]="isScrollAtTop()"
                [class.opacity-50]="!isScrollAtTop()"
                [class.pointer-events-none]="isScrollAtTop()"
-               (click)="scrollToTop(masonry)"></fa-icon>
+               (click)="scrollToTop(masonry); scrollToTop(wrapperDiv)"></fa-icon>
     </div>
   </div>
 </div>
