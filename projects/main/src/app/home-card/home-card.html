@@ -2,12 +2,18 @@
 <div #firstDiv
      class="flex flex-col rounded-lg justify-between  border border-fuchsia-200 bg-fuchsia-50 hover:bg-fuchsia-200 p-2 hover:scale-125 duration-300 ease-in group
        shadow shadow-{{borderColor}}-500 ring-4 ring-{{borderColor}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{borderColor}}-500">
-  <!-- todo: create image modal that shows zoomed in image when pressed -->
-  <!-- todo: beautify -->
   <!-- Image -->
-  <div class="duration-100 ease-in group-hover:scale-95 hover:cursor-pointer"
+  <div class="duration-100 ease-in group-hover:scale-95 hover:cursor-pointer aspect-auto"
        [routerLink]="link()">
-    <img [src]="imgUrl()" class="rounded-lg"/>
+
+    <img [src]="getPlaceHolderImg(imgUrl())"
+         class="rounded-lg blur-sm"
+         [class.hidden]="imageLoaded()"/>
+
+    <img [src]="imgUrl()"
+         class="rounded-lg"
+         [class.hidden]="!imageLoaded()"
+         (load)="imageLoaded.set( true)"/>
   </div>
 
   <!-- Title -->
@@ -37,7 +43,6 @@
   </div>
 
   <!-- todo: make colors randomly assignable, i.e. new TailwindColors(...colors).between(...range).pick(); Do the same with the fa-symbols -->
-  <!-- todo: something like this: <app-tag-badge label="C++" iconClass="fa-cogs" bgColor="bg-gray-300"></app-tag-badge> -->
   <!-- Tags -->
   <div class="flex flex-wrap items-center justify-start gap-1">
     @for (tag of tags(); track $index) {

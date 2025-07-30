@@ -21,6 +21,7 @@
     "http-server": "http-server ./dist/ -p 4200",
     "clean": "powershell -ExecutionPolicy Bypass -File shell/clean.ps1",
     "flatten": "powershell -ExecutionPolicy Bypass -File shell/flatten-dist.ps1",
+    "lqip": "powershell -ExecutionPolicy Bypass -File shell/lqip.ps1",
     "minify-tw": "npx @tailwindcss/cli -i ./projects/_/src/lib/_.css -o ./projects/_/src/lib/_.minified.css --minify"
   },
   "prettier": {

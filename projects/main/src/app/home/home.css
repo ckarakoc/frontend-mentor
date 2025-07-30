@@ -8,7 +8,7 @@
 }
 
 :host {
-  /*display: block;*/
+  display: block;
   /*width: 100dvw;*/
   /*height: 100dvh;*/
   overflow: initial;
@@ -20,12 +20,12 @@
 }
 
 .scroll-container {
-  scrollbar-width: none; /* Firefox */
+  scrollbar-width: none;
 }
 
 /* WebKit (Chrome, Safari, Edge) */
 .scroll-container::-webkit-scrollbar {
-  display: none; /* WebKit */
+  display: none;
 }
 
 

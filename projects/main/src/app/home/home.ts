@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, computed, ElementRef, QueryList, signal, ViewChild, viewChildren, ViewChildren } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, Signal, signal, ViewChild, viewChildren } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { HomeCard } from '../home-card/home-card';
@@ -16,7 +16,7 @@ import { HomeCard } from '../home-card/home-card';
 export class Home implements AfterViewInit {
   @ViewChild('masonry') masonry!: ElementRef<HTMLDivElement>;
   homeCardList = viewChildren(HomeCard);
-  outerHomeCardDivList = viewChildren('outerHomeCardDiv', { read: ElementRef<HTMLDivElement> });
+  outerHomeCardDivList: Signal<readonly ElementRef[]> = viewChildren('outerHomeCardDiv', { read: ElementRef });
 
   isElementScrolled = signal<boolean>(false);
   isWindowScrolled = signal<boolean>(false);

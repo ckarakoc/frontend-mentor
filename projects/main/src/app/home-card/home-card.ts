@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, input, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostBinding, input, signal, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
 import {
@@ -57,6 +57,7 @@ export class HomeCard {
   protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];
 
   @ViewChild('firstDiv') firstDiv!: ElementRef<HTMLDivElement>;
+  imageLoaded = signal<boolean>(false);
 
   addClassToFirstDiv(className: string) {
     this.firstDiv.nativeElement.classList.add(className);
@@ -82,5 +83,9 @@ export class HomeCard {
    */
   getBorderColor(s: string): string {
     return this.tailwindColors[this.quickHash(s) % this.tailwindColors.length];
+  }
+
+  getPlaceHolderImg(imgUrl: string): string {
+    return imgUrl.replace(/(\.[^.]+)$/, '-lqip$1');
   }
 }
