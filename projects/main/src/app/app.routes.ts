@@ -8,6 +8,8 @@ import { ProductPreviewCardContainer } from './containers/product-preview-card.c
 import { SocialLinksContainer } from './containers/social-links.container';
 import { FourCardFeatureContainer } from './containers/four-card-feature.container';
 import { TestimonialsGridContainer } from './containers/testimonials-grid.container';
+import { SankeyChart } from 'sankey-chart';
+import { SankeyChartContainer } from './containers/sankey-chart.container';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full', title: 'Home | Frontend Mentor' },
@@ -18,6 +20,7 @@ export const routes: Routes = [
   { path: 'social-links', component: SocialLinksContainer, title: 'Social Links | Frontend Mentor' },
   { path: 'four-card-feature', component: FourCardFeatureContainer, title: 'Four Card Feature | Frontend Mentor' },
   { path: 'testimonials-grid', component: TestimonialsGridContainer, title: 'Testimonials Grid | Frontend Mentor' },
+  { path: 'sankey-chart', component: SankeyChartContainer, title: 'Sankey Chart | Job Application Tracker' },
   { path: '404', component: Shared404, title: '404 - Not Found' },
   { path: '**', redirectTo: '/404', pathMatch: 'full' },
 ];

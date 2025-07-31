@@ -548,6 +548,36 @@
           }
         }
       }
+    },
+    "sankey-chart": {
+      "projectType": "library",
+      "root": "projects/sankey-chart",
+      "sourceRoot": "projects/sankey-chart/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/sankey-chart/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/sankey-chart/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/sankey-chart/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
     }
   }
 }
