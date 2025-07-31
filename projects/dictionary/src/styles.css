@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
-
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
 @import "tailwindcss";
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-lora: 'Lora', serif;
+  --font-inconsolata: 'Inconsolata', monospace;
+
+  --color-d-purple: #A445ED;
+  --color-d-red: #FF5252;
+  --color-d-slate-100: #F4F4F4;
+  --color-d-slate-200: #E9E9E9;
+  --color-d-slate-300: #757575;
+  --color-d-slate-400: #3A3A3A;
+  --color-d-slate-500: #2D2D2D;
+  --color-d-slate-600: #1F1F1F;
+  --color-d-slate-700: #050505;
+}
+
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}

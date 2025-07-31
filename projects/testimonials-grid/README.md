@@ -15,6 +15,9 @@ Users should be able to:
 #### Desktop:
 ![Desktop](src/assets/screenshot-desktop.png)
 
+#### Tablet:
+![Mobile](src/assets/screenshot-tablet.png)
+
 #### Mobile:
 ![Mobile](src/assets/screenshot-mobile.png)
 
