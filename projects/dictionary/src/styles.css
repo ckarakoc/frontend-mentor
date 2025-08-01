@@ -18,6 +18,7 @@
   --color-d-slate-700: #050505;
 }
 
+@custom-variant dark (&:where(.dark, .dark *));
 
 html, body {
   margin: 0;

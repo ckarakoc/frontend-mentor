@@ -1,78 +1,81 @@
-<header class="p-4">
-  <div class="flex items-center justify-between">
-    <div class="flex items-center align-middle">
-      <img ngSrc="assets/images/logo.svg" alt="logo" height="38" width="34">
-    </div>
-    <div class="flex">
+<div class="h-full"
+     [class.font-inter]="fontForm.value.font === 'sans serif'"
+     [class.font-lora]="fontForm.value.font === 'serif'"
+     [class.font-inconsolata]="fontForm.value.font === 'mono'">
+  <header class="p-4">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center align-middle">
+        <img ngSrc="assets/images/logo.svg" alt="logo" height="38" width="34" priority>
+      </div>
+      <div class="flex">
 
-      <!-- Font Dropdown -->
-      <div #dropdown class="relative h-8 w-28 select-none px-2 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer"
-           (click)="toggleDropdown()">
-        <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
-          <label class="select-none pr-5 hover:cursor-pointer"
-                 [class.font-inter]="fontForm.value.font === 'sans serif'"
-                 [class.font-lora]="fontForm.value.font === 'serif'"
-                 [class.font-inconsolata]="fontForm.value.font === 'mono'">{{ fontForm.value.font | titlecase }}</label>
+        <!-- Font Dropdown -->
+        <div #dropdown class="relative h-8 w-28 select-none px-2 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer"
+             (click)="toggleDropdown()">
+          <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
+            <label class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.font | titlecase }}</label>
 
-          <div class="absolute top-8 right-1 flex flex-col gap-4 rounded-xl py-4 pr-12 pl-6 shadow-2xl"
-               [class.hidden]="!isDropdownVisible()">
-            <input type="radio"
-                   class="hidden"
-                   formControlName="font"
-                   id="sans-serif"
-                   value="sans serif">
-            <label class="font-inter hover:text-d-purple hover:cursor-pointer"
-                   (click)="toggleDropdown()"
-                   for="sans-serif">Sans Serif</label>
+            <div class="absolute top-8 right-1 flex flex-col gap-4 rounded-xl py-4 pr-12 pl-6 shadow-2xl bg-white z-10"
+                 [class.hidden]="!isDropdownVisible()">
+              <input type="radio"
+                     class="hidden"
+                     formControlName="font"
+                     id="sans-serif"
+                     value="sans serif">
+              <label class="font-inter hover:text-d-purple hover:cursor-pointer"
+                     (click)="toggleDropdown()"
+                     for="sans-serif">Sans Serif</label>
 
-            <input type="radio"
-                   class="hidden"
-                   formControlName="font"
-                   id="serif"
-                   value="serif">
-            <label class="font-lora hover:text-d-purple hover:cursor-pointer"
-                   (click)="toggleDropdown()"
-                   for="serif">Serif</label>
+              <input type="radio"
+                     class="hidden"
+                     formControlName="font"
+                     id="serif"
+                     value="serif">
+              <label class="font-lora hover:text-d-purple hover:cursor-pointer"
+                     (click)="toggleDropdown()"
+                     for="serif">Serif</label>
 
-            <input type="radio"
-                   class="hidden"
-                   formControlName="font"
-                   id="mono"
-                   value="mono">
-            <label class="font-inconsolata hover:text-d-purple hover:cursor-pointer"
-                   (click)="toggleDropdown()"
-                   for="mono">Mono</label>
+              <input type="radio"
+                     class="hidden"
+                     formControlName="font"
+                     id="mono"
+                     value="mono">
+              <label class="font-inconsolata hover:text-d-purple hover:cursor-pointer"
+                     (click)="toggleDropdown()"
+                     for="mono">Mono</label>
+            </div>
+          </form>
+          <div class="absolute top-1/2 right-2 -translate-y-1/2 transform">
+            <img ngSrc="assets/images/icon-arrow-down.svg" alt="arrow down" height="8" width="14">
           </div>
-        </form>
-        <div class="absolute top-1/2 right-2 -translate-y-1/2 transform">
-          <img ngSrc="assets/images/icon-arrow-down.svg" alt="arrow down" height="8" width="14">
         </div>
-      </div>
 
-      <div class="mr-6 ml-3 border-1 text-d-slate-200"></div>
+        <div class="mr-6 ml-3 border-1 text-d-slate-200"></div>
 
-      <!-- Dark Mode Toggle -->
-      <div #darkModeToggle class="flex items-center gap-4 hover:cursor-pointer"
-           (click)="toggleDarkMode()">
-        <div class="relative h-4 w-8 rounded-full"
-             [class]="isDarkMode() ? 'bg-d-purple' : 'bg-d-slate-300'">
-          <input #toggleInput class="hidden" type="checkbox" [checked]="isDarkMode()" (change)="isDarkMode.set(toggleInput.checked)">
-          <div class="absolute top-1/2 {{ isDarkMode() ? 'left-4' : 'left-1' }} -translate-y-1/2 transform rounded-full bg-white w-3 h-3 transition-all ease-in-out"></div>
+        <!-- Dark Mode Toggle -->
+        <div #darkModeToggle class="flex items-center gap-4 hover:cursor-pointer"
+             (click)="toggleDarkMode()">
+          <div class="relative h-4 w-8 rounded-full"
+               [class]="isDarkMode() ? 'bg-d-purple' : 'bg-d-slate-300'">
+            <input #toggleInput class="hidden" type="checkbox" [checked]="isDarkMode()" (change)="isDarkMode.set(toggleInput.checked)">
+            <div class="absolute top-1/2 {{ isDarkMode() ? 'left-4' : 'left-1' }} -translate-y-1/2 transform rounded-full bg-white w-3 h-3 transition-all ease-in-out"></div>
+          </div>
+          <svg [class]="isDarkMode() ? 'stroke-d-purple' : 'stroke-d-slate-300'"
+               xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
+            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/>
+          </svg>
         </div>
-        <svg [class]="isDarkMode() ? 'stroke-d-purple' : 'stroke-d-slate-300'"
-             xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-          <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/>
-        </svg>
       </div>
     </div>
-  </div>
-</header>
+  </header>
 
-<div class="relative mx-4 hover:cursor-pointer">
-  <input type="text" class="w-full rounded-2xl border-2 py-1 pl-5 pr-10"
-         [(ngModel)]="searchTerm"
-         placeholder="Search"
-         (keyup.enter)="search()"
-         (keyup.esc)="searchTerm.set('')">
-  <img ngSrc="assets/images/icon-search.svg" alt="search icon" height="16" width="16" class="absolute top-1/2 right-5 -translate-y-1/2 transform">
+  <div class="relative mx-4 hover:cursor-pointer">
+    <input type="text" class="w-full rounded-2xl border-2 py-1 pr-10 pl-5"
+           [(ngModel)]="searchTerm"
+           placeholder="Search"
+           (keyup.enter)="search()"
+           (keyup.esc)="searchTerm.set('')">
+    {{ searchTerm() }}
+    <img ngSrc="assets/images/icon-search.svg" alt="search icon" height="16" width="16" class="absolute top-1/2 right-5 -translate-y-1/2 transform">
+  </div>
 </div>

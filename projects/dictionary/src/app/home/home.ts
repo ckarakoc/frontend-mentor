@@ -16,18 +16,19 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
 export class Home implements OnInit, OnDestroy {
   isDarkMode = signal<boolean>(false);
   isDropdownVisible = signal<boolean>(false);
+  searchTerm = signal<string>('');
 
   dropdown = viewChild('dropdown', { read: ElementRef });
+  private readonly clickListener?: () => void; // Add this
 
   fontForm: FormGroup;
-  searchTerm = signal<string>('');
 
   constructor(private renderer: Renderer2, private fb: FormBuilder) {
     this.fontForm = this.fb.group({
       font: ['sans serif', [Validators.required]]
     });
 
-    this.renderer.listen('window', 'click', (event: Event) => {
+    this.clickListener = this.renderer.listen('document', 'click', (event: Event) => {
       if (!this.dropdown()?.nativeElement.contains(event.target as Node)) {
         this.isDropdownVisible.set(false);
       }
@@ -39,26 +40,29 @@ export class Home implements OnInit, OnDestroy {
     if (savedFont) {
       this.fontForm.patchValue({ font: savedFont });
     }
-
     this.fontForm.valueChanges.subscribe(value => {
       if (value.font) {
         localStorage.setItem('selectedFont', value.font);
       }
-    })
+    });
 
-    const savedTheme = localStorage.getItem('darkMode');
+    const savedTheme = localStorage.getItem('theme');
     if (savedTheme !== null) {
-      this.isDarkMode.set(savedTheme === 'true');
+      const isDark = savedTheme === 'true';
+      this.isDarkMode.set(isDark);
+      document.documentElement.classList.toggle('dark', isDark);
     } else {
       const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
       this.isDarkMode.set(prefersDark);
+      document.documentElement.classList.toggle('dark', prefersDark);
     }
   }
 
   toggleDarkMode(): void {
     const newValue = !this.isDarkMode();
     this.isDarkMode.set(newValue);
-    localStorage.setItem('darkMode', newValue.toString());
+    localStorage.setItem('theme', newValue.toString());
+    document.documentElement.classList.toggle('dark', newValue);
   }
 
   toggleDropdown(): void {
@@ -66,6 +70,9 @@ export class Home implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    if (this.clickListener) {
+      this.clickListener();
+    }
     if (this.renderer) {
       this.renderer.destroy();
     }

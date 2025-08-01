@@ -7,14 +7,16 @@
 - [Blog Preview Card](projects/blog-preview-card/README.md)
 - [Recipe Page](projects/recipe/README.md)
 - [Product Preview Card](projects/product-preview-card/README.md)
+- [Social Links Profile](projects/social-links/README.md)
+- [Four Card Feature](projects/four-card-feature/README.md)
+- [Testimonials Grid](projects/testimonials-grid/README.md)
 
 ### ✅ Todo
 
 ---
-- [Social Links Profile](projects/social-links/README.md)
-- [four-card-feature](projects/four-card-feature/README.md)
-- [jellynote](projects/jellynote/README.md)
-
+- [JellyNote](projects/jellynote/README.md)
+- [Dictionary](projects/dictionary/README.md)
+- [Meet Landing Page](projects/meet/README.md)
 ---
 📦 Angular lib asset usage (`angular.json`):
 
