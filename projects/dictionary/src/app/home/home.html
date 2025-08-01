@@ -1,4 +1,4 @@
-<div class="h-full"
+<div class="h-full bg-white text-black dark:text-white dark:bg-black"
      [class.font-inter]="fontForm.value.font === 'sans serif'"
      [class.font-lora]="fontForm.value.font === 'serif'"
      [class.font-inconsolata]="fontForm.value.font === 'mono'">
@@ -10,39 +10,43 @@
       <div class="flex">
 
         <!-- Font Dropdown -->
-        <div #dropdown class="relative h-8 w-28 select-none px-2 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer"
+        <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 dark:text-white text-nowrap hover:cursor-pointer"
              (click)="toggleDropdown()">
           <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
             <label class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.font | titlecase }}</label>
 
-            <div class="absolute top-8 right-1 flex flex-col gap-4 rounded-xl py-4 pr-12 pl-6 shadow-2xl bg-white z-10"
-                 [class.hidden]="!isDropdownVisible()">
-              <input type="radio"
-                     class="hidden"
-                     formControlName="font"
-                     id="sans-serif"
-                     value="sans serif">
-              <label class="font-inter hover:text-d-purple hover:cursor-pointer"
-                     (click)="toggleDropdown()"
-                     for="sans-serif">Sans Serif</label>
+            <div class="absolute top-10 right-1">
+              <div class="absolute -inset-1 z-10 rounded-xl bg-black opacity-10 blur dark:opacity-75 dark:bg-d-purple">
+              </div>
+              <div class="relative z-10 flex flex-col gap-4 rounded-xl bg-white py-4 pr-12 pl-6 dark:bg-d-slate-400"
+                   [class.hidden]="!isDropdownVisible()">
+                <input type="radio"
+                       class="hidden"
+                       formControlName="font"
+                       id="sans-serif"
+                       value="sans serif">
+                <label class="font-inter hover:text-d-purple hover:cursor-pointer"
+                       (click)="toggleDropdown()"
+                       for="sans-serif">Sans Serif</label>
 
-              <input type="radio"
-                     class="hidden"
-                     formControlName="font"
-                     id="serif"
-                     value="serif">
-              <label class="font-lora hover:text-d-purple hover:cursor-pointer"
-                     (click)="toggleDropdown()"
-                     for="serif">Serif</label>
+                <input type="radio"
+                       class="hidden"
+                       formControlName="font"
+                       id="serif"
+                       value="serif">
+                <label class="font-lora hover:text-d-purple hover:cursor-pointer"
+                       (click)="toggleDropdown()"
+                       for="serif">Serif</label>
 
-              <input type="radio"
-                     class="hidden"
-                     formControlName="font"
-                     id="mono"
-                     value="mono">
-              <label class="font-inconsolata hover:text-d-purple hover:cursor-pointer"
-                     (click)="toggleDropdown()"
-                     for="mono">Mono</label>
+                <input type="radio"
+                       class="hidden"
+                       formControlName="font"
+                       id="mono"
+                       value="mono">
+                <label class="font-inconsolata hover:text-d-purple hover:cursor-pointer"
+                       (click)="toggleDropdown()"
+                       for="mono">Mono</label>
+              </div>
             </div>
           </form>
           <div class="absolute top-1/2 right-2 -translate-y-1/2 transform">
@@ -69,13 +73,33 @@
     </div>
   </header>
 
-  <div class="relative mx-4 hover:cursor-pointer">
-    <input type="text" class="w-full rounded-2xl border-2 py-1 pr-10 pl-5"
-           [(ngModel)]="searchTerm"
-           placeholder="Search"
-           (keyup.enter)="search()"
-           (keyup.esc)="searchTerm.set('')">
-    {{ searchTerm() }}
-    <img ngSrc="assets/images/icon-search.svg" alt="search icon" height="16" width="16" class="absolute top-1/2 right-5 -translate-y-1/2 transform">
+  <div class="mx-4 flex flex-col">
+    <div class="relative hover:cursor-pointer">
+      <form [formGroup]="searchForm" (ngSubmit)="search(); submittedOnce.set(true)">
+        <input id="searchbar"
+               type="text"
+               class="w-full rounded-xl py-2 pr-10 pl-5 text-lg font-bold text-black outline-none dark:text-white border-1 bg-d-slate-100 dark:bg-d-slate-400 placeholder-d-slate-200 dark:placeholder-d-slate-300 focus:border-d-purple"
+               [ngClass]="{
+             'border border-d-red': isSearchbarInvalid(),
+             'border border-d-slate-100 dark:border-d-slate-400': !isSearchbarInvalid()
+             }"
+               formControlName="searchbar"
+               placeholder="Search for any word..."
+               (keyup.esc)="resetSearchbar()">
+      </form>
+      <img ngSrc="assets/images/icon-search.svg" alt="search icon" height="16" width="16" class="absolute top-1/2 right-5 -translate-y-1/2 transform">
+    </div>
+    <span class="m-1 text-sm transition-opacity duration-200 text-d-red"
+          [class.opacity-0]="!isSearchbarInvalid()"
+          [class.opacity-100]="isSearchbarInvalid()">Whoops, can't be empty...</span>
   </div>
+  {{ this.searchbar?.valid }} {{ this.searchbar?.dirty }} {{ this.searchbar?.valid }} {{ this.searchbar?.errors | json }}
+
+  <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
+    <g class="fill-d-purple" fill-rule="evenodd">
+      <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100"/>
+      <path d="M29 27v21l21-10.5z" class="group-hover:fill-white"/>
+    </g>
+  </svg>
+
 </div>

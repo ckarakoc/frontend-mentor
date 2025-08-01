@@ -1,6 +1,7 @@
-import { Component, ElementRef, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
-import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { Component, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
+import { JsonPipe, NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { CustomValidators } from '../validators/whitespace.validator';
 
 @Component({
   selector: 'app-home',
@@ -8,31 +9,41 @@ import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } 
     NgOptimizedImage,
     ReactiveFormsModule,
     TitleCasePipe,
-    FormsModule
+    FormsModule,
+    NgClass,
+    JsonPipe
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home implements OnInit, OnDestroy {
+  private fb = inject(FormBuilder);
+  private renderer = inject(Renderer2);
+
   isDarkMode = signal<boolean>(false);
   isDropdownVisible = signal<boolean>(false);
-  searchTerm = signal<string>('');
-
   dropdown = viewChild('dropdown', { read: ElementRef });
-  private readonly clickListener?: () => void; // Add this
+  submittedOnce = signal<boolean>(false);
 
-  fontForm: FormGroup;
+  fontForm = this.fb.group({
+    font: ['sans serif', [Validators.required]]
+  });
 
-  constructor(private renderer: Renderer2, private fb: FormBuilder) {
-    this.fontForm = this.fb.group({
-      font: ['sans serif', [Validators.required]]
-    });
+  searchForm = this.fb.group({
+    searchbar: ['', [Validators.required, CustomValidators.noWhitespaceValidator]],
+  });
 
-    this.clickListener = this.renderer.listen('document', 'click', (event: Event) => {
-      if (!this.dropdown()?.nativeElement.contains(event.target as Node)) {
-        this.isDropdownVisible.set(false);
-      }
-    });
+  get searchbar() {
+    return this.searchForm.get('searchbar');
+  }
+
+  private readonly clickListener = this.renderer.listen('document', 'click', (event: Event) => {
+    if (!this.dropdown()?.nativeElement.contains(event.target as Node)) {
+      this.isDropdownVisible.set(false);
+    }
+  });
+
+  constructor() {
   }
 
   ngOnInit() {
@@ -48,7 +59,7 @@ export class Home implements OnInit, OnDestroy {
 
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme !== null) {
-      const isDark = savedTheme === 'true';
+      const isDark = savedTheme === 'dark';
       this.isDarkMode.set(isDark);
       document.documentElement.classList.toggle('dark', isDark);
     } else {
@@ -56,17 +67,6 @@ export class Home implements OnInit, OnDestroy {
       this.isDarkMode.set(prefersDark);
       document.documentElement.classList.toggle('dark', prefersDark);
     }
-  }
-
-  toggleDarkMode(): void {
-    const newValue = !this.isDarkMode();
-    this.isDarkMode.set(newValue);
-    localStorage.setItem('theme', newValue.toString());
-    document.documentElement.classList.toggle('dark', newValue);
-  }
-
-  toggleDropdown(): void {
-    this.isDropdownVisible.set(!this.isDropdownVisible());
   }
 
   ngOnDestroy() {
@@ -78,7 +78,37 @@ export class Home implements OnInit, OnDestroy {
     }
   }
 
+  isSearchbarInvalid(): boolean {
+    if (!this.searchbar) return false;
+    return this.searchbar.dirty && this.searchbar.invalid && this.submittedOnce();
+  }
+
+  toggleDarkMode(): void {
+    const newValue = !this.isDarkMode();
+    this.isDarkMode.set(newValue);
+    localStorage.setItem('theme', newValue ? 'dark' : 'light');
+    document.documentElement.classList.toggle('dark', newValue);
+  }
+
+  toggleDropdown(): void {
+    this.isDropdownVisible.set(!this.isDropdownVisible());
+  }
+
   search() {
-    console.log(`Do an API call with: ${ this.searchTerm() }`);
+    if (this.searchForm.valid) {
+      const query = this.searchbar?.value?.trim();
+      if (query) {
+        const encodedQuery = encodeURIComponent(query);
+        // Perform search logic
+        console.log('Searching for:', encodedQuery);
+      }
+    }
+  }
+
+  resetSearchbar() {
+    this.searchForm.patchValue({ searchbar: '' });
+    this.searchbar?.markAsUntouched();
+    this.searchbar?.markAsPristine();
+    this.submittedOnce.set(false);
   }
 }
