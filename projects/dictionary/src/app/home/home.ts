@@ -1,7 +1,10 @@
 import { Component, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
-import { JsonPipe, NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
-import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomValidators } from '../validators/whitespace.validator';
+import { FreeDictionaryAPI } from '../services/free-dictionary-api';
+import { DictionaryEntry } from '../models/dictionary.model';
+import { DictionaryError } from '../models/dictionary.model.error';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +14,7 @@ import { CustomValidators } from '../validators/whitespace.validator';
     TitleCasePipe,
     FormsModule,
     NgClass,
-    JsonPipe
+
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -19,11 +22,14 @@ import { CustomValidators } from '../validators/whitespace.validator';
 export class Home implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
   private renderer = inject(Renderer2);
+  dictionaryAPI = inject(FreeDictionaryAPI);
 
   isDarkMode = signal<boolean>(false);
   isDropdownVisible = signal<boolean>(false);
   dropdown = viewChild('dropdown', { read: ElementRef });
   submittedOnce = signal<boolean>(false);
+  dictionaryResult = signal<DictionaryEntry[] | DictionaryError | null>(null);
+
 
   fontForm = this.fb.group({
     font: ['sans serif', [Validators.required]]
@@ -83,26 +89,42 @@ export class Home implements OnInit, OnDestroy {
     return this.searchbar.dirty && this.searchbar.invalid && this.submittedOnce();
   }
 
-  toggleDarkMode(): void {
+  toggleDarkMode() {
     const newValue = !this.isDarkMode();
     this.isDarkMode.set(newValue);
     localStorage.setItem('theme', newValue ? 'dark' : 'light');
     document.documentElement.classList.toggle('dark', newValue);
   }
 
-  toggleDropdown(): void {
+  toggleDropdown() {
     this.isDropdownVisible.set(!this.isDropdownVisible());
   }
 
-  search() {
+  search(word?: string) {
+    // todo: put search in HttpParams...
+    if (word) {
+      this.resetSearchbar();
+      this.searchForm.patchValue({ searchbar: word });
+      this.search();
+    } else {
+      let searchbarValue = this.getSearchbarValue();
+      if (searchbarValue) {
+        this.dictionaryAPI.getWordData(searchbarValue).subscribe({
+          next: data => this.dictionaryResult.set(data),
+          error: err => this.dictionaryResult.set(err)
+        });
+      }
+    }
+  }
+
+  getSearchbarValue(): string | null {
     if (this.searchForm.valid) {
       const query = this.searchbar?.value?.trim();
       if (query) {
-        const encodedQuery = encodeURIComponent(query);
-        // Perform search logic
-        console.log('Searching for:', encodedQuery);
+        return encodeURIComponent(query);
       }
     }
+    return null;
   }
 
   resetSearchbar() {
@@ -110,5 +132,17 @@ export class Home implements OnInit, OnDestroy {
     this.searchbar?.markAsUntouched();
     this.searchbar?.markAsPristine();
     this.submittedOnce.set(false);
+    this.dictionaryResult.set(null);
+  }
+
+  isDictionaryError(obj: any): obj is DictionaryError {
+    return obj && typeof obj === 'object'
+      && 'title' in obj
+      && 'message' in obj
+      && 'resolution' in obj;
+  }
+
+  playAudio(entry: DictionaryEntry) {
+    new Audio(this.dictionaryAPI.getPhoneticAudio(entry)).play();
   }
 }

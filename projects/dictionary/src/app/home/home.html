@@ -1,8 +1,8 @@
-<div class="h-full bg-white text-black dark:text-white dark:bg-black"
+<div class="min-h-full bg-white px-6 pt-6 text-black dark:bg-black dark:text-white"
      [class.font-inter]="fontForm.value.font === 'sans serif'"
      [class.font-lora]="fontForm.value.font === 'serif'"
      [class.font-inconsolata]="fontForm.value.font === 'mono'">
-  <header class="p-4">
+  <header class="mb-4">
     <div class="flex items-center justify-between">
       <div class="flex items-center align-middle">
         <img ngSrc="assets/images/logo.svg" alt="logo" height="38" width="34" priority>
@@ -10,13 +10,13 @@
       <div class="flex">
 
         <!-- Font Dropdown -->
-        <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 dark:text-white text-nowrap hover:cursor-pointer"
+        <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer dark:text-white"
              (click)="toggleDropdown()">
           <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
             <label class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.font | titlecase }}</label>
 
             <div class="absolute top-10 right-1">
-              <div class="absolute -inset-1 z-10 rounded-xl bg-black opacity-10 blur dark:opacity-75 dark:bg-d-purple">
+              <div class="absolute -inset-1 z-10 rounded-xl bg-black opacity-10 blur dark:bg-d-purple dark:opacity-75">
               </div>
               <div class="relative z-10 flex flex-col gap-4 rounded-xl bg-white py-4 pr-12 pl-6 dark:bg-d-slate-400"
                    [class.hidden]="!isDropdownVisible()">
@@ -73,16 +73,18 @@
     </div>
   </header>
 
-  <div class="mx-4 flex flex-col">
+  <!-- Searchbar Form -->
+  <div class="flex flex-col">
     <div class="relative hover:cursor-pointer">
       <form [formGroup]="searchForm" (ngSubmit)="search(); submittedOnce.set(true)">
         <input id="searchbar"
                type="text"
-               class="w-full rounded-xl py-2 pr-10 pl-5 text-lg font-bold text-black outline-none dark:text-white border-1 bg-d-slate-100 dark:bg-d-slate-400 placeholder-d-slate-200 dark:placeholder-d-slate-300 focus:border-d-purple"
+               class="w-full rounded-xl py-2 pr-10 pl-5 text-lg font-bold text-black outline-none border-1 bg-d-slate-100 placeholder-d-slate-200 focus:border-d-purple dark:bg-d-slate-400 dark:placeholder-d-slate-300 dark:text-white"
                [ngClass]="{
-             'border border-d-red': isSearchbarInvalid(),
-             'border border-d-slate-100 dark:border-d-slate-400': !isSearchbarInvalid()
-             }"
+                 'border border-d-red': isSearchbarInvalid(),
+                 'focus:border-d-red': isSearchbarInvalid(),
+                 'border border-d-slate-100 dark:border-d-slate-400': !isSearchbarInvalid()
+               }"
                formControlName="searchbar"
                placeholder="Search for any word..."
                (keyup.esc)="resetSearchbar()">
@@ -93,13 +95,88 @@
           [class.opacity-0]="!isSearchbarInvalid()"
           [class.opacity-100]="isSearchbarInvalid()">Whoops, can't be empty...</span>
   </div>
-  {{ this.searchbar?.valid }} {{ this.searchbar?.dirty }} {{ this.searchbar?.valid }} {{ this.searchbar?.errors | json }}
 
-  <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
-    <g class="fill-d-purple" fill-rule="evenodd">
-      <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100"/>
-      <path d="M29 27v21l21-10.5z" class="group-hover:fill-white"/>
-    </g>
-  </svg>
+  @let res = this.dictionaryResult();
+  @if (isDictionaryError(res)) {
+    @let err = res;
+    <div class="flex flex-col items-center justify-center gap-5 align-middle">
+      <span class="mb-5 text-7xl">😕</span>
+      <h1 class="font-bold">{{ err.title }}</h1>
+      <p class="text-center font-normal text-d-slate-300">{{ err.message }} {{ err.resolution }}</p>
+    </div>
+  } @else if (res) {
+    <!-- todo: iterate all in pagination -->
+    @let entry = res[0];
 
+    <!-- Word | Phonetics | Audio -->
+    <div class="mb-4 flex justify-between">
+      <div class="flex flex-col gap-3">
+        <span class="text-3xl font-bold">{{ entry.word }}</span>
+        <span class="text-xl text-d-purple">{{ this.dictionaryAPI.getPhoneticText(entry) }}</span>
+      </div>
+        <div class=""
+        (click)="playAudio(entry)">
+        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
+          <g class="fill-d-purple" fill-rule="evenodd">
+            <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100"/>
+            <path d="M29 27v21l21-10.5z" class="group-hover:fill-white"/>
+          </g>
+        </svg>
+        </div>
+    </div>
+
+    <!-- Meanings -->
+    <div class="flex flex-col">
+      @for (meaning of entry.meanings; track $index) {
+        <div class="my-6 flex w-full items-center justify-between gap-4">
+          <div class="text-lg font-bold italic">{{ meaning.partOfSpeech }}</div>
+          <div class="h-0 w-full border border-d-slate-200"></div>
+        </div>
+        <span class="mb-2 text-d-slate-300">Meaning</span>
+        <ul class="list-disc px-4">
+          @for (definition of meaning.definitions; track $index) {
+            <li class="text-base text-d-purple"><span class="text-black dark:text-white">{{ definition.definition }}</span></li>
+            @if (definition.example) {
+              <span class="text-d-slate-300">&ldquo;{{ definition.example }}&rdquo;</span>
+            }
+          }
+        </ul>
+
+        <!-- Synonyms -->
+        @if (meaning.synonyms.length > 0) {
+          <div class="my-4 flex">
+            <span class="mr-2 mb-2 text-d-slate-300">
+              Synonyms
+            </span>
+            @let synonyms = meaning.synonyms;
+            <!-- todo: on click search the synonym -->
+            <div class="text-wrap">
+              @for (synonym of synonyms; track $index) {
+                <span class="font-bold text-d-purple hover:cursor-pointer hover:underline" (click)="search(synonym)">{{ synonym }}</span>
+                @if ($index < synonyms.length - 1) {
+                  <span class="text-d-purple">,</span>&nbsp;
+                }
+              }
+            </div>
+          </div>
+        }
+      }
+    </div>
+
+    <div class="my-4 h-0 w-full border border-d-slate-200"></div>
+
+    <div class="flex w-fit flex-col pb-12">
+      <div class="mr-2 mb-1 underline text-d-slate-300 underline-offset-3">Source</div>
+      @for (source of entry.sourceUrls; track $index) {
+        <div class="flex items-center justify-between gap-4">
+          <a href="{{source}}" class="underline">{{ source }}</a>
+          <a href="{{source}}">
+            <img ngSrc="assets/images/icon-new-window.svg" height="14" width="14">
+          </a>
+        </div>
+      }
+    </div>
+  } @else {
+    <p class="text-center text-d-slate-400">Type a word to search the dictionary...</p>
+  }
 </div>
