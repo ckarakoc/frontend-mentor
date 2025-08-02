@@ -58,13 +58,15 @@
 
         <!-- Dark Mode Toggle -->
         <div #darkModeToggle class="flex items-center gap-4 hover:cursor-pointer"
-             (click)="toggleDarkMode()">
-          <div class="relative h-4 w-8 rounded-full"
-               [class]="isDarkMode() ? 'bg-d-purple' : 'bg-d-slate-300'">
-            <input #toggleInput class="hidden" type="checkbox" [checked]="isDarkMode()" (change)="isDarkMode.set(toggleInput.checked)">
-            <div class="absolute top-1/2 {{ isDarkMode() ? 'left-4' : 'left-1' }} -translate-y-1/2 transform rounded-full bg-white w-3 h-3 transition-all ease-in-out"></div>
+             (click)="this.themeService.toggleTheme()">
+          <div class="relative h-4 w-8 rounded-full dark:bg-d-purple bg-d-slate-300">
+            <input #toggleInput id="toggleInput" class="hidden"
+                   type="checkbox"
+                   [checked]="this.themeService.isDark()"
+                   (change)="this.themeService.setTheme(toggleInput.checked ? Theme.dark : Theme.light)">
+            <div class="absolute top-1/2 -translate-y-1/2 transform rounded-full bg-white w-3 h-3 transition-all ease-in-out dark:left-4 left-1"></div>
           </div>
-          <svg [class]="isDarkMode() ? 'stroke-d-purple' : 'stroke-d-slate-300'"
+          <svg class="dark:stroke-d-purple stroke-d-slate-300"
                xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
             <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/>
           </svg>
@@ -76,7 +78,7 @@
   <!-- Searchbar Form -->
   <div class="flex flex-col">
     <div class="relative hover:cursor-pointer">
-      <form [formGroup]="searchForm" (ngSubmit)="search(); submittedOnce.set(true)">
+      <form [formGroup]="searchForm" (ngSubmit)="search()">
         <input id="searchbar"
                type="text"
                class="w-full rounded-xl py-2 pr-10 pl-5 text-lg font-bold text-black outline-none border-1 bg-d-slate-100 placeholder-d-slate-200 focus:border-d-purple dark:bg-d-slate-400 dark:placeholder-d-slate-300 dark:text-white"
@@ -112,17 +114,19 @@
     <div class="mb-4 flex justify-between">
       <div class="flex flex-col gap-3">
         <span class="text-3xl font-bold">{{ entry.word }}</span>
-        <span class="text-xl text-d-purple">{{ this.dictionaryAPI.getPhoneticText(entry) }}</span>
+        <span class="text-xl text-d-purple">{{ FreeDictionaryHelpers.getPhoneticText(entry) }}</span>
       </div>
+      @if (FreeDictionaryHelpers.hasPhoneticAudio(entry)) {
         <div class=""
-        (click)="playAudio(entry)">
-        <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
-          <g class="fill-d-purple" fill-rule="evenodd">
-            <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100"/>
-            <path d="M29 27v21l21-10.5z" class="group-hover:fill-white"/>
-          </g>
-        </svg>
+             (click)="playAudio(FreeDictionaryHelpers.getPhoneticAudio(entry))">
+          <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
+            <g class="fill-d-purple" fill-rule="evenodd">
+              <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100"/>
+              <path d="M29 27v21l21-10.5z" class="group-hover:fill-white"/>
+            </g>
+          </svg>
         </div>
+      }
     </div>
 
     <!-- Meanings -->
@@ -169,8 +173,8 @@
       <div class="mr-2 mb-1 underline text-d-slate-300 underline-offset-3">Source</div>
       @for (source of entry.sourceUrls; track $index) {
         <div class="flex items-center justify-between gap-4">
-          <a href="{{source}}" class="underline">{{ source }}</a>
-          <a href="{{source}}">
+          <a href="{{source}}" class="underline" target="_blank">{{ source }}</a>
+          <a href="{{source}}" target="_blank">
             <img ngSrc="assets/images/icon-new-window.svg" height="14" width="14">
           </a>
         </div>

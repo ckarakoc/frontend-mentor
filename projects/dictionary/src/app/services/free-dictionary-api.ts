@@ -24,16 +24,4 @@ export class FreeDictionaryAPI {
       })
     );
   }
-
-  getPhoneticText(entry: DictionaryEntry): string {
-    if (entry.phonetic) {
-      return entry.phonetic;
-    }
-    return entry.phonetics.find(p => p.text)?.text || '';
-  }
-
-  getPhoneticAudio(entry: DictionaryEntry): string {
-    // todo: fix
-    return entry.phonetics.find(p => p.audio)?.audio || '';
-  }
 }

@@ -4,7 +4,11 @@ import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angu
 import { CustomValidators } from '../validators/whitespace.validator';
 import { FreeDictionaryAPI } from '../services/free-dictionary-api';
 import { DictionaryEntry } from '../models/dictionary.model';
-import { DictionaryError } from '../models/dictionary.model.error';
+import { DictionaryError, isDictionaryError } from '../models/dictionary.model.error';
+import { ActivatedRoute, Router } from '@angular/router';
+import { ThemeService } from '../services/theme-service';
+import { Theme } from '../enums/theme';
+import { FreeDictionaryHelpers } from '../helpers/free-dictionary-helpers';
 
 @Component({
   selector: 'app-home',
@@ -14,7 +18,6 @@ import { DictionaryError } from '../models/dictionary.model.error';
     TitleCasePipe,
     FormsModule,
     NgClass,
-
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -22,14 +25,17 @@ import { DictionaryError } from '../models/dictionary.model.error';
 export class Home implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
   private renderer = inject(Renderer2);
-  dictionaryAPI = inject(FreeDictionaryAPI);
+  private route = inject(ActivatedRoute);
+  private router = inject(Router);
+  dictionaryApi = inject(FreeDictionaryAPI);
 
-  isDarkMode = signal<boolean>(false);
+  themeService = inject(ThemeService);
+
   isDropdownVisible = signal<boolean>(false);
   dropdown = viewChild('dropdown', { read: ElementRef });
-  submittedOnce = signal<boolean>(false);
   dictionaryResult = signal<DictionaryEntry[] | DictionaryError | null>(null);
 
+  private audio = new Audio();
 
   fontForm = this.fb.group({
     font: ['sans serif', [Validators.required]]
@@ -49,9 +55,6 @@ export class Home implements OnInit, OnDestroy {
     }
   });
 
-  constructor() {
-  }
-
   ngOnInit() {
     const savedFont = localStorage.getItem('selectedFont');
     if (savedFont) {
@@ -63,16 +66,8 @@ export class Home implements OnInit, OnDestroy {
       }
     });
 
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme !== null) {
-      const isDark = savedTheme === 'dark';
-      this.isDarkMode.set(isDark);
-      document.documentElement.classList.toggle('dark', isDark);
-    } else {
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      this.isDarkMode.set(prefersDark);
-      document.documentElement.classList.toggle('dark', prefersDark);
-    }
+    this.themeService.initializeTheme();
+    this.handleQueryParams();
   }
 
   ngOnDestroy() {
@@ -82,39 +77,23 @@ export class Home implements OnInit, OnDestroy {
     if (this.renderer) {
       this.renderer.destroy();
     }
+    if (this.audio) {
+      this.audio.remove();
+    }
+  }
+
+  search(word?: string) {
+    if (word) this.router.navigate([], { queryParams: { q: word }, relativeTo: this.route }).then();
+    else this.router.navigate([], { queryParams: { q: this.getSearchbarValue() }, relativeTo: this.route }).then();
   }
 
   isSearchbarInvalid(): boolean {
     if (!this.searchbar) return false;
-    return this.searchbar.dirty && this.searchbar.invalid && this.submittedOnce();
-  }
-
-  toggleDarkMode() {
-    const newValue = !this.isDarkMode();
-    this.isDarkMode.set(newValue);
-    localStorage.setItem('theme', newValue ? 'dark' : 'light');
-    document.documentElement.classList.toggle('dark', newValue);
+    return this.searchbar.dirty && this.searchbar.invalid;
   }
 
   toggleDropdown() {
     this.isDropdownVisible.set(!this.isDropdownVisible());
-  }
-
-  search(word?: string) {
-    // todo: put search in HttpParams...
-    if (word) {
-      this.resetSearchbar();
-      this.searchForm.patchValue({ searchbar: word });
-      this.search();
-    } else {
-      let searchbarValue = this.getSearchbarValue();
-      if (searchbarValue) {
-        this.dictionaryAPI.getWordData(searchbarValue).subscribe({
-          next: data => this.dictionaryResult.set(data),
-          error: err => this.dictionaryResult.set(err)
-        });
-      }
-    }
   }
 
   getSearchbarValue(): string | null {
@@ -131,18 +110,31 @@ export class Home implements OnInit, OnDestroy {
     this.searchForm.patchValue({ searchbar: '' });
     this.searchbar?.markAsUntouched();
     this.searchbar?.markAsPristine();
-    this.submittedOnce.set(false);
     this.dictionaryResult.set(null);
   }
 
-  isDictionaryError(obj: any): obj is DictionaryError {
-    return obj && typeof obj === 'object'
-      && 'title' in obj
-      && 'message' in obj
-      && 'resolution' in obj;
+  playAudio(src: string) {
+    this.audio.src = src;
+    this.audio.load();
+    this.audio.play().then();
   }
 
-  playAudio(entry: DictionaryEntry) {
-    new Audio(this.dictionaryAPI.getPhoneticAudio(entry)).play();
+  private handleQueryParams() {
+    this.route.queryParams.subscribe(params => {
+      if (params['q']) {
+        const encodedParam = encodeURIComponent(params['q']);
+        this.dictionaryApi.getWordData(encodedParam).subscribe({
+          next: data => {
+            this.searchForm.patchValue({ searchbar: encodedParam });
+            this.dictionaryResult.set(data)
+          },
+          error: err => this.dictionaryResult.set(err)
+        });
+      }
+    });
   }
+
+  protected readonly Theme = Theme;
+  protected readonly isDictionaryError = isDictionaryError;
+  protected readonly FreeDictionaryHelpers = FreeDictionaryHelpers;
 }
