@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
+import { Component, effect, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
 import { NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomValidators } from '../validators/whitespace.validator';
@@ -9,6 +9,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ThemeService } from '../services/theme-service';
 import { Theme } from '../enums/theme';
 import { FreeDictionaryHelpers } from '../helpers/free-dictionary-helpers';
+import { NgxSpinnerComponent } from 'ngx-spinner';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,7 @@ import { FreeDictionaryHelpers } from '../helpers/free-dictionary-helpers';
     TitleCasePipe,
     FormsModule,
     NgClass,
+    NgxSpinnerComponent,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -28,7 +30,6 @@ export class Home implements OnInit, OnDestroy {
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   dictionaryApi = inject(FreeDictionaryAPI);
-
   themeService = inject(ThemeService);
 
   isDropdownVisible = signal<boolean>(false);
@@ -126,7 +127,7 @@ export class Home implements OnInit, OnDestroy {
         this.dictionaryApi.getWordData(encodedParam).subscribe({
           next: data => {
             this.searchForm.patchValue({ searchbar: encodedParam });
-            this.dictionaryResult.set(data)
+            this.dictionaryResult.set(data);
           },
           error: err => this.dictionaryResult.set(err)
         });

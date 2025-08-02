@@ -1,6 +1,7 @@
 import { DictionaryEntry } from '../models/dictionary.model';
 
 export class FreeDictionaryHelpers {
+  // todo: implement all Helper methods
   static getPhoneticText(entry: DictionaryEntry): string {
     if (entry.phonetic) {
       return entry.phonetic;
@@ -9,7 +10,6 @@ export class FreeDictionaryHelpers {
   }
 
   static getPhoneticAudio(entry: DictionaryEntry): string {
-    // todo: fix
     return entry.phonetics.find(p => p.audio)?.audio || '';
   }
 

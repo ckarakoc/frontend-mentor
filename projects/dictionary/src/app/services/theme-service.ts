@@ -1,11 +1,13 @@
-import { Injectable, signal } from '@angular/core';
+import { computed, Injectable, signal } from '@angular/core';
 import { Theme } from '../enums/theme';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ThemeService {
-  theme = signal<Theme>(Theme.system);
+  private _theme = signal<Theme>(Theme.system);
+
+  theme = this._theme.asReadonly();
 
   /**
    * Initializes and resolves the theme by checking localStorage or falling back to system preference.
@@ -13,8 +15,8 @@ export class ThemeService {
    */
   initializeTheme() {
     const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) this.theme.set(savedTheme === 'dark' ? Theme.dark : savedTheme === 'light' ? Theme.light : Theme.system);
-    else this.theme.set(Theme.system);
+    if (savedTheme) this._theme.set(savedTheme === 'dark' ? Theme.dark : savedTheme === 'light' ? Theme.light : Theme.system);
+    else this._theme.set(Theme.system);
 
     this.setTheme();
   }
@@ -27,9 +29,9 @@ export class ThemeService {
   }
 
   setTheme(theme?: Theme) {
-    if (theme !== undefined) this.theme.set(theme);
+    if (theme !== undefined) this._theme.set(theme);
     const curr = this.resolveTheme();
-    if (this.theme() !== Theme.system) localStorage.setItem('theme', curr);
+    if (this._theme() !== Theme.system) localStorage.setItem('theme', curr);
     document.documentElement.classList.toggle('dark', curr === 'dark');
   }
 
@@ -38,7 +40,7 @@ export class ThemeService {
    */
   resetTheme() {
     localStorage.removeItem('theme');
-    this.theme.set(Theme.system);
+    this._theme.set(Theme.system);
   }
 
   /**
@@ -48,21 +50,16 @@ export class ThemeService {
   toggleTheme() {
     const newValue = this.resolveTheme() === 'dark' ? 'light' : 'dark';
     localStorage.setItem('theme', newValue);
-    this.theme.set(newValue == 'dark' ? Theme.dark : Theme.light);
+    this._theme.set(newValue == 'dark' ? Theme.dark : Theme.light);
     document.documentElement.classList.toggle('dark', newValue === 'dark');
   }
 
-  isDark() {
-    return this.resolveTheme() === 'dark';
-  }
+  isDark = computed(() => this.resolveTheme() === 'dark');
+  isLight = computed(() => this.resolveTheme() === 'light');
 
-  isLight() {
-    return this.resolveTheme() === 'light';
-  }
-
-  private resolveTheme(): 'light' | 'dark' {
+  private resolveTheme = computed(() => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    if (this.theme() === Theme.system) return prefersDark ? 'dark' : 'light';
-    return this.theme() === Theme.dark ? 'dark' : 'light';
-  }
+    if (this._theme() === Theme.system) return prefersDark ? 'dark' : 'light';
+    return this._theme() === Theme.dark ? 'dark' : 'light';
+  })
 }
