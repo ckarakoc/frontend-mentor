@@ -1,5 +1,5 @@
-import { Component, effect, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
-import { NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { Component, computed, effect, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
+import { JsonPipe, NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomValidators } from '../validators/whitespace.validator';
 import { FreeDictionaryAPI } from '../services/free-dictionary-api';
@@ -20,6 +20,7 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     FormsModule,
     NgClass,
     NgxSpinnerComponent,
+    JsonPipe,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -35,6 +36,15 @@ export class Home implements OnInit, OnDestroy {
   isDropdownVisible = signal<boolean>(false);
   dropdown = viewChild('dropdown', { read: ElementRef });
   dictionaryResult = signal<DictionaryEntry[] | DictionaryError | null>(null);
+  audioPlaying = signal<boolean>(false);
+  currentPage = signal<number>(1);
+  totalPages = computed(() => {
+    let res = this.dictionaryResult();
+    if (!this.isDictionaryError(res) && res != null) {
+      return res.length;
+    }
+    return 0;
+  })
 
   private audio = new Audio();
 
@@ -101,7 +111,7 @@ export class Home implements OnInit, OnDestroy {
     if (this.searchForm.valid) {
       const query = this.searchbar?.value?.trim();
       if (query) {
-        return encodeURIComponent(query);
+        return query;
       }
     }
     return null;
@@ -111,31 +121,50 @@ export class Home implements OnInit, OnDestroy {
     this.searchForm.patchValue({ searchbar: '' });
     this.searchbar?.markAsUntouched();
     this.searchbar?.markAsPristine();
-    this.dictionaryResult.set(null);
+    // this.dictionaryResult.set(null);
   }
 
   playAudio(src: string) {
-    this.audio.src = src;
-    this.audio.load();
-    this.audio.play().then();
+    if (!this.audioPlaying()) {
+      this.audioPlaying.set(true);
+      this.audio.src = src;
+      this.audio.load();
+      this.audio.onended = () => {
+        this.audioPlaying.set(false);
+      };
+
+      this.audio.play().catch(() => {
+        this.audioPlaying.set(false);
+      });
+    }
   }
 
   private handleQueryParams() {
     this.route.queryParams.subscribe(params => {
       if (params['q']) {
-        const encodedParam = encodeURIComponent(params['q']);
+        const encodedParam = encodeURIComponent(decodeURIComponent(params['q']));
+        this.searchForm.patchValue({ searchbar: decodeURIComponent(params['q']) });
+
         this.dictionaryApi.getWordData(encodedParam).subscribe({
-          next: data => {
-            this.searchForm.patchValue({ searchbar: encodedParam });
-            this.dictionaryResult.set(data);
-          },
+          next: data => this.dictionaryResult.set(data),
           error: err => this.dictionaryResult.set(err)
         });
       }
     });
   }
 
+  previousPage() {
+    if (this.currentPage() === 1) return;
+    this.currentPage.set(this.currentPage() - 1);
+  }
+
+  nextPage() {
+    if (this.currentPage() === this.totalPages()) return;
+    this.currentPage.set(this.currentPage() + 1);
+  }
+
   protected readonly Theme = Theme;
   protected readonly isDictionaryError = isDictionaryError;
   protected readonly FreeDictionaryHelpers = FreeDictionaryHelpers;
+
 }

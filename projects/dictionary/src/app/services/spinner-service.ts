@@ -14,11 +14,9 @@ export class SpinnerService {
   darkModeBgColor = signal<string>('rgba(255, 255, 255, 0.2)');
   lightModeBgColor = signal<string>('rgba(0, 0, 0, 0.2)');
 
-  spinnerColor = computed(() => {
-    console.log(this.themeService.theme());
-      return this.themeService.theme() === Theme.dark ||
-      (this.themeService.theme() === Theme.system && this.themeService.isDark()) ? this.darkModeSpinnerColor() : this.lightModeSpinnerColor();
-    }
+  spinnerColor = computed(() =>
+    this.themeService.theme() === Theme.dark ||
+    (this.themeService.theme() === Theme.system && this.themeService.isDark()) ? this.darkModeSpinnerColor() : this.lightModeSpinnerColor()
   );
 
   spinnerBgColor = computed(() =>

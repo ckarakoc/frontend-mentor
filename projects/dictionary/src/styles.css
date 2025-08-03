@@ -23,6 +23,13 @@
 html, body {
   margin: 0;
   padding: 0;
-  height: 100dvh;
-  width: 100dvw;
+  /*height: 100dvh;*/
+  /*width: 100dvw;*/
+  /*block-size: 100%;*/
+  /*inline-size: 100%;*/
 }
+
+/* Debug :P */
+/** {*/
+/*  outline: 1px solid red !important;*/
+/*}*/

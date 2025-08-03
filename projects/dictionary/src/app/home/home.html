@@ -8,7 +8,8 @@
         <img ngSrc="assets/images/logo.svg" alt="logo" height="38" width="34" priority>
       </div>
       <div class="flex">
-
+        <!-- todo: style this file for desktop/tablet -->
+        <!-- todo: write all the tests -->
         <!-- Font Dropdown -->
         <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer dark:text-white"
              (click)="toggleDropdown()">
@@ -100,7 +101,7 @@
 
   <!-- API Result -->
   <section class="relative flex-1 px-6 pt-4">
-    <ngx-spinner name="ngx-spinner-http" type='ball-atom' ></ngx-spinner>
+    <ngx-spinner name="ngx-spinner-http" type='ball-atom'></ngx-spinner>
     @let res = this.dictionaryResult();
     @if (isDictionaryError(res)) {
       @let err = res;
@@ -109,80 +110,116 @@
         <h1 class="font-bold">{{ err.title }}</h1>
         <p class="text-center font-normal text-d-slate-300">{{ err.message }} {{ err.resolution }}</p>
       </div>
-    } @else if (res) {
-      <!-- todo: iterate all in pagination -->
-      @let entry = res[0];
-
-      <!-- Word | Phonetics | Audio -->
-      <div class="mb-4 flex justify-between">
-        <div class="flex flex-col gap-3">
-          <span class="text-3xl font-bold">{{ entry.word }}</span>
-          <span class="text-xl text-d-purple">{{ FreeDictionaryHelpers.getPhoneticText(entry) }}</span>
+    } @else if (res && currentPage() > 0 && currentPage() <= res.length) {
+      <!-- Pages -->
+      @let entry = res[currentPage() - 1];
+      <div class="page">
+        <!-- Word | Phonetics | Audio -->
+        <div class="mb-4 flex justify-between">
+          <div class="flex flex-col gap-3">
+            <span class="text-3xl font-bold">{{ entry.word }}</span>
+            <span class="text-xl text-d-purple">{{ FreeDictionaryHelpers.getPhoneticText(entry) }}</span>
+          </div>
+          @if (FreeDictionaryHelpers.hasPhoneticAudio(entry)) {
+            <div class=""
+                 (click)="playAudio(FreeDictionaryHelpers.getPhoneticAudio(entry))">
+              <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
+                <g class="fill-d-purple" fill-rule="evenodd">
+                  <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100" [ngClass]="{ 'opacity-100': audioPlaying() }"/>
+                  <path d="M29 27v21l21-10.5z" class="group-hover:fill-white" [ngClass]="{ 'fill-white': audioPlaying() }"/>
+                </g>
+              </svg>
+            </div>
+          }
         </div>
-        @if (FreeDictionaryHelpers.hasPhoneticAudio(entry)) {
-          <div class=""
-               (click)="playAudio(FreeDictionaryHelpers.getPhoneticAudio(entry))">
-            <svg xmlns="http://www.w3.org/2000/svg" width="75" height="75" viewBox="0 0 75 75" class="group hover:cursor-pointer">
-              <g class="fill-d-purple" fill-rule="evenodd">
-                <circle cx="37.5" cy="37.5" r="37.5" class="opacity-25 group-hover:opacity-100"/>
-                <path d="M29 27v21l21-10.5z" class="group-hover:fill-white"/>
-              </g>
-            </svg>
-          </div>
-        }
-      </div>
 
-      <!-- Meanings -->
-      <div class="flex flex-col">
-        @for (meaning of entry.meanings; track $index) {
-          <div class="my-6 flex w-full items-center justify-between gap-4">
-            <div class="text-lg font-bold italic">{{ meaning.partOfSpeech }}</div>
-            <div class="h-0 w-full border border-d-slate-200"></div>
-          </div>
-          <span class="mb-2 text-d-slate-300">Meaning</span>
-          <ul class="list-disc px-4">
-            @for (definition of meaning.definitions; track $index) {
-              <li class="text-base text-d-purple"><span class="text-black dark:text-white">{{ definition.definition }}</span></li>
-              @if (definition.example) {
-                <span class="text-d-slate-300">&ldquo;{{ definition.example }}&rdquo;</span>
+        <!-- Meanings -->
+        <div class="flex flex-col">
+          @for (meaning of entry.meanings; track $index) {
+            <div class="my-6 flex w-full items-center justify-between gap-4">
+              <div class="text-lg font-bold italic">{{ meaning.partOfSpeech }}</div>
+              <div class="h-0 w-full border border-d-slate-200"></div>
+            </div>
+            <span class="mb-2 text-d-slate-300">Meaning</span>
+            <ul class="list-disc px-4">
+              @for (definition of meaning.definitions; track $index) {
+                <li class="text-base text-d-purple"><span class="text-black dark:text-white">{{ definition.definition }}</span></li>
+                @if (definition.example) {
+                  <span class="text-d-slate-300">&ldquo;{{ definition.example }}&rdquo;</span>
+                }
               }
-            }
-          </ul>
+            </ul>
 
-          <!-- Synonyms -->
-          @if (meaning.synonyms.length > 0) {
-            <div class="my-4 flex">
+            <!-- Synonyms -->
+            @if (meaning.synonyms.length > 0) {
+              <div class="my-4 flex">
             <span class="mr-2 mb-2 text-d-slate-300">
               Synonyms
             </span>
-              @let synonyms = meaning.synonyms;
-              <!-- todo: on click search the synonym -->
-              <div class="text-wrap">
-                @for (synonym of synonyms; track $index) {
-                  <span class="font-bold text-d-purple hover:cursor-pointer hover:underline" (click)="search(synonym)">{{ synonym }}</span>
-                  @if ($index < synonyms.length - 1) {
-                    <span class="text-d-purple">,</span>&nbsp;
+                @let synonyms = meaning.synonyms;
+                <div class="text-wrap">
+                  @for (synonym of synonyms; track $index) {
+                    <span class="font-bold text-d-purple hover:cursor-pointer hover:underline" (click)="search(synonym)">{{ synonym }}</span>
+                    @if ($index < synonyms.length - 1) {
+                      <span class="text-d-purple">,</span>&nbsp;
+                    }
                   }
-                }
+                </div>
               </div>
+            }
+
+            <!-- Antonyms -->
+            @if (meaning.antonyms.length > 0) {
+              <div class="my-4 flex">
+            <span class="mr-2 mb-2 text-d-slate-300">
+              Antonyms
+            </span>
+                @let antonyms = meaning.antonyms;
+                <div class="text-wrap">
+                  @for (antonym of antonyms; track $index) {
+                    <span class="font-bold text-d-purple hover:cursor-pointer hover:underline" (click)="search(antonym)">{{ antonym }}</span>
+                    @if ($index < antonyms.length - 1) {
+                      <span class="text-d-purple">,</span>&nbsp;
+                    }
+                  }
+                </div>
+              </div>
+            }
+          }
+        </div>
+
+        <div class="my-4 h-0 w-full border border-d-slate-200"></div>
+
+        <div class="flex w-fit flex-col pb-12">
+          <div class="mr-2 mb-1 underline text-d-slate-300 underline-offset-3">Source</div>
+          @for (source of entry.sourceUrls; track $index) {
+            <div class="flex items-center justify-between gap-4">
+              <a href="{{source}}" class="underline" target="_blank">{{ source }}</a>
+              <a href="{{source}}" target="_blank">
+                <img ngSrc="assets/images/icon-new-window.svg" height="14" width="14">
+              </a>
             </div>
           }
-        }
+        </div>
       </div>
 
-      <div class="my-4 h-0 w-full border border-d-slate-200"></div>
-
-      <div class="flex w-fit flex-col pb-12">
-        <div class="mr-2 mb-1 underline text-d-slate-300 underline-offset-3">Source</div>
-        @for (source of entry.sourceUrls; track $index) {
-          <div class="flex items-center justify-between gap-4">
-            <a href="{{source}}" class="underline" target="_blank">{{ source }}</a>
-            <a href="{{source}}" target="_blank">
-              <img ngSrc="assets/images/icon-new-window.svg" height="14" width="14">
-            </a>
-          </div>
-        }
+      <!-- Fake Pagination -->
+      <div class="mb-8 flex select-none items-center justify-between sm:justify-end py-4">
+        <div class="relative select-none rounded-xl disabled:cursor-not-allowed disabled:opacity-50 hover:cursor-pointer justify-center align-middle items-center
+        hover:shadow-[0px_0px_10px_2px_var(--color-d-purple)] transition-shadow duration-200"
+             (click)="previousPage()">
+          <div class="rounded-xl bg-white px-4 py-2 not-dark:ring-2 dark:bg-d-slate-400">Previous</div>
+        </div>
+        <span class="mx-3 text-sm">
+        Page {{ currentPage() }} of {{ totalPages() }}
+      </span>
+        <div class="relative select-none rounded-xl disabled:cursor-not-allowed disabled:opacity-50 hover:cursor-pointer
+        hover:shadow-[0px_0px_10px_2px_var(--color-d-purple)] transition-shadow duration-200 "
+             (click)="nextPage()">
+          <div class="relative z-10 flex flex-col gap-4 rounded-xl bg-white px-4 py-2 not-dark:ring-2 dark:bg-d-slate-400">Next</div>
+        </div>
       </div>
+
     } @else {
       <p class="text-center text-d-slate-400">Type a word to search the dictionary...</p>
     }
