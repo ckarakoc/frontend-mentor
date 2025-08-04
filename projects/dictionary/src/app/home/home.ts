@@ -1,39 +1,37 @@
-import { Component, computed, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
-import { NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
+import { NgClass, NgOptimizedImage } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { CustomValidators } from '../validators/whitespace.validator';
-import { FreeDictionaryAPI } from '../services/free-dictionary-api';
-import { DictionaryEntry } from '../models/dictionary.model';
-import { DictionaryError, isDictionaryError } from '../models/dictionary.model.error';
+import { CustomValidators } from '../_validators/whitespace.validator';
+import { FreeDictionaryAPI } from '../_services/free-dictionary-api';
+import { DictionaryEntry } from '../_models/dictionary.model';
+import { DictionaryError, isDictionaryError } from '../_models/dictionary.model.error';
 import { ActivatedRoute, Router } from '@angular/router';
-import { ThemeService } from '../services/theme-service';
-import { Theme } from '../enums/theme';
-import { FreeDictionaryHelpers } from '../helpers/free-dictionary-helpers';
+import { Theme } from '../_enums/theme';
+import { FreeDictionaryHelpers } from '../_helpers/free-dictionary-helpers';
 import { NgxSpinnerComponent } from 'ngx-spinner';
+import { FontDropdown } from '../font-dropdown/font-dropdown';
+import { DarkModeToggle } from '../dark-mode-toggle/dark-mode-toggle';
 
 @Component({
   selector: 'app-home',
   imports: [
     NgOptimizedImage,
     ReactiveFormsModule,
-    TitleCasePipe,
     FormsModule,
     NgClass,
     NgxSpinnerComponent,
+    FontDropdown,
+    DarkModeToggle,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
 export class Home implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
-  private renderer = inject(Renderer2);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
   dictionaryApi = inject(FreeDictionaryAPI);
-  themeService = inject(ThemeService);
 
-  isDropdownVisible = signal<boolean>(false);
-  dropdown = viewChild('dropdown', { read: ElementRef });
   dictionaryResult = signal<DictionaryEntry[] | DictionaryError | null>(null);
   audioPlaying = signal<boolean>(false);
   submitted = signal<boolean>(false);
@@ -47,10 +45,7 @@ export class Home implements OnInit, OnDestroy {
   })
 
   private audio = new Audio();
-
-  fontForm = this.fb.group({
-    font: ['sans serif', [Validators.required]]
-  });
+  selectedTypeface: string | null | undefined;
 
   searchForm = this.fb.group({
     searchbar: ['', [Validators.required, CustomValidators.noWhitespaceValidator]],
@@ -60,34 +55,11 @@ export class Home implements OnInit, OnDestroy {
     return this.searchForm.get('searchbar');
   }
 
-  private readonly clickListener = this.renderer.listen('document', 'click', (event: Event) => {
-    if (!this.dropdown()?.nativeElement.contains(event.target as Node)) {
-      this.isDropdownVisible.set(false);
-    }
-  });
-
   ngOnInit() {
-    const savedFont = localStorage.getItem('selectedFont');
-    if (savedFont) {
-      this.fontForm.patchValue({ font: savedFont });
-    }
-    this.fontForm.valueChanges.subscribe(value => {
-      if (value.font) {
-        localStorage.setItem('selectedFont', value.font);
-      }
-    });
-
-    this.themeService.initializeTheme();
     this.handleQueryParams();
   }
 
   ngOnDestroy() {
-    if (this.clickListener) {
-      this.clickListener();
-    }
-    if (this.renderer) {
-      this.renderer.destroy();
-    }
     if (this.audio) {
       this.audio.remove();
     }
@@ -102,10 +74,6 @@ export class Home implements OnInit, OnDestroy {
   isSearchbarInvalid(): boolean {
     if (!this.searchbar) return false;
     return (this.searchbar.invalid && (this.searchbar.dirty || this.searchbar.touched)) && this.submitted();
-  }
-
-  toggleDropdown() {
-    this.isDropdownVisible.set(!this.isDropdownVisible());
   }
 
   getSearchbarValue(): string | null {
@@ -162,8 +130,6 @@ export class Home implements OnInit, OnDestroy {
     this.currentPage.set(this.currentPage() + 1);
   }
 
-  protected readonly Theme = Theme;
   protected readonly isDictionaryError = isDictionaryError;
   protected readonly FreeDictionaryHelpers = FreeDictionaryHelpers;
-
 }

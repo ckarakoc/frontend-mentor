@@ -1,4 +1,4 @@
-import { DictionaryEntry } from '../models/dictionary.model';
+import { DictionaryEntry } from '../_models/dictionary.model';
 
 export class FreeDictionaryHelpers {
 

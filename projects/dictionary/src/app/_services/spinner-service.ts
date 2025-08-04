@@ -1,6 +1,6 @@
 import { computed, inject, Injectable, linkedSignal, Signal, signal } from '@angular/core';
 import { ThemeService } from './theme-service';
-import { Theme } from '../enums/theme';
+import { Theme } from '../_enums/theme';
 import { Spinner } from 'ngx-spinner';
 
 @Injectable({

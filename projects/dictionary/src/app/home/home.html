@@ -1,76 +1,18 @@
 <div class="mx-auto flex min-h-screen max-w-3xl flex-col bg-white text-black dark:bg-black dark:text-white"
-     [class.font-inter]="fontForm.value.font === 'sans serif'"
-     [class.font-lora]="fontForm.value.font === 'serif'"
-     [class.font-inconsolata]="fontForm.value.font === 'mono'">
+     [class.font-inter]="selectedTypeface === 'sans serif'"
+     [class.font-lora]="selectedTypeface === 'serif'"
+     [class.font-inconsolata]="selectedTypeface === 'mono'">
   <header class="mb-4 px-6 pt-6 md:pb-6">
     <div class="flex items-center justify-between">
       <div class="flex items-center align-middle">
         <img ngSrc="assets/images/logo.svg" alt="logo" height="38" width="34" priority>
       </div>
       <div class="flex">
-        <!-- todo: write all the tests -->
-        <!-- Font Dropdown -->
-        <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer dark:text-white md:text-lg"
-             (click)="toggleDropdown()">
-          <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
-            <label class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.font | titlecase }}</label>
-
-            <div class="absolute top-10 right-1">
-              <div class="absolute -inset-1 z-10 rounded-xl bg-black opacity-10 blur dark:bg-d-purple dark:opacity-75">
-              </div>
-              <div class="relative z-10 flex flex-col gap-4 rounded-xl bg-white py-4 pr-12 pl-6 dark:bg-d-slate-400"
-                   [class.hidden]="!isDropdownVisible()">
-                <input type="radio"
-                       class="hidden"
-                       formControlName="font"
-                       id="sans-serif"
-                       value="sans serif">
-                <label class="font-inter hover:text-d-purple hover:cursor-pointer"
-                       (click)="toggleDropdown()"
-                       for="sans-serif">Sans Serif</label>
-
-                <input type="radio"
-                       class="hidden"
-                       formControlName="font"
-                       id="serif"
-                       value="serif">
-                <label class="font-lora hover:text-d-purple hover:cursor-pointer"
-                       (click)="toggleDropdown()"
-                       for="serif">Serif</label>
-
-                <input type="radio"
-                       class="hidden"
-                       formControlName="font"
-                       id="mono"
-                       value="mono">
-                <label class="font-inconsolata hover:text-d-purple hover:cursor-pointer"
-                       (click)="toggleDropdown()"
-                       for="mono">Mono</label>
-              </div>
-            </div>
-          </form>
-          <div class="absolute top-1/2 right-2 -translate-y-1/2 transform">
-            <img ngSrc="assets/images/icon-arrow-down.svg" alt="arrow down" height="8" width="14">
-          </div>
-        </div>
+        <app-font-dropdown [(typeface)]="selectedTypeface"></app-font-dropdown>
 
         <div class="mr-6 ml-3 border-1 text-d-slate-200"></div>
 
-        <!-- Dark Mode Toggle -->
-        <div #darkModeToggle class="flex items-center gap-4 hover:cursor-pointer"
-             (click)="this.themeService.toggleTheme()">
-          <div class="relative h-4 w-8 rounded-full bg-d-slate-300 dark:bg-d-purple">
-            <input #toggleInput id="toggleInput" class="hidden"
-                   type="checkbox"
-                   [checked]="this.themeService.isDark()"
-                   (change)="this.themeService.setTheme(toggleInput.checked ? Theme.dark : Theme.light)">
-            <div class="absolute top-1/2 left-1 h-3 w-3 -translate-y-1/2 transform rounded-full bg-white transition-all ease-in-out dark:left-4"></div>
-          </div>
-          <svg class="stroke-d-slate-300 dark:stroke-d-purple"
-               xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 22 22">
-            <path fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M1 10.449a10.544 10.544 0 0 0 19.993 4.686C11.544 15.135 6.858 10.448 6.858 1A10.545 10.545 0 0 0 1 10.449Z"/>
-          </svg>
-        </div>
+        <app-dark-mode-toggle></app-dark-mode-toggle>
       </div>
     </div>
   </header>

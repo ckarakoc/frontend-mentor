@@ -1,8 +1,8 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, throwError } from 'rxjs';
-import { DictionaryEntry } from '../models/dictionary.model';
-import { DictionaryError } from '../models/dictionary.model.error';
+import { DictionaryEntry } from '../_models/dictionary.model';
+import { DictionaryError } from '../_models/dictionary.model.error';
 
 @Injectable({
   providedIn: 'root',
