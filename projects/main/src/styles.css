@@ -5,12 +5,23 @@
   --breakpoint-xs: 30rem;
   --breakpoint-2xl: 100rem;
   --breakpoint-3xl: 120rem;
+
+  --color-light-50:  #FFFFFF;
+  --color-light-100: #FEFEFE;
+  --color-light-200: #FDFDFD;
+  --color-light-300: #FCFCFC;
+  --color-light-400: #FBFBFB;
+  --color-light-500: #FAFAFA;
+  --color-light-600: #F9F9F9;
+  --color-light-700: #F8F8F8;
+  --color-light-800: #F7F7F7;
+  --color-light-900: #F6F6F6;
 }
 
-@source inline("{hover:,sm:,md:,lg:,xl:,}bg-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
-@source inline("{hover:,sm:,md:,lg:,xl:,}text-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
-@source inline("{hover:,sm:,md:,lg:,xl:,}ring-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
-@source inline("{hover:,sm:,md:,lg:,xl:,}shadow-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime}-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("{hover:,sm:,md:,lg:,xl:,}bg-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime,light}-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("{hover:,sm:,md:,lg:,xl:,}text-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime,light}-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("{hover:,sm:,md:,lg:,xl:,}ring-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime,light}-{50,100,200,300,400,500,600,700,800,900,950}");
+@source inline("{hover:,sm:,md:,lg:,xl:,}shadow-{red,blue,green,yellow,pink,purple,orange,teal,indigo,lime,light}-{50,100,200,300,400,500,600,700,800,900,950}");
 
 :root {
   background-color: mistyrose;

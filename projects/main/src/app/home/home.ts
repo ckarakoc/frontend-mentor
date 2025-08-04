@@ -2,13 +2,15 @@ import { AfterViewInit, Component, computed, ElementRef, Signal, signal, ViewChi
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { HomeCard } from '../home-card/home-card';
+import { NgOptimizedImage } from '@angular/common';
 
 
 @Component({
   selector: 'app-home',
   imports: [
     FaIconComponent,
-    HomeCard
+    HomeCard,
+    NgOptimizedImage
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'

@@ -10,12 +10,12 @@
 - [Social Links Profile](projects/social-links/README.md)
 - [Four Card Feature](projects/four-card-feature/README.md)
 - [Testimonials Grid](projects/testimonials-grid/README.md)
+- [Dictionary](projects/dictionary/README.md)
 
 ### ✅ Todo
 
 ---
 - [JellyNote](projects/jellynote/README.md)
-- [Dictionary](projects/dictionary/README.md)
 - [Meet Landing Page](projects/meet/README.md)
 ---
 📦 Angular lib asset usage (`angular.json`):

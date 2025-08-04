@@ -19,7 +19,7 @@ import {
   faTerminal,
   faWrench,
 } from '@fortawesome/free-solid-svg-icons';
-import { NgTemplateOutlet, TitleCasePipe } from '@angular/common';
+import { NgClass, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home-card',
@@ -27,7 +27,8 @@ import { NgTemplateOutlet, TitleCasePipe } from '@angular/common';
     RouterLink,
     FaIconComponent,
     TitleCasePipe,
-    NgTemplateOutlet
+    NgTemplateOutlet,
+    NgClass
   ],
   templateUrl: './home-card.html',
   styleUrl: './home-card.css'
@@ -41,6 +42,7 @@ export class HomeCard {
   link = input.required<string>();
   tags = input.required<string[]>();
   useHref = input<boolean>(false);
+  golden = input<boolean>(false);
 
   protected readonly tailwindColors = [
     // Note: These classes need to be safelisted in the tailwind config
