@@ -1,5 +1,5 @@
-import { Component, computed, effect, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
-import { JsonPipe, NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
+import { Component, computed, ElementRef, inject, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
+import { NgClass, NgOptimizedImage, TitleCasePipe } from '@angular/common';
 import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CustomValidators } from '../validators/whitespace.validator';
 import { FreeDictionaryAPI } from '../services/free-dictionary-api';
@@ -20,7 +20,6 @@ import { NgxSpinnerComponent } from 'ngx-spinner';
     FormsModule,
     NgClass,
     NgxSpinnerComponent,
-    JsonPipe,
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'
@@ -37,6 +36,7 @@ export class Home implements OnInit, OnDestroy {
   dropdown = viewChild('dropdown', { read: ElementRef });
   dictionaryResult = signal<DictionaryEntry[] | DictionaryError | null>(null);
   audioPlaying = signal<boolean>(false);
+  submitted = signal<boolean>(false);
   currentPage = signal<number>(1);
   totalPages = computed(() => {
     let res = this.dictionaryResult();
@@ -94,13 +94,14 @@ export class Home implements OnInit, OnDestroy {
   }
 
   search(word?: string) {
+    this.submitted.set(true);
     if (word) this.router.navigate([], { queryParams: { q: word }, relativeTo: this.route }).then();
     else this.router.navigate([], { queryParams: { q: this.getSearchbarValue() }, relativeTo: this.route }).then();
   }
 
   isSearchbarInvalid(): boolean {
     if (!this.searchbar) return false;
-    return this.searchbar.dirty && this.searchbar.invalid;
+    return (this.searchbar.invalid && (this.searchbar.dirty || this.searchbar.touched)) && this.submitted();
   }
 
   toggleDropdown() {
@@ -118,10 +119,8 @@ export class Home implements OnInit, OnDestroy {
   }
 
   resetSearchbar() {
-    this.searchForm.patchValue({ searchbar: '' });
-    this.searchbar?.markAsUntouched();
-    this.searchbar?.markAsPristine();
-    // this.dictionaryResult.set(null);
+    this.searchForm.reset();
+    this.submitted.set(false);
   }
 
   playAudio(src: string) {

@@ -29,6 +29,11 @@ html, body {
   /*inline-size: 100%;*/
 }
 
+.dark {
+  background-color: black;
+  color: white;
+}
+
 /* Debug :P */
 /** {*/
 /*  outline: 1px solid red !important;*/

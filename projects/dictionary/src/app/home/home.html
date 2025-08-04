@@ -1,8 +1,8 @@
-<div class="flex min-h-screen flex-col bg-white text-black dark:bg-black dark:text-white"
+<div class="mx-auto flex min-h-screen max-w-3xl flex-col bg-white text-black dark:bg-black dark:text-white"
      [class.font-inter]="fontForm.value.font === 'sans serif'"
      [class.font-lora]="fontForm.value.font === 'serif'"
      [class.font-inconsolata]="fontForm.value.font === 'mono'">
-  <header class="mb-4 px-6 pt-6">
+  <header class="mb-4 px-6 pt-6 md:pb-6">
     <div class="flex items-center justify-between">
       <div class="flex items-center align-middle">
         <img ngSrc="assets/images/logo.svg" alt="logo" height="38" width="34" priority>
@@ -11,7 +11,7 @@
         <!-- todo: style this file for desktop/tablet -->
         <!-- todo: write all the tests -->
         <!-- Font Dropdown -->
-        <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer dark:text-white"
+        <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer dark:text-white md:text-lg"
              (click)="toggleDropdown()">
           <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
             <label class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.font | titlecase }}</label>
@@ -82,10 +82,11 @@
       <form [formGroup]="searchForm" (ngSubmit)="search()">
         <input id="searchbar"
                type="text"
-               class="w-full rounded-xl py-2 pr-10 pl-5 text-lg font-bold text-black outline-none border-1 bg-d-slate-100 placeholder-d-slate-200 focus:border-d-purple dark:bg-d-slate-400 dark:placeholder-d-slate-300 dark:text-white"
+               class="w-full rounded-xl py-2 pr-10 pl-5 text-lg font-bold text-black outline-none border-1 bg-d-slate-100 placeholder-d-slate-200 dark:bg-d-slate-400 dark:placeholder-d-slate-300 dark:text-white"
                [ngClass]="{
                  'border border-d-red': isSearchbarInvalid(),
                  'focus:border-d-red': isSearchbarInvalid(),
+                 'focus:border-d-purple': !isSearchbarInvalid(),
                  'border border-d-slate-100 dark:border-d-slate-400': !isSearchbarInvalid()
                }"
                formControlName="searchbar"
@@ -105,7 +106,7 @@
     @let res = this.dictionaryResult();
     @if (isDictionaryError(res)) {
       @let err = res;
-      <div class="flex flex-col items-center justify-center gap-5 align-middle">
+      <div class="flex flex-col items-center justify-center gap-5 align-middle md:text-xl lg:text-2xl">
         <span class="mb-5 text-7xl">😕</span>
         <h1 class="font-bold">{{ err.title }}</h1>
         <p class="text-center font-normal text-d-slate-300">{{ err.message }} {{ err.resolution }}</p>
@@ -117,8 +118,8 @@
         <!-- Word | Phonetics | Audio -->
         <div class="mb-4 flex justify-between">
           <div class="flex flex-col gap-3">
-            <span class="text-3xl font-bold">{{ entry.word }}</span>
-            <span class="text-xl text-d-purple">{{ FreeDictionaryHelpers.getPhoneticText(entry) }}</span>
+            <span class="text-3xl font-bold md:text-6xl">{{ entry.word }}</span>
+            <span class="text-xl text-d-purple md:text-3xl">{{ FreeDictionaryHelpers.getPhoneticText(entry) }}</span>
           </div>
           @if (FreeDictionaryHelpers.hasPhoneticAudio(entry)) {
             <div class=""
@@ -137,13 +138,13 @@
         <div class="flex flex-col">
           @for (meaning of entry.meanings; track $index) {
             <div class="my-6 flex w-full items-center justify-between gap-4">
-              <div class="text-lg font-bold italic">{{ meaning.partOfSpeech }}</div>
+              <div class="text-lg font-bold italic md:text-3xl">{{ meaning.partOfSpeech }}</div>
               <div class="h-0 w-full border border-d-slate-200"></div>
             </div>
-            <span class="mb-2 text-d-slate-300">Meaning</span>
-            <ul class="list-disc px-4">
+            <span class="mb-2 text-d-slate-300 md:text-xl">Meaning</span>
+            <ul class="list-disc px-4 space-y-2">
               @for (definition of meaning.definitions; track $index) {
-                <li class="text-base text-d-purple"><span class="text-black dark:text-white">{{ definition.definition }}</span></li>
+                <li class="text-base text-d-purple md:text-lg"><span class="text-black dark:text-white">{{ definition.definition }}</span></li>
                 @if (definition.example) {
                   <span class="text-d-slate-300">&ldquo;{{ definition.example }}&rdquo;</span>
                 }
@@ -191,9 +192,9 @@
         <div class="my-4 h-0 w-full border border-d-slate-200"></div>
 
         <div class="flex w-fit flex-col pb-12">
-          <div class="mr-2 mb-1 underline text-d-slate-300 underline-offset-3">Source</div>
+          <div class="mr-2 mb-1 underline text-d-slate-300 underline-offset-3 md:text-xl">Source</div>
           @for (source of entry.sourceUrls; track $index) {
-            <div class="flex items-center justify-between gap-4">
+            <div class="flex items-center justify-between gap-4 md:text-lg">
               <a href="{{source}}" class="underline" target="_blank">{{ source }}</a>
               <a href="{{source}}" target="_blank">
                 <img ngSrc="assets/images/icon-new-window.svg" height="14" width="14">
@@ -204,24 +205,25 @@
       </div>
 
       <!-- Fake Pagination -->
-      <div class="mb-8 flex select-none items-center justify-between sm:justify-end py-4">
-        <div class="relative select-none rounded-xl disabled:cursor-not-allowed disabled:opacity-50 hover:cursor-pointer justify-center align-middle items-center
-        hover:shadow-[0px_0px_10px_2px_var(--color-d-purple)] transition-shadow duration-200"
-             (click)="previousPage()">
-          <div class="rounded-xl bg-white px-4 py-2 not-dark:ring-2 dark:bg-d-slate-400">Previous</div>
+      @if (totalPages() > 1) {
+        <div class="mb-8 flex select-none items-center justify-between py-4 sm:justify-end md:text-xl">
+          <div class="relative select-none rounded-xl justify-center align-middle items-center has-not-disabled:hover:shadow-[0px_0px_10px_2px_var(--color-d-purple)] transition-shadow duration-200 group"
+               (click)="previousPage()">
+            <button class="rounded-xl bg-white px-4 py-2 not-dark:ring-2 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-25 dark:bg-d-slate-400"
+                    [disabled]="currentPage() === 1">Previous
+            </button>
+          </div>
+          <span class="mx-3 text-sm md:text-lg">Page {{ currentPage() }} of {{ totalPages() }}</span>
+          <div class="relative select-none rounded-xl justify-center align-middle items-center has-not-disabled:hover:shadow-[0px_0px_10px_2px_var(--color-d-purple)] transition-shadow duration-200 group"
+               (click)="nextPage()">
+            <button class="rounded-xl bg-white px-4 py-2 not-dark:ring-2 hover:cursor-pointer disabled:cursor-not-allowed disabled:opacity-25 dark:bg-d-slate-400"
+                    [disabled]="currentPage() === totalPages()">Next
+            </button>
+          </div>
         </div>
-        <span class="mx-3 text-sm">
-        Page {{ currentPage() }} of {{ totalPages() }}
-      </span>
-        <div class="relative select-none rounded-xl disabled:cursor-not-allowed disabled:opacity-50 hover:cursor-pointer
-        hover:shadow-[0px_0px_10px_2px_var(--color-d-purple)] transition-shadow duration-200 "
-             (click)="nextPage()">
-          <div class="relative z-10 flex flex-col gap-4 rounded-xl bg-white px-4 py-2 not-dark:ring-2 dark:bg-d-slate-400">Next</div>
-        </div>
-      </div>
-
+      }
     } @else {
-      <p class="text-center text-d-slate-400">Type a word to search the dictionary...</p>
+      <p class="text-center text-d-slate-400 md:text-2xl">Type a word to search the dictionary...</p>
     }
   </section>
 

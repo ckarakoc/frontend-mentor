@@ -1,18 +1,20 @@
 # Array of project names
 $projects = @(
-  "qrcode"
   "blog-preview-card",
-  "recipe",
-  "product-preview-card",
-  "social-links",
+  "dictionary",
   "four-card-feature",
+  "product-preview-card",
+  "qrcode"
+  "recipe",
+  "social-links",
   "testimonials-grid"
 )
 
 # Process each project
 foreach ($project in $projects) {
-  $imagePath = ".\projects\$project\src\assets\screenshot-*.png"
-  $files = Get-ChildItem -Path $imagePath -ErrorAction SilentlyContinue
+  $assetsPath = ".\projects\$project\src\assets"
+  $files = Get-ChildItem -Path $assetsPath -Recurse -ErrorAction SilentlyContinue |
+    Where-Object { $_.Name -like "screenshot-*.png" -or $_.Name -ieq "preview.jpg" }
 
   foreach ($file in $files) {
     Write-Host "Processing: $($file.FullName)" -ForegroundColor Green
