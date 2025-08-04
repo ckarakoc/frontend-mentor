@@ -14,7 +14,7 @@ import { NgOptimizedImage, TitleCasePipe } from "@angular/common";
     <div #dropdown class="relative h-8 w-28 select-none px-3 text-sm font-bold text-d-slate-500 text-nowrap hover:cursor-pointer dark:text-white md:text-lg"
          (click)="toggleDropdown()">
       <form class="flex h-full flex-col items-end justify-center align-middle" [formGroup]="fontForm">
-        <label class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.typeface | titlecase }}</label>
+        <div class="select-none pr-5 hover:cursor-pointer">{{ fontForm.value.typeface | titlecase }}</div>
 
         <div class="absolute top-10 right-1">
           <div class="absolute -inset-1 z-10 rounded-xl bg-black opacity-10 blur dark:bg-d-purple dark:opacity-75">
