@@ -76,9 +76,9 @@ export class FontDropdown implements OnInit, OnDestroy {
   });
 
   ngOnInit() {
-    const savedFont = localStorage.getItem('selectedTypeface');
-    if (savedFont) {
-      this.fontForm.patchValue({ typeface: savedFont });
+    const savedTf = localStorage.getItem('selectedTypeface');
+    if (savedTf) {
+      this.fontForm.patchValue({ typeface: savedTf });
       this.typeface.set(this.fontForm.value.typeface);
     }
     this.fontForm.valueChanges.subscribe(value => {

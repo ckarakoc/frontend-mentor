@@ -3,6 +3,8 @@ name: Deploy to GitHub Pages
 on:
   push:
     branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
 
   workflow_dispatch:
 
@@ -37,6 +39,9 @@ jobs:
       - name: Build applications
         run: npm run build
         shell: pwsh # PowerShell 7+
+
+      - name: Run tests in headless Chrome
+        run: npm run test:ci
 
       - name: Setup Pages
         uses: actions/configure-pages@v5

@@ -10,7 +10,7 @@ describe('DarkModeToggle', () => {
     await TestBed.configureTestingModule({
       imports: [DarkModeToggle]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(DarkModeToggle);
     component = fixture.componentInstance;
@@ -20,4 +20,9 @@ describe('DarkModeToggle', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should create a global class called .dark in the html tag', () => {
+    const html = document.querySelector('html');
+
+  })
 });

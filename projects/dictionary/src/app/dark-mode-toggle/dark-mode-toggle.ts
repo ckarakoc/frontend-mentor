@@ -25,9 +25,10 @@ import { ThemeService } from '../_services/theme-service';
 })
 export class DarkModeToggle implements OnInit {
   themeService = inject(ThemeService);
-  protected readonly Theme = Theme;
 
   ngOnInit(): void {
     this.themeService.initializeTheme();
   }
+
+  protected readonly Theme = Theme;
 }
