@@ -3,9 +3,20 @@
      class="flex flex-col rounded-lg justify-between  border border-fuchsia-200 bg-fuchsia-50 hover:bg-fuchsia-200 p-2 hover:scale-125 duration-300 ease-in group
        shadow shadow-{{borderColor}}-500 ring-4 ring-{{borderColor}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{borderColor}}-500">
   <!-- Image -->
-  <div class="duration-100 ease-in group-hover:scale-95 hover:cursor-pointer aspect-auto"
-       [routerLink]="link()">
 
+  @if (useHref()) {
+    <a class="duration-100 ease-in group-hover:scale-95 hover:cursor-pointer aspect-auto"
+       [href]="link()">
+      <ng-container *ngTemplateOutlet="imageContainer"></ng-container>
+    </a>
+  } @else {
+    <a class="duration-100 ease-in group-hover:scale-95 hover:cursor-pointer aspect-auto"
+       [routerLink]="link()">
+      <ng-container *ngTemplateOutlet="imageContainer"></ng-container>
+    </a>
+  }
+
+  <ng-template #imageContainer>
     <img [src]="getPlaceHolderImg(imgUrl())"
          class="rounded-lg blur-sm"
          [class.hidden]="imageLoaded()"/>
@@ -14,27 +25,46 @@
          class="rounded-lg"
          [class.hidden]="!imageLoaded()"
          (load)="imageLoaded.set( true)"/>
-  </div>
+  </ng-template>
 
   <!-- Title -->
   <div class="flex flex-row items-center justify-between px-2 pt-1 text-center align-middle">
     <div class="mb-2 overflow-hidden break-words text-2xl font-bold tracking-tight text-{{borderColor}}-900"> {{ cardTitle() }}</div>
-    <div class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
+    @if (useHref()) {
+      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
+         [href]="link()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2em"
+          height="2em"
+          color="black"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          fill="none">
+          <line y2="12" x2="19" y1="12" x1="5"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    } @else {
+      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
          [routerLink]="link()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="2em"
-        height="2em"
-        color="black"
-        stroke-linejoin="round"
-        stroke-linecap="round"
-        viewBox="0 0 24 24"
-        stroke-width="2"
-        fill="none">
-        <line y2="12" x2="19" y1="12" x1="5"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
-      </svg>
-    </div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="2em"
+          height="2em"
+          color="black"
+          stroke-linejoin="round"
+          stroke-linecap="round"
+          viewBox="0 0 24 24"
+          stroke-width="2"
+          fill="none">
+          <line y2="12" x2="19" y1="12" x1="5"></line>
+          <polyline points="12 5 19 12 12 19"></polyline>
+        </svg>
+      </a>
+    }
   </div>
 
   <!-- Content -->
