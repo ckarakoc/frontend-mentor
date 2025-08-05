@@ -7,7 +7,7 @@ import { MeetLandingPage } from 'meetLandingPage';
     MeetLandingPage
   ],
   template: `
-    <div class="">
+    <div class="flex min-h-full">
       <lib-meet-landing-page></lib-meet-landing-page>
     </div>
   `,

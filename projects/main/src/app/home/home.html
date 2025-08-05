@@ -1,4 +1,4 @@
-<div #wrapperDiv class="overflow-x-hidden min-h-screen scroll-container"
+<div #wrapperDiv class="min-h-screen overflow-x-hidden scroll-container"
      (scroll)="checkScrollTop(wrapperDiv)" (window:scroll)="checkScrollTop(masonry)">
   <img class="pointer-events-none fixed left-0 -z-20 -rotate-6 top-1/12 sm:visible" ngSrc="assets/images/kid-drawing-0.png" alt="truck" height="360" width="360">
   <img class="pointer-events-none invisible fixed top-3/4 -z-20 rotate-12 left-4/5 sm:visible" ngSrc="assets/images/kid-drawing-1.png" alt="helicopter" height="360" width="360">
@@ -7,7 +7,14 @@
   <img class="pointer-events-none invisible fixed right-0 -z-20 -rotate-3 sm:visible" ngSrc="assets/images/kid-drawing-4.png" alt="dinosaur" height="360" width="360">
   <img class="pointer-events-none invisible fixed top-0 left-1/3 -z-20 rotate-3 sm:visible" ngSrc="assets/images/kid-drawing-5.png" alt="helicopter" height="360" width="360">
 
-  <div #masonry class="flex flex-auto flex-row flex-wrap justify-center gap-4 pb-4"
+  <!-- <div class="flex select-none items-center justify-center break-all bg-gradient-to-r from-blue-600 to-purple-500 bg-clip-text text-center text-9xl font-bold text-transparent font-henny-penny"> -->
+  <h1 class="my-12 select-none break-words px-4 text-center text-4xl font-bold text-blue-500 font-henny-penny text-shadow-lg text-shadow-violet-800 sm:text-6xl md:text-8xl">
+    Designed by my Niece Ezgi
+  </h1>
+
+
+
+  <div #masonry class="mt-5 flex flex-auto flex-row flex-wrap justify-center gap-4 pb-4"
        (scroll)="checkScrollTop(masonry)">
     <!-- Main Grid -->
     <div class="m-4 columns-2 gap-4 cards sm:columns-2 md:columns-3 lg:columns-4 xl:columns-6">
