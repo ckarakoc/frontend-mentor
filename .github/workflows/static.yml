@@ -40,7 +40,7 @@ jobs:
         run: npm run build
         shell: pwsh # PowerShell 7+
 
-      - name: Run tests in headless Chrome
+      - name: Run tests
         run: npm run test:ci
 
       - name: Setup Pages

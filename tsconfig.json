@@ -18,6 +18,9 @@
       "four-card-feature": [
         "./projects/four-card-feature/src/public-api.ts"
       ],
+      "meetLandingPage": [
+        "./projects/meet-landing-page/src/public-api.ts"
+      ],
       "product-preview-card": [
         "./projects/product-preview-card/src/public-api.ts"
       ],
@@ -124,6 +127,12 @@
     },
     {
       "path": "./projects/sankey-chart/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/meet-landing-page/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/meet-landing-page/tsconfig.spec.json"
     }
   ]
 }

@@ -73,6 +73,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "projects/meet-landing-page/src/assets",
+                "output": "assets/meet-landing-page"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/dictionary/src/assets",
                 "output": "assets/dictionary"
               }
@@ -579,6 +584,36 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/sankey-chart/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "meetLandingPage": {
+      "projectType": "library",
+      "root": "projects/meet-landing-page",
+      "sourceRoot": "projects/meet-landing-page/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/meet-landing-page/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/meet-landing-page/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/meet-landing-page/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
