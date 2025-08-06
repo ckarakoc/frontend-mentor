@@ -1,0 +1,120 @@
+[
+  {
+    "imgUrl": "assets/qrcode/screenshot-desktop.png",
+    "link": "qrcode",
+    "cardContent": "Display a QR code using modern layout techniques.",
+    "cardTitle": "QR Code Card",
+    "tags": [
+      "HTML",
+      "CSS",
+      "QR-code Generator"
+    ]
+  },
+  {
+    "imgUrl": "assets/blog-preview-card/screenshot-mobile.png",
+    "link": "blog-preview",
+    "cardContent": "A clean blog post preview card with responsive design and hover effects.",
+    "cardTitle": "Blog Preview Card",
+    "tags": [
+      "HTML",
+      "TailwindCSS",
+      "Responsive Design"
+    ]
+  },
+  {
+    "imgUrl": "assets/recipe/images/design/preview.jpg",
+    "link": "recipe",
+    "cardContent": "A recipe page layout featuring ingredients, instructions, and nutritional info.",
+    "cardTitle": "Recipe Page",
+    "tags": [
+      "Angular",
+      "TypeScript",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/product-preview-card/screenshot-desktop.png",
+    "link": "product-preview",
+    "cardContent": "An elegant product preview card highlighting details and call-to-action.",
+    "cardTitle": "Product Preview Card",
+    "tags": [
+      "Angular",
+      "HTML",
+      "Figma"
+    ]
+  },
+  {
+    "imgUrl": "assets/social-links/screenshot-mobile.png",
+    "link": "social-links",
+    "cardContent": "User profile card with social media links and personal details.",
+    "cardTitle": "Social Links Profile Card",
+    "tags": [
+      "Angular",
+      "HTML",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/four-card-feature/screenshot-desktop.png",
+    "link": "four-card-feature",
+    "cardContent": "A layout showcasing four feature cards in a clean grid design.",
+    "cardTitle": "Four Card Feature",
+    "tags": [
+      "Angular",
+      "CSS Grid",
+      "Responsive Layout"
+    ]
+  },
+  {
+    "imgUrl": "assets/testimonials-grid/screenshot-desktop.png",
+    "link": "testimonials-grid",
+    "cardContent": "Grid-based testimonials layout with user reviews and ratings.",
+    "cardTitle": "Testimonials Grid",
+    "tags": [
+      "Angular",
+      "CSS",
+      "CSS Grid"
+    ]
+  },
+  {
+    "imgUrl": "assets/dictionary/preview.jpg",
+    "link": "dictionary",
+    "cardContent": "Word search app using Free Dictionary API with definitions, phonetics, and examples.",
+    "cardTitle": "Dictionary",
+    "tags": [
+      "Angular",
+      "API",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/meet-landing-page/preview.jpg",
+    "link": "meet-landing-page",
+    "cardContent": "A clean and modern landing page layout for a video meeting app, built with HTML and CSS.",
+    "cardTitle": "Meet Landing Page",
+    "tags": [
+      "HTML",
+      "CSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/article-preview-card/screenshot-tablet.png",
+    "link": "article-preview",
+    "cardContent": "A responsive article preview card with hover effects, showcasing the use of layout techniques.",
+    "cardTitle": "Article Preview Card",
+    "tags": [
+      "Javascript",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/newsletter-form/screenshot-desktop.png",
+    "link": "newsletter-form",
+    "cardContent": "A responsive newsletter sign-up form with clean layout and validation, styled using TailwindCSS.",
+    "cardTitle": "Newsletter Form",
+    "tags": [
+      "Angular",
+      "TailwindCSS"
+    ]
+  }
+]

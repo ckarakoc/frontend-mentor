@@ -16,117 +16,142 @@
        (scroll)="checkScrollTop(masonry)">
     <!-- Main Grid -->
     <div class="m-4 columns-2 gap-4 cards sm:columns-2 md:columns-3 lg:columns-4 xl:columns-6">
-      <!-- QR Code -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/qrcode/screenshot-desktop.png"
-          link="qrcode"
-          cardContent="Display a QR code using modern layout techniques."
-          cardTitle="QR Code Card"
-          [tags]="['HTML', 'CSS', 'QR-code Generator']">
-        </app-home-card>
-      </div>
+      <!--  &lt;!&ndash; QR Code &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/qrcode/screenshot-desktop.png"
+           link="qrcode"
+           cardContent="Display a QR code using modern layout techniques."
+           cardTitle="QR Code Card"
+           [tags]="['HTML', 'CSS', 'QR-code Generator']">
+         </app-home-card>
+       </div>
 
-      <!-- Blog Preview -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/blog-preview-card/screenshot-mobile.png"
-          link="blog-preview"
-          cardContent="A clean blog post preview card with responsive design and hover effects."
-          cardTitle="Blog Preview Card"
-          [tags]="['HTML', 'TailwindCSS', 'Responsive Design']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Blog Preview &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/blog-preview-card/screenshot-mobile.png"
+           link="blog-preview"
+           cardContent="A clean blog post preview card with responsive design and hover effects."
+           cardTitle="Blog Preview Card"
+           [tags]="['HTML', 'TailwindCSS', 'Responsive Design']">
+         </app-home-card>
+       </div>
 
-      <!-- Recipe -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/recipe/images/design/preview.jpg"
-          link="recipe"
-          cardContent="A recipe page layout featuring ingredients, instructions, and nutritional info."
-          cardTitle="Recipe Page"
-          [tags]="['Angular', 'TypeScript', 'TailwindCSS']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Recipe &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/recipe/images/design/preview.jpg"
+           link="recipe"
+           cardContent="A recipe page layout featuring ingredients, instructions, and nutritional info."
+           cardTitle="Recipe Page"
+           [tags]="['Angular', 'TypeScript', 'TailwindCSS']">
+         </app-home-card>
+       </div>
 
-      <!-- Product Preview -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/product-preview-card/screenshot-desktop.png"
-          link="product-preview"
-          cardContent="An elegant product preview card highlighting details and call-to-action."
-          cardTitle="Product Preview Card"
-          [tags]="['Angular', 'HTML', 'Figma']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Product Preview &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/product-preview-card/screenshot-desktop.png"
+           link="product-preview"
+           cardContent="An elegant product preview card highlighting details and call-to-action."
+           cardTitle="Product Preview Card"
+           [tags]="['Angular', 'HTML', 'Figma']">
+         </app-home-card>
+       </div>
 
-      <!-- Social Links -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/social-links/screenshot-mobile.png"
-          link="social-links"
-          cardContent="User profile card with social media links and personal details."
-          cardTitle="Social Links Profile Card"
-          [tags]="['Angular', 'HTML', 'TailwindCSS']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Social Links &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/social-links/screenshot-mobile.png"
+           link="social-links"
+           cardContent="User profile card with social media links and personal details."
+           cardTitle="Social Links Profile Card"
+           [tags]="['Angular', 'HTML', 'TailwindCSS']">
+         </app-home-card>
+       </div>
 
-      <!-- Four Card Feature -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/four-card-feature/screenshot-desktop.png"
-          link="four-card-feature"
-          cardContent="A layout showcasing four feature cards in a clean grid design."
-          cardTitle="Four Card Feature"
-          [tags]="['Angular', 'CSS Grid', 'Responsive Layout']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Four Card Feature &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/four-card-feature/screenshot-desktop.png"
+           link="four-card-feature"
+           cardContent="A layout showcasing four feature cards in a clean grid design."
+           cardTitle="Four Card Feature"
+           [tags]="['Angular', 'CSS Grid', 'Responsive Layout']">
+         </app-home-card>
+       </div>
 
-      <!-- Testimonials Grid -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/testimonials-grid/screenshot-desktop.png"
-          link="testimonials-grid"
-          cardContent="Grid-based testimonials layout with user reviews and ratings."
-          cardTitle="Testimonials Grid"
-          [tags]="['Angular', 'CSS', 'CSS Grid']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Testimonials Grid &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/testimonials-grid/screenshot-desktop.png"
+           link="testimonials-grid"
+           cardContent="Grid-based testimonials layout with user reviews and ratings."
+           cardTitle="Testimonials Grid"
+           [tags]="['Angular', 'CSS', 'CSS Grid']">
+         </app-home-card>
+       </div>
 
-      <!-- Dictionary -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/dictionary/preview.jpg"
-          link="dictionary"
-          cardContent="Word search app using Free Dictionary API with definitions, phonetics, and examples."
-          cardTitle="Dictionary"
-          [useHref]="true"
-          [golden]="true"
-          [tags]="['Angular', 'API', 'TailwindCSS']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Dictionary &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/dictionary/preview.jpg"
+           link="dictionary"
+           cardContent="Word search app using Free Dictionary API with definitions, phonetics, and examples."
+           cardTitle="Dictionary"
+           [useHref]="true"
+           [golden]="true"
+           [tags]="['Angular', 'API', 'TailwindCSS']">
+         </app-home-card>
+       </div>
 
-      <!-- Meet Landing Page -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/meet-landing-page/preview.jpg"
-          link="meet-landing-page"
-          cardContent="A clean and modern landing page layout for a video meeting app, built with HTML and CSS."
-          cardTitle="Meet Landing Page"
-          [tags]="['HTML', 'CSS']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Meet Landing Page &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/meet-landing-page/preview.jpg"
+           link="meet-landing-page"
+           cardContent="A clean and modern landing page layout for a video meeting app, built with HTML and CSS."
+           cardTitle="Meet Landing Page"
+           [tags]="['HTML', 'CSS']">
+         </app-home-card>
+       </div>
 
-      <!-- Article Preview -->
-      <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
-        <app-home-card
-          imgUrl="assets/article-preview-card/screenshot-tablet.png"
-          link="article-preview"
-          cardContent="A responsive article preview card with hover effects, showcasing the use of layout techniques."
-          cardTitle="Article Preview Card"
-          [tags]="['Javascript', 'TailwindCSS']">
-        </app-home-card>
-      </div>
+       &lt;!&ndash; Article Preview &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/article-preview-card/screenshot-tablet.png"
+           link="article-preview"
+           cardContent="A responsive article preview card with hover effects, showcasing the use of layout techniques."
+           cardTitle="Article Preview Card"
+           [tags]="['Javascript', 'TailwindCSS']">
+         </app-home-card>
+       </div>
+
+       &lt;!&ndash; Newsletter Form &ndash;&gt;
+       <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+         <app-home-card
+           imgUrl="assets/newsletter-form/screenshot-desktop.png"
+           link="newsletter-form"
+           cardContent="A responsive newsletter sign-up form with clean layout and validation, styled using TailwindCSS."
+           cardTitle="Article Preview Card"
+           [tags]="['Javascript', 'TailwindCSS']">
+         </app-home-card>
+       </div> -->
+
+      @for (card of this.masonryData; track $index) {
+        <div #outerHomeCardDiv class="mb-4 break-inside-avoid card">
+          <app-home-card
+            imgUrl="{{ card.imgUrl }}"
+            link="{{ card.link }}"
+            cardContent="{{ card.cardContent }}"
+            cardTitle="{{ card.cardTitle }}"
+            [useHref]="card.useHref ?? false"
+            [golden]="card.golden ?? false"
+            [tags]="card.tags">
+          </app-home-card>
+        </div>
+      }
 
       <!-- For Testing Purposes -->
       <!-- @for (_ of [].constructor(25); track $index) {

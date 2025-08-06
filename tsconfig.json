@@ -24,6 +24,9 @@
       "meetLandingPage": [
         "./projects/meet-landing-page/src/public-api.ts"
       ],
+      "newsletter-form": [
+        "./dist/newsletter-form"
+      ],
       "product-preview-card": [
         "./projects/product-preview-card/src/public-api.ts"
       ],
@@ -142,6 +145,12 @@
     },
     {
       "path": "./projects/article-preview-card/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/newsletter-form/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/newsletter-form/tsconfig.spec.json"
     }
   ]
 }

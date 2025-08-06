@@ -1,8 +1,19 @@
-import { AfterViewInit, Component, computed, ElementRef, Signal, signal, ViewChild, viewChildren } from '@angular/core';
+import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, Signal, signal, ViewChild, viewChildren } from '@angular/core';
 import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
 import { HomeCard } from '../home-card/home-card';
 import { NgOptimizedImage } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
+
+interface MasonryCardData {
+  imgUrl: string;
+  link: string;
+  cardContent: string;
+  cardTitle: string;
+  tags: string[];
+  useHref?: boolean;
+  golden?: boolean;
+}
 
 
 @Component({
@@ -15,7 +26,7 @@ import { NgOptimizedImage } from '@angular/common';
   templateUrl: './home.html',
   styleUrl: './home.css'
 })
-export class Home implements AfterViewInit {
+export class Home implements OnInit, AfterViewInit {
   @ViewChild('masonry') masonry!: ElementRef<HTMLDivElement>;
   homeCardList = viewChildren(HomeCard);
   outerHomeCardDivList: Signal<readonly ElementRef[]> = viewChildren('outerHomeCardDiv', { read: ElementRef });
@@ -23,6 +34,20 @@ export class Home implements AfterViewInit {
   isElementScrolled = signal<boolean>(false);
   isWindowScrolled = signal<boolean>(false);
   isScrollAtTop = computed(() => !this.isElementScrolled() && !this.isWindowScrolled());
+
+  private http: HttpClient = inject(HttpClient);
+  protected masonryData!: MasonryCardData[];
+
+  ngOnInit(): void {
+    this.http.get<MasonryCardData[]>('assets/data/masonry-cards.json').subscribe(data => this.masonryData = data);
+  }
+
+  ngAfterViewInit(): void {
+    this.giveOriginToDivs();
+    setTimeout(() => {
+      this.giveOriginToDivs();
+    }, 3000);
+  }
 
   checkScrollTop(el: HTMLElement): void {
     this.isElementScrolled.set(el.scrollTop > 50);
@@ -48,14 +73,6 @@ export class Home implements AfterViewInit {
       }
     });
   }
-
-  ngAfterViewInit(): void {
-    this.giveOriginToDivs();
-    setTimeout(() => {
-      this.giveOriginToDivs();
-    }, 3000);
-  }
-
 
   protected readonly faChevronCircleUp = faChevronCircleUp;
 }

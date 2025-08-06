@@ -83,6 +83,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "projects/newsletter-form/src/assets",
+                "output": "assets/newsletter-form"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/dictionary/src/assets",
                 "output": "assets/dictionary"
               }
@@ -649,6 +654,36 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/article-preview-card/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "newsletter-form": {
+      "projectType": "library",
+      "root": "projects/newsletter-form",
+      "sourceRoot": "projects/newsletter-form/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/newsletter-form/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/newsletter-form/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/newsletter-form/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
