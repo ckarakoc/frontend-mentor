@@ -7,7 +7,7 @@ import { ArticlePreviewCard } from 'articlePreviewCard';
     ArticlePreviewCard
   ],
   template: `
-    <div class="flex min-h-full w-full items-center justify-center p-4 align-middle bg-yellow-300">
+    <div class="flex min-h-full w-full items-center justify-center p-4 align-middle bg-gray-300">
       <lib-article-preview-card></lib-article-preview-card>
     </div>
   `,

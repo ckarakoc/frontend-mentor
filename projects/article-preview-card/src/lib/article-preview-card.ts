@@ -14,7 +14,7 @@ import { TippyDirective } from '@ngneat/helipopper';
   ],
   template: `
     <lib-tippy-styles></lib-tippy-styles>
-    <div class="bg-white max-w-80 rounded-2xl flex flex-col sm:flex-row sm:max-w-3xl">
+    <div class="bg-white max-w-80 rounded-2xl flex flex-col sm:flex-row sm:max-w-3xl shadow-2xl">
       <img class="rounded-t-2xl sm:rounded-l-2xl sm:rounded-tr-none sm:max-w-1/3" src="assets/article-preview-card/images/drawers.jpg" alt="card image" priority>
 
       <div class="sm:flex sm:flex-col">
