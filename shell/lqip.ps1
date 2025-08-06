@@ -1,5 +1,6 @@
 # Array of project names
 $projects = @(
+  "article-preview-card",
   "blog-preview-card",
   "dictionary",
   "four-card-feature",

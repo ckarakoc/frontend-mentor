@@ -597,7 +597,7 @@
         }
       }
     },
-    "meetLandingPage": {
+    "meet-landing-page": {
       "projectType": "library",
       "root": "projects/meet-landing-page",
       "sourceRoot": "projects/meet-landing-page/src",
@@ -627,7 +627,7 @@
         }
       }
     },
-    "articlePreviewCard": {
+    "article-preview-card": {
       "projectType": "library",
       "root": "projects/article-preview-card",
       "sourceRoot": "projects/article-preview-card/src",
