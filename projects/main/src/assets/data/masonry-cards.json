@@ -85,7 +85,9 @@
       "Angular",
       "API",
       "TailwindCSS"
-    ]
+    ],
+    "useHref": true,
+    "golden": true
   },
   {
     "imgUrl": "assets/meet-landing-page/preview.jpg",

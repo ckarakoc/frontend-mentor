@@ -385,8 +385,8 @@ import { Component } from '@angular/core';
         background-color: #f6f6f6;
         color: #444;
         padding: 200px 100px;
-        width: 1024px;
-        height: 600px;
+        max-width: 1200px;
+        /*height: 600px;*/
       }
     }
   `

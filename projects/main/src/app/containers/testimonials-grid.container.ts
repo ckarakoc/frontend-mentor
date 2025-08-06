@@ -8,21 +8,20 @@ import { TestimonialsGrid } from 'testimonials-grid';
     TestimonialsGrid
   ],
   template: `
-    <div class="flex w-full items-center justify-center p-4 align-middle">
+    <div class="flex min-h-full w-full items-center justify-center p-4 align-middle bg-[#F6F5F6]">
       <lib-testimonials-grid></lib-testimonials-grid>
     </div>
   `,
-  styles: [`
-    :host {
-      display: block;
-      width: 100dvw;
-      height: 100dvh;
-      background-color: #F6F5F6;
-      overflow: auto;
-      box-sizing: border-box;
-      padding: 1rem;
-    }
-  `]
+  styles: `
+    /*:host {*/
+    /*  display: block;*/
+    /*  width: 100dvw;*/
+    /*  height: 100dvh;*/
+    /*  background-color: #F6F5F6;*/
+    /*  overflow: auto;*/
+    /*  box-sizing: border-box;*/
+    /*}*/
+  `
 })
 export class TestimonialsGridContainer {
 }
