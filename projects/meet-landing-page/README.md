@@ -41,4 +41,3 @@ Users should be able to:
 ## Acknowledgments
 
 - [Frontend Mentor](https://www.frontendmentor.io)
-- [Bennett Feely](https://bennettfeely.com/clippy/)

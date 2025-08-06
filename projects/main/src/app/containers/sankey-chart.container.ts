@@ -29,7 +29,6 @@ import { ChartConfiguration } from 'chart.js';
   `]
 })
 export class SankeyChartContainer {
-
   chartConfig: ChartConfiguration = {
     type: 'sankey',
     data: {

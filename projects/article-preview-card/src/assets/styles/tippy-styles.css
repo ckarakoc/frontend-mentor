@@ -1,0 +1,31 @@
+@import "tippy.js/dist/tippy.css";
+@import "tippy.js/animations/scale.css";
+
+.tippy-box {
+  font-family: 'Manrope', sans-serif;
+  background-color: #48556A;
+  color: white;
+  border-radius: 10px;
+  filter: drop-shadow(0 10px 10px rgba(201, 213, 225, 0.50));
+  padding: 18px 38px;
+}
+
+.tippy-arrow {
+  color: #48556A;
+}
+
+.tippy-arrow::before {
+  bottom: -15px !important;
+  left: -7px !important;
+  border-width: 15px 15px 0 !important;
+}
+
+.tippy-box .custom-1 {
+  color: #9DAEC2;
+}
+
+@media (max-width: 640px) {
+  .tippy-variation-custom {
+    display: none !important;
+  }
+}

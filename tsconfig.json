@@ -12,6 +12,9 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "paths": {
+      "articlePreviewCard": [
+        "./projects/article-preview-card/src/public-api.ts"
+      ],
       "blog-preview-card": [
         "./projects/blog-preview-card/src/public-api.ts"
       ],
@@ -133,6 +136,12 @@
     },
     {
       "path": "./projects/meet-landing-page/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/article-preview-card/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/article-preview-card/tsconfig.spec.json"
     }
   ]
 }

@@ -184,6 +184,7 @@ import { NgTemplateOutlet } from '@angular/common';
       text-wrap: nowrap;
       transition: all 0.2s ease-in-out;
       transition-duration: 0.5s;
+      cursor: pointer;
     }
 
     .btn-blue {
