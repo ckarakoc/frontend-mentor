@@ -13,12 +13,15 @@ Users should be able to:
 ### Screenshot
 
 #### Desktop:
+
 ![Desktop](src/assets/screenshot-desktop.png)
 
 #### Tablet:
+
 ![Mobile](src/assets/screenshot-tablet.png)
 
 #### Mobile:
+
 ![Mobile](src/assets/screenshot-mobile.png)
 
 ## My process
@@ -32,7 +35,6 @@ Users should be able to:
 
 - [Website](https://www.ckarakoc.nl)
 - [LinkedIn](https://www.linkedin.com/in/celal-karakoç/)
-
 
 ## Acknowledgments
 

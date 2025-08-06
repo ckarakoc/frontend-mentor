@@ -1,4 +1,4 @@
-import { computed, inject, Injectable, linkedSignal, Signal, signal } from '@angular/core';
+import { computed, inject, Injectable, linkedSignal, signal } from '@angular/core';
 import { ThemeService } from './theme-service';
 import { Theme } from '../_enums/theme';
 import { Spinner } from 'ngx-spinner';
@@ -30,8 +30,8 @@ export class SpinnerService {
       fullScreen: false,
       size: 'medium',
       color: this.spinnerColor(),
-      bdColor: this.spinnerBgColor(),
-    }
+      bdColor: this.spinnerBgColor()
+    };
   });
 
   setLightModeSpinnerColor(color: string) {

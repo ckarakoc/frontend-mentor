@@ -10,7 +10,7 @@ import { ApiSearch } from '../api-search/api-search';
     DarkModeToggle,
     ApiSearch,
     FontDropdown,
-    NgOptimizedImage,
+    NgOptimizedImage
   ],
   templateUrl: './home.html',
   styleUrl: './home.css'

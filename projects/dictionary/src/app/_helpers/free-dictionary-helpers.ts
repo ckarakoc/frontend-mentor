@@ -2,6 +2,9 @@ import { DictionaryEntry } from '../_models/dictionary.model';
 
 export class FreeDictionaryHelpers {
 
+  private constructor() {
+  }
+
   /**
    * It either gets the main phonetic or the first phonetic with an audio or a phonetic without an audio or silently gets no phonetic
    * @param entry

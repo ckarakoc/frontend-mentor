@@ -5,7 +5,6 @@ export interface DictionaryEntry {
     text: string;
     audio?: string;
   }[];
-  origin: string;
   meanings: {
     partOfSpeech: string;
     definitions: {

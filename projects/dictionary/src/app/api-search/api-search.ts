@@ -1,7 +1,7 @@
 import { Component, computed, inject, OnDestroy, OnInit, signal } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { NgClass, NgOptimizedImage } from "@angular/common";
-import { NgxSpinnerComponent } from "ngx-spinner";
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgClass, NgOptimizedImage } from '@angular/common';
+import { NgxSpinnerComponent } from 'ngx-spinner';
 import { FreeDictionaryHelpers } from '../_helpers/free-dictionary-helpers';
 import { DictionaryError, isDictionaryError } from '../_models/dictionary.model.error';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -21,7 +21,7 @@ import { CustomValidators } from '../_validators/whitespace.validator';
   templateUrl: './api-search.html',
   styleUrl: './api-search.css'
 })
-export class ApiSearch implements OnInit, OnDestroy{
+export class ApiSearch implements OnInit, OnDestroy {
   private fb = inject(FormBuilder);
   private route = inject(ActivatedRoute);
   private router = inject(Router);
@@ -42,7 +42,7 @@ export class ApiSearch implements OnInit, OnDestroy{
   private audio = new Audio();
 
   searchForm = this.fb.group({
-    searchbar: ['', [Validators.required, CustomValidators.noWhitespaceValidator]],
+    searchbar: ['', [Validators.required, CustomValidators.noWhitespaceValidator]]
   });
 
   get searchbar() {

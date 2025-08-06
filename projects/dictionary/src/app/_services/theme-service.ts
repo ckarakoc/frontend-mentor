@@ -61,5 +61,5 @@ export class ThemeService {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     if (this._theme() === Theme.system) return prefersDark ? 'dark' : 'light';
     return this._theme() === Theme.dark ? 'dark' : 'light';
-  })
+  });
 }

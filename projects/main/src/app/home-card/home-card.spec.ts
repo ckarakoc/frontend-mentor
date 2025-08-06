@@ -19,7 +19,7 @@ describe('HomeCard', () => {
       bindings: [
         inputBinding('imgUrl', () => ''),
         inputBinding('link', () => ''),
-        inputBinding('tags', () => []),
+        inputBinding('tags', () => [])
       ]
     });
     component = fixture.componentInstance;

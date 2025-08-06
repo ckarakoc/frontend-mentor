@@ -10,7 +10,7 @@ describe('FontDropdown', () => {
     await TestBed.configureTestingModule({
       imports: [FontDropdown]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FontDropdown);
     component = fixture.componentInstance;

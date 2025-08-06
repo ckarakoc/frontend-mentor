@@ -10,7 +10,7 @@ describe('Shared404', () => {
     await TestBed.configureTestingModule({
       imports: [Shared404]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(Shared404);
     component = fixture.componentInstance;

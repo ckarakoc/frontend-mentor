@@ -7,7 +7,7 @@ import { SingleCardFeature } from './single-card-feature/single-card-feature';
     SingleCardFeature
   ],
   templateUrl: `./four-card-feature.html`,
-  styleUrl: `./four-card-feature.css`,
+  styleUrl: `./four-card-feature.css`
 })
 export class FourCardFeature {
 

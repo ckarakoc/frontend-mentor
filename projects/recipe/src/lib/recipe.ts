@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lib-recipe',
   imports: [],
   templateUrl: `./recipe.html`,
-  styleUrl: `./recipe.css`,
+  styleUrl: `./recipe.css`
 })
 export class Recipe {
 

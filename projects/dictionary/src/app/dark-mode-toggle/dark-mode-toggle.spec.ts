@@ -24,5 +24,5 @@ describe('DarkModeToggle', () => {
   it('should create a global class called .dark in the html tag', () => {
     const html = document.querySelector('html');
 
-  })
+  });
 });

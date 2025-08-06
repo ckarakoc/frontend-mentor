@@ -4,8 +4,8 @@ import { CanMatchFn } from '@angular/router';
 import { appBoundaryGuard } from './app-boundary-guard';
 
 describe('appBoundaryGuard', () => {
-  const executeGuard: CanMatchFn = (...guardParameters) => 
-      TestBed.runInInjectionContext(() => appBoundaryGuard(...guardParameters));
+  const executeGuard: CanMatchFn = (...guardParameters) =>
+    TestBed.runInInjectionContext(() => appBoundaryGuard(...guardParameters));
 
   beforeEach(() => {
     TestBed.configureTestingModule({});

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { QRCodeComponent, QRCodeElementType, QRCodeErrorCorrectionLevel } from "angularx-qrcode";
+import { QRCodeComponent, QRCodeElementType, QRCodeErrorCorrectionLevel } from 'angularx-qrcode';
 
 @Component({
   selector: 'lib-qrcode',
@@ -7,10 +7,10 @@ import { QRCodeComponent, QRCodeElementType, QRCodeErrorCorrectionLevel } from "
     QRCodeComponent
   ],
   templateUrl: './qrcode.html',
-  styleUrl: './qrcode.css',
+  styleUrl: './qrcode.css'
 })
 export class Qrcode {
-  white = '#ffffff'
+  white = '#ffffff';
   slate300 = '#d5e1ef';
   slate500 = '#68778d';
   slate900 = '#1f314f';
@@ -20,22 +20,22 @@ export class Qrcode {
 
   public qr_model = {
     allowEmptyString: true,
-    alt: "ckarakoc.nl",
+    alt: 'ckarakoc.nl',
     ariaLabel: `My personal website`,
     colorDark: this.white,
     colorLight: this.blue600,
-    cssClass: "center",
-    elementType: "canvas" as QRCodeElementType,
-    errorCorrectionLevel: "M" as QRCodeErrorCorrectionLevel,
-    imageSrc: "assets/qrcode/logo.png",
+    cssClass: 'center',
+    elementType: 'canvas' as QRCodeElementType,
+    errorCorrectionLevel: 'M' as QRCodeErrorCorrectionLevel,
+    imageSrc: 'assets/qrcode/logo.png',
     imageHeight: 0,
     imageWidth: 0,
     margin: 9,
-    qrdata: "https://www.ckarakoc.nl",
+    qrdata: 'https://www.ckarakoc.nl',
     scale: 0,
     version: undefined,
-    title: "My personal website",
-    width: 288,
-  }
+    title: 'My personal website',
+    width: 288
+  };
 
 }

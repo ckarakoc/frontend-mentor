@@ -17,7 +17,7 @@ import {
   faPuzzlePiece,
   faServer,
   faTerminal,
-  faWrench,
+  faWrench
 } from '@fortawesome/free-solid-svg-icons';
 import { NgClass, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 
@@ -55,7 +55,7 @@ export class HomeCard {
     'orange',
     'teal',
     'indigo',
-    'lime',
+    'lime'
   ];
 
   protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];

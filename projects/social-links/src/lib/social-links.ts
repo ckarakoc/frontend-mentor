@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   selector: 'lib-social-links',
   imports: [],
   templateUrl: `./social-links.html`,
-  styleUrl: `./social-links.css`,
+  styleUrl: `./social-links.css`
 })
 export class SocialLinks {
 

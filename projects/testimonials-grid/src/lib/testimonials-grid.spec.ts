@@ -10,7 +10,7 @@ describe('TestimonialsGrid', () => {
     await TestBed.configureTestingModule({
       imports: [TestimonialsGrid]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(TestimonialsGrid);
     component = fixture.componentInstance;

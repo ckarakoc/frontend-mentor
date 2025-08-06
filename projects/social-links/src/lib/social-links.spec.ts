@@ -10,7 +10,7 @@ describe('SocialLinks', () => {
     await TestBed.configureTestingModule({
       imports: [SocialLinks]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SocialLinks);
     component = fixture.componentInstance;

@@ -1,6 +1,6 @@
 import { Component, ElementRef, HostListener, Input, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { Chart, ChartConfiguration, registerables } from 'chart.js';
-import { SankeyController, Flow } from 'chartjs-chart-sankey';
+import { Flow, SankeyController } from 'chartjs-chart-sankey';
 
 
 @Component({

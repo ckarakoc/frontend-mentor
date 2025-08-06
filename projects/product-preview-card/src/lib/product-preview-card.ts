@@ -8,7 +8,7 @@ import { CurrencyPipe, UpperCasePipe } from '@angular/common';
     CurrencyPipe
   ],
   templateUrl: `./product-preview-card.html`,
-  styleUrl: `./product-preview-card.css`,
+  styleUrl: `./product-preview-card.css`
 })
 export class ProductPreviewCard {
 

@@ -6,7 +6,7 @@ import { DictionaryError } from '../_models/dictionary.model.error';
 
 @Injectable({
   providedIn: 'root',
-  deps: [HttpClient],
+  deps: [HttpClient]
 })
 export class FreeDictionaryAPI {
   private http: HttpClient = inject(HttpClient);
@@ -18,7 +18,7 @@ export class FreeDictionaryAPI {
         const err: DictionaryError = {
           title: error.error?.title || 'Error',
           message: error.error?.message || 'Unknown error occurred',
-          resolution: error.error?.resolution || 'Please try again later.',
+          resolution: error.error?.resolution || 'Please try again later.'
         };
         return throwError(() => err);
       })

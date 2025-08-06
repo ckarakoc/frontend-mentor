@@ -11,13 +11,13 @@ describe('SingleCardFeature', () => {
     await TestBed.configureTestingModule({
       imports: [SingleCardFeature]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SingleCardFeature, {
       bindings: [
         inputBinding('title', () => ''),
         inputBinding('content', () => ''),
-        inputBinding('icon', () => ''),
+        inputBinding('icon', () => '')
       ]
     });
     component = fixture.componentInstance;

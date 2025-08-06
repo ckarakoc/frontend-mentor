@@ -22,5 +22,5 @@ export const routes: Routes = [
   { path: 'testimonials-grid', component: TestimonialsGridContainer, title: 'Testimonials Grid | Frontend Mentor' },
   { path: 'sankey-chart', component: SankeyChartContainer, title: 'Sankey Chart | Job Application Tracker' },
   { path: 'meet-landing-page', component: MeetLandingPageContainer, title: 'Meet Landing Page | Frontend Mentor' },
-  { path: '**', component: Shared404, title: '404 - Not Found', pathMatch: 'full' },
+  { path: '**', component: Shared404, title: '404 - Not Found', pathMatch: 'full' }
 ];

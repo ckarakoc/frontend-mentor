@@ -1,6 +1,6 @@
-import { Component, ElementRef, inject, model, OnChanges, OnDestroy, OnInit, Renderer2, signal, SimpleChanges, viewChild } from '@angular/core';
-import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from "@angular/forms";
-import { NgOptimizedImage, TitleCasePipe } from "@angular/common";
+import { Component, ElementRef, inject, model, OnDestroy, OnInit, Renderer2, signal, viewChild } from '@angular/core';
+import { FormBuilder, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { NgOptimizedImage, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-font-dropdown',

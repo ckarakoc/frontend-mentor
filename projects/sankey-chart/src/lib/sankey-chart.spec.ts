@@ -10,7 +10,7 @@ describe('SankeyChart', () => {
     await TestBed.configureTestingModule({
       imports: [SankeyChart]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(SankeyChart);
     component = fixture.componentInstance;

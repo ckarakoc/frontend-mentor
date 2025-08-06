@@ -10,7 +10,7 @@ describe('FourCardFeature', () => {
     await TestBed.configureTestingModule({
       imports: [FourCardFeature]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(FourCardFeature);
     component = fixture.componentInstance;

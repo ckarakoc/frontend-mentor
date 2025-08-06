@@ -7,9 +7,11 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
 ### Screenshot
 
 #### Desktop:
+
 ![Desktop](src/assets/screenshot-desktop.png)
 
 #### Mobile:
+
 ![Mobile](src/assets/screenshot-mobile.png)
 
 ## My process
@@ -24,7 +26,6 @@ This is a solution to the [Blog preview card challenge on Frontend Mentor](https
 
 - [Website](https://www.ckarakoc.nl)
 - [LinkedIn](https://www.linkedin.com/in/celal-karakoç/)
-
 
 ## Acknowledgments
 

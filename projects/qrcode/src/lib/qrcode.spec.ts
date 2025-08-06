@@ -10,7 +10,7 @@ describe('Qrcode', () => {
     await TestBed.configureTestingModule({
       imports: [Qrcode]
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(Qrcode);
     component = fixture.componentInstance;

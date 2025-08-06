@@ -10,7 +10,7 @@ import { RouterLink } from '@angular/router';
     RouterLink
   ],
   templateUrl: './blog-preview-card.html',
-  styleUrl: './blog-preview-card.css',
+  styleUrl: './blog-preview-card.css'
 })
 export class BlogPreviewCard {
   tags = input.required<string[]>();

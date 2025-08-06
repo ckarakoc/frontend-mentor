@@ -18,16 +18,18 @@ Users should be able to:
 - [x] See hover and focus states for all interactive elements on the page
 - [x] **Bonus**: Have the correct color scheme chosen for them based on their computer preferences. _Hint_: Research `prefers-color-scheme` in CSS.
 
-
 ### Screenshot
 
 #### Desktop:
-![Desktop](src/assets/screenshot-desktop.png) 
+
+![Desktop](src/assets/screenshot-desktop.png)
 
 #### Tablet:
+
 ![Mobile](src/assets/screenshot-tablet.png)
 
 #### Mobile:
+
 ![Mobile](src/assets/screenshot-mobile.png)
 
 ## My process
@@ -41,7 +43,6 @@ Users should be able to:
 
 - [Website](https://www.ckarakoc.nl)
 - [LinkedIn](https://www.linkedin.com/in/celal-karakoç/)
-
 
 ## Acknowledgments
 

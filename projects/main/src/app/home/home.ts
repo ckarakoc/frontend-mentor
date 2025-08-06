@@ -22,7 +22,7 @@ export class Home implements AfterViewInit {
 
   isElementScrolled = signal<boolean>(false);
   isWindowScrolled = signal<boolean>(false);
-  isScrollAtTop = computed(() => !this.isElementScrolled() && !this.isWindowScrolled())
+  isScrollAtTop = computed(() => !this.isElementScrolled() && !this.isWindowScrolled());
 
   checkScrollTop(el: HTMLElement): void {
     this.isElementScrolled.set(el.scrollTop > 50);
