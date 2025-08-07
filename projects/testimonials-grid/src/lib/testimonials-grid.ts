@@ -369,7 +369,6 @@ import { Component } from '@angular/core';
         "grid-3 grid-3";
         background-color: #f6f6f6;
         color: #444;
-        padding: 200px 100px;
       }
     }
 
@@ -384,9 +383,7 @@ import { Component } from '@angular/core';
         "grid-4 grid-5 grid-5 grid-3";
         background-color: #f6f6f6;
         color: #444;
-        padding: 200px 100px;
         max-width: 1200px;
-        /*height: 600px;*/
       }
     }
   `

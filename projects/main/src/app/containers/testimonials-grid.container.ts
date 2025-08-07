@@ -8,7 +8,7 @@ import { TestimonialsGrid } from 'testimonials-grid';
     TestimonialsGrid
   ],
   template: `
-    <div class="flex min-h-full w-full items-center justify-center p-4 align-middle bg-[#F6F5F6]">
+    <div class="flex min-h-full w-full items-center justify-center align-middle bg-[#F6F5F6]">
       <lib-testimonials-grid></lib-testimonials-grid>
     </div>
   `,
