@@ -61,7 +61,7 @@ export class HomeCard {
   protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];
 
   @ViewChild('firstDiv') firstDiv!: ElementRef<HTMLDivElement>;
-  imageLoaded = signal<boolean>(false);
+  actualImageLoaded = signal<boolean>(false);
 
   addClassToFirstDiv(className: string) {
     this.firstDiv.nativeElement.classList.add(className);
@@ -91,5 +91,11 @@ export class HomeCard {
 
   getPlaceHolderImg(imgUrl: string): string {
     return imgUrl.replace(/(\.[^.]+)$/, '-lqip$1');
+  }
+
+  toggleImageTimer() {
+    // this.actualImageLoaded.set(true);
+    // setTimeout(() => this.actualImageLoaded.set(true), 1000);
+    setTimeout(() => this.actualImageLoaded.set(true), 1);
   }
 }

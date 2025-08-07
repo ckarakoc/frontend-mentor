@@ -1,13 +1,12 @@
 @let borderColor = golden() ? 'light' : getBorderColor(cardTitle());
 <div #firstDiv
-     class="flex flex-col rounded-lg justify-between p-2 hover:scale-125 duration-300 ease-in group
-       shadow shadow-{{borderColor}}-500 ring-4 ring-{{borderColor}}-300 max-w-64 min-h-80 hover:shadow-2xl hover:ring-4 hover:ring-{{borderColor}}-500"
+     class="flex flex-col rounded-lg justify-between p-2 duration-300 ease-in group hover:scale-125 hover:shadow-2xl hover:ring-4 relative hover:z-10
+       shadow shadow-{{borderColor}}-500 ring-4 ring-{{borderColor}}-300 max-w-64 min-h-80 hover:ring-{{borderColor}}-500"
      [ngClass]="{
          'bg-fuchsia-50': !golden(),
          'bg-linear-[25deg,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a]': golden()
      }">
   <!-- Image -->
-
   @if (useHref()) {
     <a class="duration-100 ease-in group-hover:scale-95 hover:cursor-pointer aspect-auto"
        [href]="link()">
@@ -21,14 +20,18 @@
   }
 
   <ng-template #imageContainer>
-    <img [src]="getPlaceHolderImg(imgUrl())"
-         class="rounded-lg blur-sm"
-         [class.hidden]="imageLoaded()"/>
+    <div class="relative">
+      <!-- Placeholder defines the size: -->
+      <img [src]="getPlaceHolderImg(imgUrl())"
+           class="rounded-lg blur-sm"/>
 
-    <img [src]="imgUrl()"
-         class="rounded-lg"
-         [class.hidden]="!imageLoaded()"
-         (load)="imageLoaded.set( true)"/>
+      <!-- Real image absolutely positioned on top of the placeholder - no pop-in: -->
+      <img [src]="imgUrl()"
+           class="absolute top-0 left-0 rounded-lg duration-200 ease-in-out"
+           [class.opacity-0]="!actualImageLoaded()"
+           [class.opacity-100]="actualImageLoaded()"
+           (load)="toggleImageTimer()"/>
+    </div>
   </ng-template>
 
   <!-- Title -->
