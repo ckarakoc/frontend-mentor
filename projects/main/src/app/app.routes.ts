@@ -11,6 +11,7 @@ import { TestimonialsGridContainer } from './containers/testimonials-grid.contai
 import { SankeyChartContainer } from './containers/sankey-chart.container';
 import { MeetLandingPageContainer } from './containers/meet-landing-page.container';
 import { ArticlePreviewCardContainer } from './containers/article-preview-card.container';
+import { NewsLetterFormContainer } from './containers/newsletter-form.container';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full', title: 'Home | Frontend Mentor' },
@@ -24,5 +25,16 @@ export const routes: Routes = [
   { path: 'sankey-chart', component: SankeyChartContainer, title: 'Sankey Chart | Job Application Tracker' },
   { path: 'meet-landing-page', component: MeetLandingPageContainer, title: 'Meet Landing Page | Frontend Mentor' },
   { path: 'article-preview', component: ArticlePreviewCardContainer, title: 'Article Preview | Frontend Mentor' },
+  {
+    path: 'newsletter-form',
+    component: NewsLetterFormContainer,
+    children: [
+      {
+        path: '',
+        loadChildren: () => import('newsletter-form').then(m => m.ROUTES)
+      }
+    ],
+    title: 'Newsletter Form | Frontend Mentor'
+  },
   { path: '**', component: Shared404, title: '404 - Not Found', pathMatch: 'full' }
 ];

@@ -1,3 +1,18 @@
 @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
 
 @import "tailwindcss";
+
+@theme {
+  --color-grey: #949494;
+  --color-blue-7: #36384D;
+  --color-blue-8: #242742;
+  --color-red: #FF6155;
+  --color-pink: #FF527B;
+  --color-red-light: #FFE7E6;
+}
+
+
+.error-input {
+  @apply border-1 border-red text-red placeholder-red-300 bg-red-light focus:border-red;
+}
+

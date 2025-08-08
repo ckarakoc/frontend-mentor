@@ -25,7 +25,7 @@
         "./projects/meet-landing-page/src/public-api.ts"
       ],
       "newsletter-form": [
-        "./dist/newsletter-form"
+        "./projects/newsletter-form/src/public-api.ts"
       ],
       "product-preview-card": [
         "./projects/product-preview-card/src/public-api.ts"
