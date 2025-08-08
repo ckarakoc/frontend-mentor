@@ -10,13 +10,13 @@ This is a solution to the [Newsletter sign-up form with success message challeng
 Users should be able to:
 
 
-- [ ] Add their email and submit the form
-- [ ] See a success message with their email after successfully submitting the form
-- [ ] See form validation messages if:
-  - [ ] The field is left empty
-  - [ ] The email address is not formatted correctly
-- [ ] View the optimal layout for the interface depending on their device's screen size
-- [ ] See hover and focus states for all interactive elements on the page
+- [x] Add their email and submit the form
+- [x] See a success message with their email after successfully submitting the form
+- [x] See form validation messages if:
+  - [x] The field is left empty
+  - [x] The email address is not formatted correctly
+- [x] View the optimal layout for the interface depending on their device's screen size
+- [x] See hover and focus states for all interactive elements on the page
 
 ### Screenshot
 

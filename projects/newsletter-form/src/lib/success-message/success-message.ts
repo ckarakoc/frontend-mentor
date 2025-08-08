@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'lib-success-message',
@@ -26,6 +27,7 @@ import { Component } from '@angular/core';
       <button type="submit"
               class="px-5 py-4 text-white rounded-xl text-base leading-7 font-bold w-full mt-2 disabled:cursor-not-allowed
                   hover:bg-linear-to-r hover:from-red hover:to-pink bg-blue-8 hover:cursor-pointer"
+              (click)="goBack()"
       >Dismiss message
       </button>
 
@@ -35,5 +37,9 @@ import { Component } from '@angular/core';
   styles: ``
 })
 export class SuccessMessage {
+  private _location = inject(Location);
 
+  goBack() {
+    this._location.back();
+  }
 }

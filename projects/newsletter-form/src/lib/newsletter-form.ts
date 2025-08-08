@@ -1,12 +1,13 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { NgClass } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'lib-newsletter-form',
   imports: [
     ReactiveFormsModule,
-    NgClass,
+    NgClass
   ],
   template: `
     <div class="bg-white w-full h-full flex flex-col lg:flex-row-reverse text-blue-8">
@@ -52,8 +53,8 @@ import { NgClass } from '@angular/common';
                  email
           />
           <button type="submit"
-                  class="px-5 py-4 text-white rounded-xl text-base leading-7 font-bold w-full mt-2 disabled:cursor-not-allowed
-                  hover:bg-linear-to-r hover:from-red hover:to-pink bg-blue-8 hover:cursor-pointer"
+                  class="px-5 py-4 text-white rounded-xl text-base leading-7 font-bold w-full mt-2 bg-blue-8 disabled:cursor-not-allowed
+                  hover:bg-linear-to-r hover:from-red hover:to-pink hover:cursor-pointer"
                   [disabled]="this.nlForm.invalid"
           > Subscribe to monthly newsletter
           </button>
@@ -72,10 +73,10 @@ import { NgClass } from '@angular/common';
   `
 })
 export class NewsletterForm {
-  submitted = signal<boolean>(false);
-  fb: FormBuilder = inject(FormBuilder);
+  private _fb: FormBuilder = inject(FormBuilder);
+  private _router = inject(Router);
 
-  nlForm = this.fb.group({
+  nlForm = this._fb.group({
     email: ['', [Validators.required, Validators.email]]
   });
 
@@ -87,6 +88,6 @@ export class NewsletterForm {
   }
 
   onSubmit() {
-    console.log('submitted');
+    this._router.navigate(['newsletter-form', 'success']).then();
   }
 }
