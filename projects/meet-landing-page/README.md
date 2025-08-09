@@ -19,7 +19,7 @@ Users should be able to:
 
 #### Tablet:
 
-![Mobile](src/assets/screenshot-tablet.png)
+![Tablet](src/assets/screenshot-tablet.png)
 
 #### Mobile:
 

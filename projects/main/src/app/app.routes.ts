@@ -22,7 +22,7 @@ export const routes: Routes = [
   { path: 'social-links', component: SocialLinksContainer, title: 'Social Links | Frontend Mentor' },
   { path: 'four-card-feature', component: FourCardFeatureContainer, title: 'Four Card Feature | Frontend Mentor' },
   { path: 'testimonials-grid', component: TestimonialsGridContainer, title: 'Testimonials Grid | Frontend Mentor' },
-  { path: 'sankey-chart', component: SankeyChartContainer, title: 'Sankey Chart | Job Application Tracker' },
+  { path: 'sankey', component: SankeyChartContainer, title: 'Sankey Chart | Job Application Tracker' },
   { path: 'meet-landing-page', component: MeetLandingPageContainer, title: 'Meet Landing Page | Frontend Mentor' },
   { path: 'article-preview', component: ArticlePreviewCardContainer, title: 'Article Preview | Frontend Mentor' },
   {

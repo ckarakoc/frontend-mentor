@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
     NgClass
   ],
   template: `
-    <div class="bg-white w-full h-full flex flex-col lg:flex-row-reverse text-blue-8">
+    <div class="bg-white w-full h-auto flex flex-col lg:flex-row-reverse text-blue-8">
       <div class="pb-5 sm:p-5">
         <picture>
           <source media="(min-width: 1024px)" srcset="assets/newsletter-form/images/illustration-sign-up-desktop.svg" type="image/svg+xml" />

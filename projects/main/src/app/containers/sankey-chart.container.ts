@@ -35,7 +35,6 @@ export class SankeyChartContainer {
       datasets: [{
         label: 'Job Hunt',
         data: [
-          // ANWB, KPN, JUSTITIE, RECHTSPRAAK, RABOBANK
           // Application results
           { from: 'Applications Sent', to: 'Waiting', flow: 2 },
           { from: 'Applications Sent', to: 'Rejections', flow: 3 },

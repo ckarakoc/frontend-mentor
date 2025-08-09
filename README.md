@@ -11,12 +11,14 @@
 - [Four Card Feature](projects/four-card-feature/README.md)
 - [Testimonials Grid](projects/testimonials-grid/README.md)
 - [Dictionary](projects/dictionary/README.md)
+- [Meet Landing Page](projects/meet-landing-page/README.md)
+- [Article Preview Card](projects/article-preview-card/README.md)
+- [Newsletter Form](projects/newsletter-form/README.md)
 
 ### ✅ Todo
 
 ---
 - [JellyNote](projects/jellynote/README.md)
-- [Meet Landing Page](projects/meet/README.md)
 ---
 📦 Angular lib asset usage (`angular.json`):
 

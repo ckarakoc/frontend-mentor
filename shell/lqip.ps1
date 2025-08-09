@@ -5,6 +5,7 @@ $projects = @(
   "dictionary",
   "four-card-feature",
   "meet-landing-page",
+  "newsletter-form",
   "product-preview-card",
   "qrcode"
   "recipe",
