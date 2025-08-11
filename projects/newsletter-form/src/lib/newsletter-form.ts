@@ -67,7 +67,8 @@ import { Router } from '@angular/router';
   styleUrl: './newsletter-form.css',
   styles: `
     li {
-      list-style-image: url('/assets/newsletter-form/images/icon-list.svg');
+      /* Base-64 of assets/newsletter-form/images/icon-list.svg */
+      list-style-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMSIgaGVpZ2h0PSIyMSIgdmlld0JveD0iMCAwIDIxIDIxIj48ZyBmaWxsPSJub25lIj48Y2lyY2xlIGN4PSIxMC41IiBjeT0iMTAuNSIgcj0iMTAuNSIgZmlsbD0iI0ZGNjE1NSIvPjxwYXRoIHN0cm9rZT0iI0ZGRiIgc3Ryb2tlLXdpZHRoPSIyIiBkPSJNNiAxMS4zODEgOC43MzUgMTQgMTUgOCIvPjwvZz48L3N2Zz4=');
       list-style-position: inside;
     }
   `

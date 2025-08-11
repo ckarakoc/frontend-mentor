@@ -3,6 +3,7 @@
 ### 📄 Readme Links
 
 ---
+
 - [QR Code Component](projects/qrcode/README.md)
 - [Blog Preview Card](projects/blog-preview-card/README.md)
 - [Recipe Page](projects/recipe/README.md)
@@ -18,41 +19,11 @@
 ### ✅ Todo
 
 ---
+
+- [Time Tracking Dashboard](projects/time-tracking-dashboard/README.md)
 - [JellyNote](projects/jellynote/README.md)
----
-📦 Angular lib asset usage (`angular.json`):
 
-- During local development use `"input": "dist/lib/assets"`
-- After publishing to npm use `"input": "node_modules/lib/assets"`
-
-💡 Better way to do it:
-```json
-"configurations": {
-  "local": {
-    "assets": [
-      {
-        "glob": "**/*",
-        "input": "dist/shared-404/assets",
-        "output": "/assets/shared-404/"
-      }
-    ]
-  },
-  "published": {
-    "assets": [
-      {
-        "glob": "**/*",
-        "input": "node_modules/shared-404/assets",
-        "output": "/assets/shared-404/"
-      }
-    ]
-  }
-}
-```
-
-🏃‍♂️ Run with the desired configuration:
-```shell
-ng build --configuration=local
-ng build --configuration=published
-```
 ---
 
+
+[//]: # (todo: write all the tests of all libs and afterwards all the apps after reading Effective Software Testing - Mauricio Aniche; A test a day keeps the bugs away :P)

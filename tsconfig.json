@@ -47,6 +47,9 @@
       ],
       "testimonials-grid": [
         "./projects/testimonials-grid/src/public-api.ts"
+      ],
+      "time-tracking-dashboard": [
+        "./projects/time-tracking-dashboard/src/public-api.ts"
       ]
     },
     "importHelpers": true,
@@ -151,6 +154,12 @@
     },
     {
       "path": "./projects/newsletter-form/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/time-tracking-dashboard/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/time-tracking-dashboard/tsconfig.spec.json"
     }
   ]
 }

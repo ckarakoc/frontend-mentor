@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostBinding, input, signal, ViewChild } from '@angular/core';
+import { Component, computed, ElementRef, HostBinding, input, signal, ViewChild } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
 import {
@@ -43,6 +43,8 @@ export class HomeCard {
   tags = input.required<string[]>();
   useHref = input<boolean>(false);
   golden = input<boolean>(false);
+
+  borderColor = computed(() => this.golden() ? 'light' : this.getBorderColor(this.cardTitle()));
 
   protected readonly tailwindColors = [
     // Note: These classes need to be safelisted in the tailwind config

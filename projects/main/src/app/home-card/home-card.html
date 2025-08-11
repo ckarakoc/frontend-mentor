@@ -1,7 +1,6 @@
-@let borderColor = golden() ? 'light' : getBorderColor(cardTitle());
 <div #firstDiv
      class="flex flex-col rounded-lg justify-between p-2 duration-300 ease-in group hover:scale-125 hover:shadow-2xl hover:ring-4 relative hover:z-10
-       shadow shadow-{{borderColor}}-500 ring-4 ring-{{borderColor}}-300 max-w-64 min-h-80 hover:ring-{{borderColor}}-500"
+       shadow shadow-{{borderColor()}}-500 ring-4 ring-{{borderColor()}}-300 max-w-64 min-h-80 hover:ring-{{borderColor()}}-500"
      [ngClass]="{
          'bg-fuchsia-50': !golden(),
          'bg-linear-[25deg,#77530a,#ffd277,#77530a,#77530a,#ffd277,#77530a]': golden()
@@ -23,22 +22,23 @@
     <div class="relative">
       <!-- Placeholder defines the size: -->
       <img [src]="getPlaceHolderImg(imgUrl())"
-           class="rounded-lg blur-sm"/>
+           class="rounded-lg blur-sm"
+           alt="placeholder" />
 
       <!-- Real image absolutely positioned on top of the placeholder - no pop-in: -->
-      <img [src]="imgUrl()"
+      <img [src]="imgUrl()" alt="actual image"
            class="absolute top-0 left-0 rounded-lg duration-200 ease-in-out"
            [class.opacity-0]="!actualImageLoaded()"
            [class.opacity-100]="actualImageLoaded()"
-           (load)="toggleImageTimer()"/>
+           (load)="toggleImageTimer()" />
     </div>
   </ng-template>
 
   <!-- Title -->
   <div class="flex flex-row items-center justify-between px-2 pt-1 text-center align-middle">
-    <div class="mb-2 overflow-hidden break-words text-2xl font-bold tracking-tight text-{{borderColor}}-900"> {{ cardTitle() }}</div>
+    <div class="mb-2 overflow-hidden break-words text-2xl font-bold tracking-tight text-{{borderColor()}}-900"> {{ cardTitle() }}</div>
     @if (useHref()) {
-      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
+      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor()}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
          [href]="link()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -48,14 +48,13 @@
           stroke-linejoin="round"
           stroke-linecap="round"
           viewBox="0 0 24 24"
-          stroke-width="2"
-          fill="none">
+          stroke-width="2">
           <line y2="12" x2="19" y1="12" x1="5"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
       </a>
     } @else {
-      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
+      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor()}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
          [routerLink]="link()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -65,8 +64,7 @@
           stroke-linejoin="round"
           stroke-linecap="round"
           viewBox="0 0 24 24"
-          stroke-width="2"
-          fill="none">
+          stroke-width="2">
           <line y2="12" x2="19" y1="12" x1="5"></line>
           <polyline points="12 5 19 12 12 19"></polyline>
         </svg>
@@ -76,7 +74,7 @@
 
   <!-- Content -->
   <div class="">
-    <p class="mb-3 rounded-xl px-2 font-normal leading-tight text-{{borderColor}}-700"> {{ cardContent() }} </p>
+    <p class="mb-3 rounded-xl px-2 font-normal leading-tight text-{{borderColor()}}-700"> {{ cardContent() }} </p>
   </div>
 
   <!-- todo: make colors randomly assignable, i.e. new TailwindColors(...colors).between(...range).pick(); Do the same with the fa-symbols -->

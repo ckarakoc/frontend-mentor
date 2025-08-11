@@ -12,6 +12,7 @@ import { SankeyChartContainer } from './containers/sankey-chart.container';
 import { MeetLandingPageContainer } from './containers/meet-landing-page.container';
 import { ArticlePreviewCardContainer } from './containers/article-preview-card.container';
 import { NewsLetterFormContainer } from './containers/newsletter-form.container';
+import { TimeTrackingDashboardContainer } from './containers/time-tracking-dsahboard.container';
 
 export const routes: Routes = [
   { path: '', component: Home, pathMatch: 'full', title: 'Home | Frontend Mentor' },
@@ -36,5 +37,6 @@ export const routes: Routes = [
     ],
     title: 'Newsletter Form | Frontend Mentor'
   },
+  { path: 'time-tracking-dashboard', component: TimeTrackingDashboardContainer, title: 'Time Tracking Dashboard | Frontend Mentor' },
   { path: '**', component: Shared404, title: '404 - Not Found', pathMatch: 'full' }
 ];

@@ -88,6 +88,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "projects/time-tracking-dashboard/src/assets",
+                "output": "assets/time-tracking-dashboard"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/dictionary/src/assets",
                 "output": "assets/dictionary"
               }
@@ -684,6 +689,36 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/newsletter-form/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "time-tracking-dashboard": {
+      "projectType": "library",
+      "root": "projects/time-tracking-dashboard",
+      "sourceRoot": "projects/time-tracking-dashboard/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/time-tracking-dashboard/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/time-tracking-dashboard/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/time-tracking-dashboard/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"
