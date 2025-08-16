@@ -9,10 +9,10 @@ import { TimeTrackingData } from '../services/timeframe-service';
   ],
   template: `
     <div class="bg-{{ bgColor() }} rounded-2xl select-none h-64 w-full overflow-hidden">
-      <div class="h-1/6 overflow-hidden">
+      <div class="overflow-hidden h-1/6">
         <ng-content select="icon"></ng-content>
       </div>
-      <div class="bg-navy-900 rounded-2xl flex flex-col gap-6 p-6 lg:p-8 h-5/6 hover:bg-navy-800">
+      <div class="bg-navy-900 rounded-2xl flex flex-col gap-6 p-6 lg:p-8 hover:bg-navy-800 h-full">
         <div class="flex justify-between items-center">
           <span class="text-lg font-medium leading-5">{{ title() | titlecase }}</span>
           <svg width="21" height="5" xmlns="http://www.w3.org/2000/svg" class="fill-navy-200 hover:fill-grey">

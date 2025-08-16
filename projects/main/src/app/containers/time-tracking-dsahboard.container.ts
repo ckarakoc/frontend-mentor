@@ -8,7 +8,7 @@ import { TimeTrackingDashboard } from 'time-tracking-dashboard';
 
   ],
   template: `
-    <div class="flex min-h-full w-full items-center justify-center align-middle bg-white">
+    <div class="block sm:flex min-h-full w-full justify-center items-center align-middle bg-[#0E1323]">
       <lib-time-tracking-dashboard></lib-time-tracking-dashboard>
     </div>
   `,

@@ -118,5 +118,15 @@
       "Angular",
       "TailwindCSS"
     ]
+  },
+  {
+    "imgUrl": "assets/time-tracking-dashboard/screenshot-tablet.png",
+    "link": "time-tracking-dashboard",
+    "cardContent": "A responsive time tracking dashboard that displays daily, weekly, and monthly activity reports with a clean layout and interactive design.",
+    "cardTitle": "Time Tracking Dashboard",
+    "tags": [
+      "Angular",
+      "TailwindCSS"
+    ]
   }
 ]
