@@ -10,7 +10,8 @@ $projects = @(
   "qrcode"
   "recipe",
   "social-links",
-  "testimonials-grid"
+  "testimonials-grid",
+  "time-tracking-dashboard"
 )
 
 # Process each project

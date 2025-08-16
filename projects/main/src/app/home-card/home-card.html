@@ -38,7 +38,7 @@
   <div class="flex flex-row items-center justify-between px-2 pt-1 text-center align-middle">
     <div class="mb-2 overflow-hidden break-words text-2xl font-bold tracking-tight text-{{borderColor()}}-900"> {{ cardTitle() }}</div>
     @if (useHref()) {
-      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor()}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
+      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor()}}-100 stroke-cyan-300 hover:stroke-cyan-500 fill-none sm:block"
          [href]="link()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -54,13 +54,12 @@
         </svg>
       </a>
     } @else {
-      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor()}}-100 stroke-cyan-300 hover:stroke-cyan-500 sm:block"
+      <a class="hidden h-12 w-12 rounded-full p-2 transition-all duration-300 ease-in-out hover:-rotate-45 hover:cursor-pointer hover:bg-{{borderColor()}}-100 stroke-cyan-300 hover:stroke-cyan-500 fill-none sm:block"
          [routerLink]="link()">
         <svg
           xmlns="http://www.w3.org/2000/svg"
           width="2em"
           height="2em"
-          color="black"
           stroke-linejoin="round"
           stroke-linecap="round"
           viewBox="0 0 24 24"

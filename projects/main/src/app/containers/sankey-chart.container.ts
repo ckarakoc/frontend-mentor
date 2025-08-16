@@ -36,8 +36,8 @@ export class SankeyChartContainer {
         label: 'Job Hunt',
         data: [
           // Application results
-          { from: 'Applications Sent', to: 'Waiting', flow: 2 },
-          { from: 'Applications Sent', to: 'Rejections', flow: 6 },
+          { from: 'Applications Sent', to: 'Waiting', flow: 4 },
+          { from: 'Applications Sent', to: 'Rejections', flow: 8 },
           { from: 'Applications Sent', to: 'Interviews', flow: 0 },
 
           // Interview outcomes
