@@ -128,5 +128,16 @@
       "Angular",
       "TailwindCSS"
     ]
+  },
+  {
+    "imgUrl": "assets/tip-calculator/preview.jpg",
+    "link": "time-tracking-dashboard",
+    "cardContent": "A responsive tip calculator that allows users to quickly calculate tips and split bills, featuring interactive inputs and styled with TailwindCSS.",
+    "cardTitle": "Tip Calculator",
+    "tags": [
+      "Angular",
+      "TailwindCSS",
+      "JavaScript"
+    ]
   }
 ]
