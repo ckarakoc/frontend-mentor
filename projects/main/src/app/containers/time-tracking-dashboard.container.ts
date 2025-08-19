@@ -5,7 +5,6 @@ import { TimeTrackingDashboard } from 'time-tracking-dashboard';
   standalone: true,
   imports: [
     TimeTrackingDashboard
-
   ],
   template: `
     <div class="block sm:flex min-h-full w-full justify-center items-center align-middle bg-[#0E1323]">

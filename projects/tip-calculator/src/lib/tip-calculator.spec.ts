@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HomeCard } from './home-card';
+import { TipCalculator } from './tip-calculator';
 
-describe('HomeCard', () => {
-  let component: HomeCard;
-  let fixture: ComponentFixture<HomeCard>;
+describe('TipCalculator', () => {
+  let component: TipCalculator;
+  let fixture: ComponentFixture<TipCalculator>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [HomeCard]
+      imports: [TipCalculator]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HomeCard);
+    fixture = TestBed.createComponent(TipCalculator);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

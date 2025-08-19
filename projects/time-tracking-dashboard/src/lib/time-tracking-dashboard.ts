@@ -32,17 +32,17 @@ import { NgClass, NgOptimizedImage } from '@angular/common';
         </div>
 
         <div class="flex md:flex-col md:items-start md:justify-center md:gap-1 justify-around text-lg font-normal text-navy-200 leading-5 px-4 py-2 basis-1/3 grow-0">
-          <button class="hover:text-white p-4 md:p-2"
+          <button class="hover:text-white hover:cursor-pointer p-4 md:p-2"
                   (click)="timeframe.set('daily')"
                   [ngClass]="{ 'text-white': timeframe() === 'daily' }"
           >Daily
           </button>
-          <button class="hover:text-white p-4 md:p-2"
+          <button class="hover:text-white hover:cursor-pointer p-4 md:p-2"
                   (click)="timeframe.set('weekly')"
                   [ngClass]="{ 'text-white': timeframe() === 'weekly' }"
           >Weekly
           </button>
-          <button class="hover:text-white p-4 md:p-2"
+          <button class="hover:text-white hover:cursor-pointer p-4 md:p-2"
                   (click)="timeframe.set('monthly')"
                   [ngClass]="{ 'text-white': timeframe() === 'monthly' }"
           >Monthly

@@ -11,7 +11,8 @@ $projects = @(
   "recipe",
   "social-links",
   "testimonials-grid",
-  "time-tracking-dashboard"
+  "time-tracking-dashboard",
+  "tip-calculator"
 )
 
 # Process each project

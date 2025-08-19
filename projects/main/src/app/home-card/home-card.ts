@@ -1,103 +1,77 @@
-import { Component, computed, ElementRef, HostBinding, input, signal, ViewChild } from '@angular/core';
+import { Component, input } from '@angular/core';
+import { ButtonDirective, ButtonIcon } from 'primeng/button';
+import { Card } from 'primeng/card';
+import { ReplacePipe } from '../pipes/replace-pipe';
+import { Ripple } from 'primeng/ripple';
+import { StringifyPipe } from '../pipes/stringify-pipe';
 import { RouterLink } from '@angular/router';
-import { FaIconComponent, IconDefinition } from '@fortawesome/angular-fontawesome';
-import {
-  faBolt,
-  faBug,
-  faCloud,
-  faCode,
-  faCogs,
-  faCube,
-  faDatabase,
-  faFileCode,
-  faLaptopCode,
-  faLightbulb,
-  faMicrochip,
-  faProjectDiagram,
-  faPuzzlePiece,
-  faServer,
-  faTerminal,
-  faWrench
-} from '@fortawesome/free-solid-svg-icons';
-import { NgClass, NgTemplateOutlet, TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-home-card',
   imports: [
+    Card,
+    ReplacePipe,
+    Ripple,
+    StringifyPipe,
     RouterLink,
-    FaIconComponent,
-    TitleCasePipe,
-    NgTemplateOutlet,
-    NgClass
+    ButtonDirective,
+    ButtonIcon
   ],
-  templateUrl: './home-card.html',
-  styleUrl: './home-card.css'
+  template: `
+    <p-card>
+      <ng-template #header>
+        <div class="flex items-center justify-center h-72 overflow-hidden group hover:cursor-pointer">
+          <a [routerLink]="item().link">
+            <img alt="Card" class="object-cover rounded-xl w-44 h-62 group-hover:scale-110 transition-all duration-300" [src]="item().imgUrl" priority />
+          </a>
+        </div>
+      </ng-template>
+      <ng-template #title>
+        <div class="text-2xl">{{ item().cardTitle }}</div>
+      </ng-template>
+      <ng-template #subtitle>
+        <div class="text-xs">{{ item().tags | stringify | replace:',':' - ' }}</div>
+      </ng-template>
+      <p> {{ item().cardContent }} </p>
+      <ng-template #footer>
+        <div class="flex justify-self-end">
+          @if (item().useHref) {
+            <a [href]="item().link"
+               [style]="{
+                      'background-color': 'rgba(0, 155, 255, 0.50)',
+                      'border-color': 'rgba(0, 155, 255, 0.70)',
+                      'color': '#f0f0f0',
+                      '--p-ripple-background': 'rgba(40, 39, 176, 0.3)'
+                    }"
+               target="_blank"
+               pRipple
+               pButton>
+              <i class="pi pi-external-link" pButtonIcon></i>
+            </a>
+          } @else {
+            <a [routerLink]="item().link"
+               [style]="{
+                      'background-color': 'rgba(0, 155, 255, 0.50)',
+                      'border-color': 'rgba(0, 155, 255, 0.70)',
+                      'color': '#f0f0f0',
+                      '--p-ripple-background': 'rgba(40, 39, 176, 0.3)'
+                    }"
+               pRipple
+               pButton>
+              <i class="pi pi-angle-right" pButtonIcon></i>
+            </a>
+          }
+        </div>
+      </ng-template>
+    </p-card>
+  `,
+  styles: `
+    ::ng-deep p-card {
+      backdrop-filter: blur(25px) saturate(172%);
+      border: 1px solid rgba(209, 213, 219, 0.3);
+    }
+  `
 })
 export class HomeCard {
-  @HostBinding('class') class = '';
-
-  cardTitle = input<string>('Card Title');
-  imgUrl = input.required<string>();
-  cardContent = input<string>('Card content goes here.');
-  link = input.required<string>();
-  tags = input.required<string[]>();
-  useHref = input<boolean>(false);
-  golden = input<boolean>(false);
-
-  borderColor = computed(() => this.golden() ? 'light' : this.getBorderColor(this.cardTitle()));
-
-  protected readonly tailwindColors = [
-    // Note: These classes need to be safelisted in the tailwind config
-    'red',
-    'blue',
-    'green',
-    'yellow',
-    'pink',
-    'purple',
-    'orange',
-    'teal',
-    'indigo',
-    'lime'
-  ];
-
-  protected fontAwesomeIcons: IconDefinition[] = [faCode, faCogs, faTerminal, faDatabase, faMicrochip, faBug, faCube, faLaptopCode, faServer, faProjectDiagram, faWrench, faBolt, faPuzzlePiece, faLightbulb, faCloud, faFileCode];
-
-  @ViewChild('firstDiv') firstDiv!: ElementRef<HTMLDivElement>;
-  actualImageLoaded = signal<boolean>(false);
-
-  addClassToFirstDiv(className: string) {
-    this.firstDiv.nativeElement.classList.add(className);
-  }
-
-  removeClassToFirstDiv(className: string) {
-    this.firstDiv.nativeElement.classList.remove(className);
-  }
-
-  quickHash(str: string): number {
-    let hash = 0;
-    for (let i = 0; i < str.length; i++) {
-      hash = ((hash << 5) - hash) + str.charCodeAt(i);
-      hash = hash & hash;
-    }
-    return Math.abs(hash);
-  }
-
-  /**
-   * Gets the tailwind color class based on a hash.
-   * @Note Make sure that the classes are safelisted ande preloaded by tailwind in you use it inline.
-   * @param s string to be hashed
-   */
-  getBorderColor(s: string): string {
-    return this.tailwindColors[this.quickHash(s) % this.tailwindColors.length];
-  }
-
-  getPlaceHolderImg(imgUrl: string): string {
-    return imgUrl.replace(/(\.[^.]+)$/, '-lqip$1');
-  }
-
-  toggleImageTimer() {
-    // this.actualImageLoaded.set(true);
-    // setTimeout(() => this.actualImageLoaded.set(true), 1000);
-    setTimeout(() => this.actualImageLoaded.set(true), 1);
-  }
+  item = input.required<MasonryCardData>();
 }

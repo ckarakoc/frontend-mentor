@@ -50,6 +50,9 @@
       ],
       "time-tracking-dashboard": [
         "./projects/time-tracking-dashboard/src/public-api.ts"
+      ],
+      "tip-calculator": [
+        "./projects/tip-calculator/src/public-api.ts"
       ]
     },
     "importHelpers": true,
@@ -160,6 +163,12 @@
     },
     {
       "path": "./projects/time-tracking-dashboard/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/tip-calculator/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/tip-calculator/tsconfig.spec.json"
     }
   ]
 }

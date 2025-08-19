@@ -1,78 +1,84 @@
-import { AfterViewInit, Component, computed, ElementRef, inject, OnInit, Signal, signal, ViewChild, viewChildren } from '@angular/core';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
-import { faChevronCircleUp } from '@fortawesome/free-solid-svg-icons';
-import { HomeCard } from '../home-card/home-card';
-import { NgOptimizedImage } from '@angular/common';
+import { Component, inject, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
-interface MasonryCardData {
-  imgUrl: string;
-  link: string;
-  cardContent: string;
-  cardTitle: string;
-  tags: string[];
-  useHref?: boolean;
-  golden?: boolean;
-}
-
+import { DataView } from 'primeng/dataview';
+import { CardModule } from 'primeng/card';
+import { HomeCard } from '../home-card/home-card';
+import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
 
 @Component({
   selector: 'app-home',
-  imports: [
-    FaIconComponent,
-    HomeCard,
-    NgOptimizedImage
-  ],
-  templateUrl: './home.html',
-  styleUrl: './home.css'
+  imports: [DataView, CardModule, HomeCard, HomeCardSkeleton],
+  template: `
+    <div class="outer p-4 min-h-screen">
+      <div class="flex flex-col justify-center items-center align-middle text-white my-6">
+        <h1 class="text-5xl font-bold text-yellow-300 tracking-wide border-l-8 border-blue-500 pl-3">
+          Frontend Mentor Projects
+        </h1>
+      </div>
+
+      <p-dataview #dv
+                  [value]="masonryData"
+                  [paginator]="true"
+                  [rows]="6"
+                  [paginatorPosition]="'bottom'"
+                  layout="grid">
+        <ng-template #grid let-items>
+          <div class="grid grid-cols-12 gap-4">
+            @for (item of items; track item) {
+              @defer (on viewport; prefetch on viewport) {
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 p-2">
+                  <div class="flex items-center justify-center">
+                    <app-home-card class="w-full" [item]="item" />
+                  </div>
+                </div>
+              } @placeholder {
+                <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 p-2">
+                  <div class="flex items-center justify-center">
+                    <app-home-card-skeleton class="w-full" />
+                  </div>
+                </div>
+              }
+            }
+          </div>
+        </ng-template>
+      </p-dataview>
+    </div>
+  `,
+  styles: `
+    .outer {
+      background-color: black;
+      background-image: url("/assets/images/background-img.jpg");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+    }
+
+    ::ng-deep p-dataview .p-paginator {
+      position: initial;
+      margin-top: 1rem;
+      width: fit-content !important;
+      display: flex;
+      justify-self: center;
+    }
+
+    @media (min-width: 768px) {
+      ::ng-deep p-dataview .p-paginator {
+        position: fixed;
+        transform: translateX(-50%);
+        bottom: 2rem;
+        left: 50%;
+        z-index: 1000;
+      }
+    }
+  `
 })
-export class Home implements OnInit, AfterViewInit {
-  @ViewChild('masonry') masonry!: ElementRef<HTMLDivElement>;
-  homeCardList = viewChildren(HomeCard);
-  outerHomeCardDivList: Signal<readonly ElementRef[]> = viewChildren('outerHomeCardDiv', { read: ElementRef });
-
-  isElementScrolled = signal<boolean>(false);
-  isWindowScrolled = signal<boolean>(false);
-  isScrollAtTop = computed(() => !this.isElementScrolled() && !this.isWindowScrolled());
-
+export class Home implements OnInit {
   private http: HttpClient = inject(HttpClient);
   protected masonryData!: MasonryCardData[];
+
 
   ngOnInit(): void {
     this.http.get<MasonryCardData[]>('assets/data/masonry-cards.json').subscribe(data => this.masonryData = data);
   }
-
-  ngAfterViewInit(): void {
-    this.giveOriginToDivs();
-    setTimeout(() => {
-      this.giveOriginToDivs();
-    }, 3000);
-  }
-
-  checkScrollTop(el: HTMLElement): void {
-    this.isElementScrolled.set(el.scrollTop > 50);
-    this.isWindowScrolled.set(window.scrollY > 50);
-  }
-
-  scrollToTop(el: HTMLElement): void {
-    if (this.isElementScrolled())
-      el.scrollTo({ top: 0, behavior: 'smooth' });
-    else
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-  }
-
-  giveOriginToDivs(): void {
-    const outerDivList = this.outerHomeCardDivList();
-    this.homeCardList().map((h, idx) => {
-      if (outerDivList[idx].nativeElement.getBoundingClientRect().top < 50) {
-        h.addClassToFirstDiv('origin-top');
-        h.removeClassToFirstDiv('origin-bottom');
-      } else {
-        h.addClassToFirstDiv('origin-bottom');
-        h.removeClassToFirstDiv('origin-top');
-      }
-    });
-  }
-
-  protected readonly faChevronCircleUp = faChevronCircleUp;
 }
