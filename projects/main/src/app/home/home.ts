@@ -25,19 +25,15 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
         <ng-template #grid let-items>
           <div class="grid grid-cols-12 gap-4 lg:px-40 xl:px-70 mb-20">
             @for (item of items; track item) {
-              @defer (on viewport; prefetch on viewport) {
-                <div class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 p-2">
-                  <div class="flex items-center justify-center">
+              <div class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 p-2">
+                <div class="flex items-center justify-center">
+                  @defer (on viewport; prefetch on viewport) {
                     <app-home-card class="w-full" [item]="item" />
-                  </div>
-                </div>
-              } @placeholder (minimum 500ms) {
-                <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 p-2">
-                  <div class="flex items-center justify-center">
+                  } @placeholder (minimum 500ms) {
                     <app-home-card-skeleton class="w-full" />
-                  </div>
+                  }
                 </div>
-              }
+              </div>
             }
           </div>
         </ng-template>
