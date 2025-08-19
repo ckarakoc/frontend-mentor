@@ -47,7 +47,7 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
   styles: `
     .outer {
       background-color: black;
-      background-image: url("/assets/images/background-img.jpg");
+      background-image: url("assets/images/background-img.jpg");
       background-position: center;
       background-size: cover;
       background-repeat: no-repeat;
