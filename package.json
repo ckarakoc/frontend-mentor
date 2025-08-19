@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve --project main --host 0.0.0.0",
-    "build": "npm run clean && npm run build:app:all && npm run build:lib:all && npm run flatten",
+    "build": "npm run clean && npm run build:app:all && npm run flatten",
     "build:app:all": "npm run build:app:main && npm run build:app:jellynote && npm run build:app:dictionary",
     "build:app:main": "ng build main --configuration production",
     "build:app:jellynote": "ng build jellynote --configuration production",

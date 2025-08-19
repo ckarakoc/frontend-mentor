@@ -38,8 +38,8 @@ import { RouterLink } from '@angular/router';
           @if (item().useHref) {
             <a [href]="item().link"
                [style]="{
-                      'background-color': 'rgba(0, 155, 255, 0.50)',
-                      'border-color': 'rgba(0, 155, 255, 0.70)',
+                      'background-color': 'rgba(255,255,0, 0.60)',
+                      'border-color': 'rgba(255, 255, 0, 0.90)',
                       'color': '#f0f0f0',
                       '--p-ripple-background': 'rgba(40, 39, 176, 0.3)'
                     }"
@@ -51,8 +51,8 @@ import { RouterLink } from '@angular/router';
           } @else {
             <a [routerLink]="item().link"
                [style]="{
-                      'background-color': 'rgba(0, 155, 255, 0.50)',
-                      'border-color': 'rgba(0, 155, 255, 0.70)',
+                      'background-color': 'rgba(255, 155, 0, 0.60)',
+                      'border-color': 'rgba(255, 155, 0, 0.90)',
                       'color': '#f0f0f0',
                       '--p-ripple-background': 'rgba(40, 39, 176, 0.3)'
                     }"

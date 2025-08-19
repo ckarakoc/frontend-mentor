@@ -9,7 +9,7 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
   selector: 'app-home',
   imports: [DataView, CardModule, HomeCard, HomeCardSkeleton],
   template: `
-    <div class="outer p-4 min-h-screen">
+    <div class="outer p-4 min-h-screen" [style.background-image]="backgroundImage">
       <div class="flex flex-col justify-center items-center align-middle text-white my-6">
         <h1 class="text-5xl font-bold text-yellow-300 tracking-wide border-l-8 border-blue-500 pl-3">
           Frontend Mentor Projects
@@ -19,7 +19,7 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
       <p-dataview #dv
                   [value]="masonryData"
                   [paginator]="true"
-                  [rows]="6"
+                  [rows]="24"
                   [paginatorPosition]="'bottom'"
                   layout="grid">
         <ng-template #grid let-items>
@@ -31,7 +31,7 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
                     <app-home-card class="w-full" [item]="item" />
                   </div>
                 </div>
-              } @placeholder {
+              } @placeholder (minimum 200ms) {
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 p-2">
                   <div class="flex items-center justify-center">
                     <app-home-card-skeleton class="w-full" />
@@ -47,8 +47,7 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
   styles: `
     .outer {
       background-color: black;
-      background-image: url("assets/images/background-img.jpg");
-      background-position: center;
+      background-position: bottom;
       background-size: cover;
       background-repeat: no-repeat;
       background-attachment: fixed;
@@ -76,6 +75,8 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
 export class Home implements OnInit {
   private http: HttpClient = inject(HttpClient);
   protected masonryData!: MasonryCardData[];
+
+  backgroundImage = 'url(assets/images/background-img.jpg)';
 
 
   ngOnInit(): void {
