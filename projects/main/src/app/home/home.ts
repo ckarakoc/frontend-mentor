@@ -19,19 +19,19 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
       <p-dataview #dv
                   [value]="masonryData"
                   [paginator]="true"
-                  [rows]="24"
+                  [rows]="12"
                   [paginatorPosition]="'bottom'"
                   layout="grid">
         <ng-template #grid let-items>
-          <div class="grid grid-cols-12 gap-4">
+          <div class="grid grid-cols-12 gap-4 lg:px-40 xl:px-70 mb-20">
             @for (item of items; track item) {
               @defer (on viewport; prefetch on viewport) {
-                <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 p-2">
+                <div class="col-span-12 sm:col-span-6 lg:col-span-4 xl:col-span-3 p-2">
                   <div class="flex items-center justify-center">
                     <app-home-card class="w-full" [item]="item" />
                   </div>
                 </div>
-              } @placeholder (minimum 200ms) {
+              } @placeholder (minimum 500ms) {
                 <div class="col-span-12 sm:col-span-6 md:col-span-4 xl:col-span-2 p-2">
                   <div class="flex items-center justify-center">
                     <app-home-card-skeleton class="w-full" />
@@ -68,6 +68,12 @@ import { HomeCardSkeleton } from '../home-card-skeleton/home-card-skeleton';
         bottom: 2rem;
         left: 50%;
         z-index: 1000;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .outer {
+        background-attachment: scroll; /* fallback */
       }
     }
   `

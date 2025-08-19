@@ -21,9 +21,15 @@ import { RouterLink } from '@angular/router';
     <p-card>
       <ng-template #header>
         <div class="flex items-center justify-center h-72 overflow-hidden group hover:cursor-pointer">
-          <a [routerLink]="item().link">
-            <img alt="Card" class="object-cover rounded-xl w-44 h-62 group-hover:scale-110 transition-all duration-300" [src]="item().imgUrl" priority />
-          </a>
+          @if (item().useHref) {
+            <a [href]="item().link">
+              <img alt="Card" class="object-cover rounded-xl w-44 h-62 group-hover:scale-110 transition-all duration-300" [src]="item().imgUrl" priority />
+            </a>
+          } @else {
+            <a [routerLink]="item().link">
+              <img alt="Card" class="object-cover rounded-xl w-44 h-62 group-hover:scale-110 transition-all duration-300" [src]="item().imgUrl" priority />
+            </a>
+          }
         </div>
       </ng-template>
       <ng-template #title>

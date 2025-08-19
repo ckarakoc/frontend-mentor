@@ -78,7 +78,7 @@
   },
   {
     "imgUrl": "assets/dictionary/preview.jpg",
-    "link": "/dictionary",
+    "link": "https://ckarakoc.github.io/frontend-mentor/dictionary/",
     "cardContent": "Word search app using Free Dictionary API with definitions, phonetics, and examples.",
     "cardTitle": "Dictionary",
     "tags": [
