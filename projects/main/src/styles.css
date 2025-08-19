@@ -1,6 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Henny+Penny&display=swap');
 @import "tailwindcss";
+@import "primeicons/primeicons.css";
 
 @theme {
   --breakpoint-xs: 30rem;
@@ -28,6 +29,14 @@
 
 :root {
   background-color: mistyrose;
+
+  --p-paginator-background: rgba(243, 235, 235, 0.19) !important;
+  --p-paginator-color: blue !important;
+  --p-paginator-border-radius: 12px !important;
+
+  --p-paginator-nav-button-background: rgba(209, 213, 219, 0.3) !important;
+  --p-paginator-nav-button-color: #e5e7eb !important;
+  --p-paginator-nav-button-selected-background: white !important;
 }
 
 html, body {

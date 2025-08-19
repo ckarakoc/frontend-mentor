@@ -5,16 +5,6 @@ import { NgOptimizedImage } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { HomeCard } from '../home-card/home-card';
 
-interface MasonryCardData {
-  imgUrl: string;
-  link: string;
-  cardContent: string;
-  cardTitle: string;
-  tags: string[];
-  useHref?: boolean;
-  golden?: boolean;
-}
-
 
 @Component({
   selector: 'app-old-home',
