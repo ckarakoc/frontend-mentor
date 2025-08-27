@@ -42,7 +42,9 @@ import { Subscription } from 'rxjs';
                      placeholder="0"
                      name="bill-input"
                      id="bill-input"
+                     min="0"
                      formControlName="bill"
+                     (keydown)="onRestrictedKeydown($event, true)"
               >
             </div>
           </div>
@@ -149,7 +151,9 @@ import { Subscription } from 'rxjs';
                      placeholder="0"
                      name="people-input"
                      id="people-input"
+                     min="0"
                      formControlName="people"
+                     (keydown)="onRestrictedKeydown($event, false)"
               >
             </div>
           </div>
@@ -205,23 +209,46 @@ export class TipCalculator implements OnInit, OnDestroy {
 
   private tipSub!: Subscription;
   private customTipSub!: Subscription;
+  private billSub!: Subscription;
+  private peopleSub!: Subscription;
   customTipMin = 0;
   customTipMax = 500;
 
   ngOnInit(): void {
     this.tipSub = this.form.controls.tip.valueChanges.subscribe((val) => {
-      if (val) this.form.patchValue({ customTip: null });
+      if (!val) return;
+      return this.form.patchValue({ customTip: null });
     });
-
     this.customTipSub = this.form.controls.customTip.valueChanges.subscribe((val) => {
-      if (val && val < this.customTipMin) this.form.patchValue({ customTip: this.customTipMin });
-      if (val && val > this.customTipMax) this.form.patchValue({ customTip: this.customTipMax });
+      if (!val) return;
+      if (val < this.customTipMin) return this.form.patchValue({ customTip: this.customTipMin });
+      if (val > this.customTipMax) return this.form.patchValue({ customTip: this.customTipMax });
+    });
+    this.billSub = this.form.controls.bill.valueChanges.subscribe((val) => {
+      if (!val) return;
+      if (val < 0) return this.form.patchValue({ bill: 0 });
+      return this.form.patchValue({ bill: Number((val).toFixed(2)) });
+    });
+    this.peopleSub = this.form.controls.people.valueChanges.subscribe((val) => {
+      if (!val) return;
+      if (val < 0) return this.form.patchValue({ people: 0 });
+      return this.form.patchValue({ people: Math.floor(val) });
     });
   }
 
   ngOnDestroy() {
     this.tipSub?.unsubscribe();
     this.customTipSub?.unsubscribe();
+    this.billSub?.unsubscribe();
+    this.peopleSub?.unsubscribe();
+  }
+
+  onRestrictedKeydown(event: KeyboardEvent, allowDecimal = false): void {
+    const invalidChars = allowDecimal ? ['+', '-', 'e', 'E'] : ['+', '-', 'e', 'E', '.'];
+
+    if (invalidChars.includes(event.key)) {
+      event.preventDefault();
+    }
   }
 
   private atLeastOneTipValidator(group: AbstractControl): ValidationErrors | null {
@@ -234,10 +261,9 @@ export class TipCalculator implements OnInit, OnDestroy {
     return null;
   }
 
-
   calculatedTip(): number {
-    const { people, bill, tip, customTip } = this.form.value;
-    if (!people || !bill || (!tip && !customTip) || (tip && customTip)) return 0;
+    const { bill, people, tip, customTip } = this.form.value;
+    if (!bill || !people || (!tip && !customTip) || (tip && customTip)) return 0;
     if (tip)
       return (bill * (tip / 100)) / people;
     if (customTip)
@@ -246,8 +272,8 @@ export class TipCalculator implements OnInit, OnDestroy {
   }
 
   calculatedTotal(): number {
-    const { people, bill, tip, customTip } = this.form.value;
-    if (!people || !bill || (!tip && !customTip) || (tip && customTip)) return 0;
+    const { bill, people, tip, customTip } = this.form.value;
+    if (!bill || !people || (!tip && !customTip) || (tip && customTip)) return 0;
     if (tip)
       return (bill + bill * (tip / 100)) / people;
     if (customTip)
