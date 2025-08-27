@@ -7,7 +7,7 @@ import { TipCalculator } from 'tip-calculator';
     TipCalculator
   ],
   template: `
-    <div class="block sm:flex min-h-full w-full justify-center items-center align-middle bg-[#0E1323]">
+    <div class="block sm:flex min-h-full w-full justify-center items-center align-middle bg-[#C5E4E7]">
       <lib-tip-calculator></lib-tip-calculator>
     </div>
   `,

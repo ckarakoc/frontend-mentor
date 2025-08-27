@@ -1,0 +1,108 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-tip-gray-600: #3D6666;
+  --color-tip-gray-500: #547878;
+  --color-tip-gray-400: #5E7A7D;
+  --color-tip-gray-300: #7F9D9F;
+  --color-tip-gray-200: #9EBBBD;
+  --color-tip-gray-100: #C5E4E7;
+  --color-tip-gray-50: #F3F9FA;
+
+  --color-tip-green-900: #00474B;
+  --color-tip-green-800: #085C61;
+  --color-tip-green-700: #0D686D;
+  --color-tip-green-400: #26C2AE;
+  --color-tip-green-200: #9FE8DF;
+
+  --color-tip-orange: #E17052;
+
+  /* Typography Scale */
+  --font-family-preset-1: 'Space Mono';
+  --font-size-preset-1: 48px;
+  --line-height-preset-1: 150%;
+  --letter-spacing-preset-1: -1px;
+  --font-weight-preset-1: 700;
+
+  --font-family-preset-2: 'Space Mono';
+  --font-size-preset-2: 32px;
+  --line-height-preset-2: 150%;
+  --letter-spacing-preset-2: -0.5px;
+  --font-weight-preset-2: 700;
+
+  --font-family-preset-3: 'Space Mono';
+  --font-size-preset-3: 24px;
+  --line-height-preset-3: 150%;
+  --letter-spacing-preset-3: 0px;
+  --font-weight-preset-3: 700;
+
+  --font-family-preset-4: 'Space Mono';
+  --font-size-preset-4: 20px;
+  --line-height-preset-4: 150%;
+  --letter-spacing-preset-4: 0px;
+  --font-weight-preset-4: 700;
+
+  --font-family-preset-5: 'Space Mono';
+  --font-size-preset-5: 16px;
+  --line-height-preset-5: 150%;
+  --letter-spacing-preset-5: 0px;
+  --font-weight-preset-5: 700;
+
+  --font-family-preset-6: 'Space Mono';
+  --font-size-preset-6: 13px;
+  --line-height-preset-6: 150%;
+  --letter-spacing-preset-6: 0px;
+  --font-weight-preset-6: 700;
+}
+
+@layer base {
+  .text-preset-1 {
+    font-family: var(--font-family-preset-1), monospace;
+    font-size: var(--font-size-preset-1);
+    line-height: var(--line-height-preset-1);
+    letter-spacing: var(--letter-spacing-preset-1);
+    font-weight: var(--font-weight-preset-1);
+  }
+
+  .text-preset-2 {
+    font-family: var(--font-family-preset-2), monospace;
+    font-size: var(--font-size-preset-2);
+    line-height: var(--line-height-preset-2);
+    letter-spacing: var(--letter-spacing-preset-2);
+    font-weight: var(--font-weight-preset-2);
+  }
+
+  .text-preset-3 {
+    font-family: var(--font-family-preset-3), monospace;
+    font-size: var(--font-size-preset-3);
+    line-height: var(--line-height-preset-3);
+    letter-spacing: var(--letter-spacing-preset-3);
+    font-weight: var(--font-weight-preset-3);
+  }
+
+  .text-preset-4 {
+    font-family: var(--font-family-preset-4), monospace;
+    font-size: var(--font-size-preset-4);
+    line-height: var(--line-height-preset-4);
+    letter-spacing: var(--letter-spacing-preset-4);
+    font-weight: var(--font-weight-preset-4);
+  }
+
+  .text-preset-5 {
+    font-family: var(--font-family-preset-5), monospace;
+    font-size: var(--font-size-preset-5);
+    line-height: var(--line-height-preset-5);
+    letter-spacing: var(--letter-spacing-preset-5);
+    font-weight: var(--font-weight-preset-5);
+  }
+
+  .text-preset-6 {
+    font-family: var(--font-family-preset-6), monospace;
+    font-size: var(--font-size-preset-6);
+    line-height: var(--line-height-preset-6);
+    letter-spacing: var(--letter-spacing-preset-6);
+    font-weight: var(--font-weight-preset-6);
+  }
+}
