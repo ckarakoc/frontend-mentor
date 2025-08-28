@@ -85,6 +85,11 @@ export const routes: Routes = [
     loadComponent: () => import('./containers/tip-calculator.container').then(m => m.TipCalculatorContainer),
     title: 'Tip Calculator | Frontend Mentor'
   },
+  {
+    path: 'pwd-generator',
+    loadComponent: () => import('./containers/pwd-generator.container').then(m => m.PwdGeneratorContainer),
+    title: 'Password Generator | Frontend Mentor'
+  },
   { path: '**', component: Shared404, title: '404 - Not Found', pathMatch: 'full' }
 ];
 

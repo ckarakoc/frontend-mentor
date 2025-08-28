@@ -16,11 +16,12 @@
 - [Article Preview Card](projects/article-preview-card/README.md)
 - [Newsletter Form](projects/newsletter-form/README.md)
 - [Time Tracking Dashboard](projects/time-tracking-dashboard/README.md)
+- [Tip Calculator](projects/tip-calculator/README.md)
+
 
 ### ✅ Todo
 
 ---
-- [Tip Calculator](projects/tip-calculator/README.md)
 - [JellyNote](projects/jellynote/README.md)
 - [JellyCash](https://github.com/ckarakoc/jellycash/blob/master/README.md)
 ---

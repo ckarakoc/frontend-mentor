@@ -1,5 +1,59 @@
 [
   {
+    "imgUrl": "assets/dictionary/preview.jpg",
+    "link": "https://ckarakoc.github.io/frontend-mentor/dictionary/",
+    "cardContent": "Word search app using Free Dictionary API with definitions, phonetics, and examples.",
+    "cardTitle": "Dictionary",
+    "tags": [
+      "Angular",
+      "API",
+      "TailwindCSS"
+    ],
+    "useHref": true,
+    "golden": true
+  },
+  {
+    "imgUrl": "assets/pwd-generator/screenshot-desktop.png",
+    "link": "/pwd-generator",
+    "cardContent": "A secure password generator that creates strong, customizable passwords with options for length and character types.",
+    "cardTitle": "Password Generator",
+    "tags": [
+      "Angular",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/time-tracking-dashboard/screenshot-tablet.png",
+    "link": "/time-tracking-dashboard",
+    "cardContent": "A responsive time tracking dashboard that displays daily, weekly, and monthly activity reports with a clean layout and interactive design.",
+    "cardTitle": "Time Tracking Dashboard",
+    "tags": [
+      "Angular",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/tip-calculator/preview.jpg",
+    "link": "/tip-calculator",
+    "cardContent": "A responsive tip calculator that allows users to quickly calculate tips and split bills, featuring interactive inputs and styled with TailwindCSS.",
+    "cardTitle": "Tip Calculator",
+    "tags": [
+      "Angular",
+      "TailwindCSS",
+      "JavaScript"
+    ]
+  },
+  {
+    "imgUrl": "assets/newsletter-form/screenshot-desktop.png",
+    "link": "/newsletter-form",
+    "cardContent": "A responsive newsletter sign-up form with clean layout and validation, styled using TailwindCSS.",
+    "cardTitle": "Newsletter Form",
+    "tags": [
+      "Angular",
+      "TailwindCSS"
+    ]
+  },
+  {
     "imgUrl": "assets/qrcode/screenshot-desktop.png",
     "link": "/qrcode",
     "cardContent": "Display a QR code using modern layout techniques.",
@@ -77,19 +131,6 @@
     ]
   },
   {
-    "imgUrl": "assets/dictionary/preview.jpg",
-    "link": "https://ckarakoc.github.io/frontend-mentor/dictionary/",
-    "cardContent": "Word search app using Free Dictionary API with definitions, phonetics, and examples.",
-    "cardTitle": "Dictionary",
-    "tags": [
-      "Angular",
-      "API",
-      "TailwindCSS"
-    ],
-    "useHref": true,
-    "golden": true
-  },
-  {
     "imgUrl": "assets/meet-landing-page/preview.jpg",
     "link": "/meet-landing-page",
     "cardContent": "A clean and modern landing page layout for a video meeting app, built with HTML and CSS.",
@@ -107,37 +148,6 @@
     "tags": [
       "Javascript",
       "TailwindCSS"
-    ]
-  },
-  {
-    "imgUrl": "assets/newsletter-form/screenshot-desktop.png",
-    "link": "/newsletter-form",
-    "cardContent": "A responsive newsletter sign-up form with clean layout and validation, styled using TailwindCSS.",
-    "cardTitle": "Newsletter Form",
-    "tags": [
-      "Angular",
-      "TailwindCSS"
-    ]
-  },
-  {
-    "imgUrl": "assets/time-tracking-dashboard/screenshot-tablet.png",
-    "link": "/time-tracking-dashboard",
-    "cardContent": "A responsive time tracking dashboard that displays daily, weekly, and monthly activity reports with a clean layout and interactive design.",
-    "cardTitle": "Time Tracking Dashboard",
-    "tags": [
-      "Angular",
-      "TailwindCSS"
-    ]
-  },
-  {
-    "imgUrl": "assets/tip-calculator/preview.jpg",
-    "link": "/tip-calculator",
-    "cardContent": "A responsive tip calculator that allows users to quickly calculate tips and split bills, featuring interactive inputs and styled with TailwindCSS.",
-    "cardTitle": "Tip Calculator",
-    "tags": [
-      "Angular",
-      "TailwindCSS",
-      "JavaScript"
     ]
   },
   {

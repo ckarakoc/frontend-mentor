@@ -98,6 +98,11 @@
               },
               {
                 "glob": "**/*",
+                "input": "projects/pwd-generator/src/assets",
+                "output": "assets/pwd-generator"
+              },
+              {
+                "glob": "**/*",
                 "input": "projects/dictionary/src/assets",
                 "output": "assets/dictionary"
               }
@@ -754,6 +759,36 @@
           "builder": "@angular/build:karma",
           "options": {
             "tsConfig": "projects/tip-calculator/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    },
+    "pwd-generator": {
+      "projectType": "library",
+      "root": "projects/pwd-generator",
+      "sourceRoot": "projects/pwd-generator/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/pwd-generator/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/pwd-generator/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "tsConfig": "projects/pwd-generator/tsconfig.spec.json",
             "polyfills": [
               "zone.js",
               "zone.js/testing"

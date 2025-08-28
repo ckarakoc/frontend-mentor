@@ -30,6 +30,9 @@
       "product-preview-card": [
         "./projects/product-preview-card/src/public-api.ts"
       ],
+      "pwd-generator": [
+        "./projects/pwd-generator/src/public-api.ts"
+      ],
       "qrcode": [
         "./projects/qrcode/src/public-api.ts"
       ],
@@ -169,6 +172,12 @@
     },
     {
       "path": "./projects/tip-calculator/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/pwd-generator/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/pwd-generator/tsconfig.spec.json"
     }
   ]
 }
