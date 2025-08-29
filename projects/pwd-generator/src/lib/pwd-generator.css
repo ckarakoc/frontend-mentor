@@ -1,0 +1,83 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-gray-950: #08070B;
+  --color-gray-900: #14131B;
+  --color-gray-850: #18171F;
+  --color-gray-800: #24232C;
+  --color-gray-700: #54535B;
+  --color-gray-600: #817D92;
+  --color-gray-200: #E6E5EA;
+
+  --color-green: #A4FFAF;
+  --color-yellow: #F8CD65;
+  --color-orange: #FB7C58;
+  --color-red: #F64A4A;
+
+  /* Typography Scale */
+  --font-family-preset-1: 'JetBrains Mono';
+  --font-size-preset-1: 32px;
+  --line-height-preset-1: 130%;
+  --letter-spacing-preset-1: 0px;
+  --font-weight-preset-1: 700;
+
+  --font-family-preset-2: 'JetBrains Mono';
+  --font-size-preset-2: 24px;
+  --line-height-preset-2: 130%;
+  --letter-spacing-preset-2: 0px;
+  --font-weight-preset-2: 700;
+
+  --font-family-preset-3: 'JetBrains Mono';
+  --font-size-preset-3: 18px;
+  --line-height-preset-3: 130%;
+  --letter-spacing-preset-3: 0px;
+  --font-weight-preset-3: 700;
+
+  --font-family-preset-4: 'JetBrains Mono';
+  --font-size-preset-4: 16px;
+  --line-height-preset-4: 130%;
+  --letter-spacing-preset-4: 0px;
+  --font-weight-preset-4: 700;
+}
+
+@layer base {
+  .text-preset-1 {
+    font-family: var(--font-family-preset-1), monospace;
+    font-size: var(--font-size-preset-1);
+    line-height: var(--line-height-preset-1);
+    letter-spacing: var(--letter-spacing-preset-1);
+    font-weight: var(--font-weight-preset-1);
+  }
+
+  .text-preset-2 {
+    font-family: var(--font-family-preset-2), monospace;
+    font-size: var(--font-size-preset-2);
+    line-height: var(--line-height-preset-2);
+    letter-spacing: var(--letter-spacing-preset-2);
+    font-weight: var(--font-weight-preset-2);
+  }
+
+  .text-preset-3 {
+    font-family: var(--font-family-preset-3), monospace;
+    font-size: var(--font-size-preset-3);
+    line-height: var(--line-height-preset-3);
+    letter-spacing: var(--letter-spacing-preset-3);
+    font-weight: var(--font-weight-preset-3);
+  }
+
+  .text-preset-4 {
+    font-family: var(--font-family-preset-4), monospace;
+    font-size: var(--font-size-preset-4);
+    line-height: var(--line-height-preset-4);
+    letter-spacing: var(--letter-spacing-preset-4);
+    font-weight: var(--font-weight-preset-4);
+  }
+}
+
+
+:host {
+  font-family: 'JetBrains Mono', monospace;
+  color: #133041;
+}

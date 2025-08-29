@@ -8,7 +8,7 @@ import { Component } from '@angular/core';
       pwd-generator works!
     </p>
   `,
-  styles: ``
+  styleUrl: `./pwd-generator.css`
 })
 export class PwdGenerator {
 

@@ -7,7 +7,7 @@ import { PwdGenerator } from 'pwd-generator';
     PwdGenerator
   ],
   template: `
-    <div class="block sm:flex min-h-full w-full justify-center items-center align-middle bg-[#C5E4E7]">
+    <div class="block sm:flex min-h-full w-full justify-center items-center align-middle bg-[#08070B]">
       <lib-pwd-generator></lib-pwd-generator>
     </div>
   `,
