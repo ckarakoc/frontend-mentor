@@ -76,6 +76,9 @@
   }
 }
 
+@source inline("bg-{green,yellow,orange,red}");
+@source inline("border-{green,yellow,orange,red}");
+
 
 :host {
   font-family: 'JetBrains Mono', monospace;
