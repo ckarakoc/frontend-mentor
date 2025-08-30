@@ -13,7 +13,7 @@
     "golden": true
   },
   {
-    "imgUrl": "assets/pwd-generator/preview.png",
+    "imgUrl": "assets/pwd-generator/preview.jpg",
     "link": "/pwd-generator",
     "cardContent": "A secure password generator that creates strong, customizable passwords with options for length and character types.",
     "cardTitle": "Password Generator",
