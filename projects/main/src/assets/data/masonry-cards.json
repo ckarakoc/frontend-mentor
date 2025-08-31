@@ -15,7 +15,7 @@
   {
     "imgUrl": "assets/quiz-app/preview.jpg",
     "link": "/quiz-app",
-    "cardContent": "",
+    "cardContent": "An interactive quiz application that challenges users with multiple-choice questions, tracks their progress, and provides instant feedback in a modern, responsive interface.",
     "cardTitle": "Frontend Quiz App",
     "tags": [
       "Angular",

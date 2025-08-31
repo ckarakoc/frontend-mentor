@@ -37,7 +37,7 @@
         "./projects/qrcode/src/public-api.ts"
       ],
       "quiz-app": [
-        "./projects/dist/quiz-app/src/public-api.ts"
+        "./projects/quiz-app/src/public-api.ts"
       ],
       "recipe": [
         "./projects/recipe/src/public-api.ts"

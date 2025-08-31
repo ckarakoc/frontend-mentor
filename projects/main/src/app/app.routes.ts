@@ -90,6 +90,11 @@ export const routes: Routes = [
     loadComponent: () => import('./containers/pwd-generator.container').then(m => m.PwdGeneratorContainer),
     title: 'Password Generator | Frontend Mentor'
   },
+  {
+    path: 'quiz-app',
+    loadComponent: () => import('./containers/quiz-app.container').then(m => m.QuizAppContainer),
+    title: 'Quiz App | Frontend Mentor'
+  },
   { path: '**', component: Shared404, title: '404 - Not Found', pathMatch: 'full' }
 ];
 

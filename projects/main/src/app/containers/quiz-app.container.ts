@@ -1,12 +1,14 @@
 import { Component } from '@angular/core';
+import { QuizApp } from 'quiz-app';
 
 @Component({
   standalone: true,
   imports: [
+    QuizApp
   ],
   template: `
     <div class="flex min-h-full w-full justify-center items-center align-middle bg-[#08070B]">
-      <lib-pwd-generator></lib-pwd-generator>
+      <lib-quiz-app></lib-quiz-app>
     </div>
   `,
   styles: `
@@ -20,5 +22,5 @@ import { Component } from '@angular/core';
     }
   `
 })
-export class PwdGeneratorContainer {
+export class QuizAppContainer {
 }
