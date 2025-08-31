@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
-import { PwdGenerator } from 'pwd-generator';
 
 @Component({
   standalone: true,
   imports: [
-    PwdGenerator
   ],
   template: `
     <div class="flex min-h-full w-full justify-center items-center align-middle bg-[#08070B]">

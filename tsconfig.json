@@ -36,6 +36,9 @@
       "qrcode": [
         "./projects/qrcode/src/public-api.ts"
       ],
+      "quiz-app": [
+        "./projects/dist/quiz-app/src/public-api.ts"
+      ],
       "recipe": [
         "./projects/recipe/src/public-api.ts"
       ],
@@ -178,6 +181,12 @@
     },
     {
       "path": "./projects/pwd-generator/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/quiz-app/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/quiz-app/tsconfig.spec.json"
     }
   ]
 }

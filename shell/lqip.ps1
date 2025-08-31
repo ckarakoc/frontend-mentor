@@ -7,6 +7,7 @@ $projects = @(
   "meet-landing-page",
   "newsletter-form",
   "product-preview-card",
+  "quiz-app",
   "pwd-generator",
   "qrcode"
   "recipe",

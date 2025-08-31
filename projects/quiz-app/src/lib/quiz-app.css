@@ -1,0 +1,232 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --color-gray-500: #626C7F;
+  --color-gray-50: #F4F6FA;
+
+  --color-blue-950: #2D3949;
+  --color-blue-900: #313E51;
+  --color-blue-850: #3B4D66;
+  --color-blue-500: #306AFF;
+  --color-blue-300: #ABC1E1;
+  --color-blue-100: #EDF1F9;
+  --color-blue-50: #EBF0FF;
+
+  --color-green-500: #2FD887;
+  --color-green-100: #E0FDEF;
+
+  --color-purple-600: #A729F5;
+  --color-purple-100: #F6E7FF;
+
+  --color-orange-400: #FF7E35;
+  --color-orange-50: #FFF5ED;
+
+  --color-red-500: #EE5454;
+
+  /* Typography Scale */
+  --font-family-preset-1: 'Rubik';
+  --font-size-preset-1: 144px;
+  --line-height-preset-1: 100%;
+  --letter-spacing-preset-1: 0px;
+  --font-weight-preset-1: 500;
+
+  --font-family-preset-1-mobile: 'Rubik';
+  --font-size-preset-1-mobile: 88px;
+  --line-height-preset-1-mobile: 100%;
+  --letter-spacing-preset-1-mobile: 0px;
+  --font-weight-preset-1-mobile: 500;
+
+  --font-family-preset-2: 'Rubik';
+  --font-size-preset-2: 64px;
+  --line-height-preset-2: 100%;
+  --letter-spacing-preset-2: 0px;
+  --font-weight-preset-2: 500;
+
+  --font-family-preset-2-light: 'Rubik';
+  --font-size-preset-2-light: 64px;
+  --line-height-preset-2-light: 100%;
+  --letter-spacing-preset-2-light: 0px;
+  --font-weight-preset-2-light: 300;
+
+  --font-family-preset-2-mobile: 'Rubik';
+  --font-size-preset-2-mobile: 40px;
+  --line-height-preset-2-mobile: 100%;
+  --letter-spacing-preset-2-mobile: 0px;
+  --font-weight-preset-2-mobile: 500;
+
+  --font-family-preset-2-mobile-light: 'Rubik';
+  --font-size-preset-2-mobile-light: 40px;
+  --line-height-preset-2-mobile-light: 100%;
+  --letter-spacing-preset-2-mobile-light: 0px;
+  --font-weight-preset-2-mobile-light: 300;
+
+  --font-family-preset-3: 'Rubik';
+  --font-size-preset-3: 36px;
+  --line-height-preset-3: 120%;
+  --letter-spacing-preset-3: 0px;
+  --font-weight-preset-3: 500;
+
+  --font-family-preset-3-mobile: 'Rubik';
+  --font-size-preset-3-mobile: 20px;
+  --line-height-preset-3-mobile: 120%;
+  --letter-spacing-preset-3-mobile: 0px;
+  --font-weight-preset-3-mobile: 500;
+
+  --font-family-preset-4: 'Rubik';
+  --font-size-preset-4: 28px;
+  --line-height-preset-4: 100%;
+  --letter-spacing-preset-4: 0px;
+  --font-weight-preset-4: 500;
+
+  --font-family-preset-4-mobile: 'Rubik';
+  --font-size-preset-4-mobile: 18px;
+  --line-height-preset-4-mobile: 100%;
+  --letter-spacing-preset-4-mobile: 0px;
+  --font-weight-preset-4-mobile: 500;
+
+  --font-family-preset-5: 'Rubik';
+  --font-size-preset-5: 24px;
+  --line-height-preset-5: 150%;
+  --letter-spacing-preset-5: 0px;
+  --font-weight-preset-5: 500;
+
+  --font-family-preset-5-regular: 'Rubik';
+  --font-size-preset-5-regular: 24px;
+  --line-height-preset-5-regular: 150%;
+  --letter-spacing-preset-5-regular: 0px;
+  --font-weight-preset-5-regular: 400;
+
+  --font-family-preset-5-mobile: 'Rubik';
+  --font-size-preset-5-mobile: 14px;
+  --line-height-preset-5-mobile: 150%;
+  --letter-spacing-preset-5-mobile: 0px;
+  --font-weight-preset-5-mobile: 300;
+
+  --font-family-preset-6: 'Rubik';
+  --font-size-preset-6: 20px;
+  --line-height-preset-6: 150%;
+  --letter-spacing-preset-6: 0px;
+  --font-weight-preset-6: 300;
+}
+
+@layer base {
+  .text-preset-1 {
+    font-family: var(--font-family-preset-1), sans-serif;
+    font-size: var(--font-size-preset-1);
+    line-height: var(--line-height-preset-1);
+    letter-spacing: var(--letter-spacing-preset-1);
+    font-weight: var(--font-weight-preset-1);
+  }
+
+  .text-preset-1-mobile {
+    font-family: var(--font-family-preset-1-mobile), sans-serif;
+    font-size: var(--font-size-preset-1-mobile);
+    line-height: var(--line-height-preset-1-mobile);
+    letter-spacing: var(--letter-spacing-preset-1-mobile);
+    font-weight: var(--font-weight-preset-1-mobile);
+  }
+
+  .text-preset-2 {
+    font-family: var(--font-family-preset-2), sans-serif;
+    font-size: var(--font-size-preset-2);
+    line-height: var(--line-height-preset-2);
+    letter-spacing: var(--letter-spacing-preset-2);
+    font-weight: var(--font-weight-preset-2);
+  }
+
+  .text-preset-2-light {
+    font-family: var(--font-family-preset-2-light), sans-serif;
+    font-size: var(--font-size-preset-2-light);
+    line-height: var(--line-height-preset-2-light);
+    letter-spacing: var(--letter-spacing-preset-2-light);
+    font-weight: var(--font-weight-preset-2-light);
+  }
+
+  .text-preset-2-mobile {
+    font-family: var(--font-family-preset-2-mobile), sans-serif;
+    font-size: var(--font-size-preset-2-mobile);
+    line-height: var(--line-height-preset-2-mobile);
+    letter-spacing: var(--letter-spacing-preset-2-mobile);
+    font-weight: var(--font-weight-preset-2-mobile);
+  }
+
+  .text-preset-2-mobile-light {
+    font-family: var(--font-family-preset-2-mobile-light), sans-serif;
+    font-size: var(--font-size-preset-2-mobile-light);
+    line-height: var(--line-height-preset-2-mobile-light);
+    letter-spacing: var(--letter-spacing-preset-2-mobile-light);
+    font-weight: var(--font-weight-preset-2-mobile-light);
+  }
+
+  .text-preset-3 {
+    font-family: var(--font-family-preset-3), sans-serif;
+    font-size: var(--font-size-preset-3);
+    line-height: var(--line-height-preset-3);
+    letter-spacing: var(--letter-spacing-preset-3);
+    font-weight: var(--font-weight-preset-3);
+  }
+
+  .text-preset-3-mobile {
+    font-family: var(--font-family-preset-3-mobile), sans-serif;
+    font-size: var(--font-size-preset-3-mobile);
+    line-height: var(--line-height-preset-3-mobile);
+    letter-spacing: var(--letter-spacing-preset-3-mobile);
+    font-weight: var(--font-weight-preset-3-mobile);
+  }
+
+  .text-preset-4 {
+    font-family: var(--font-family-preset-4), sans-serif;
+    font-size: var(--font-size-preset-4);
+    line-height: var(--line-height-preset-4);
+    letter-spacing: var(--letter-spacing-preset-4);
+    font-weight: var(--font-weight-preset-4);
+  }
+
+  .text-preset-4-mobile {
+    font-family: var(--font-family-preset-4-mobile), sans-serif;
+    font-size: var(--font-size-preset-4-mobile);
+    line-height: var(--line-height-preset-4-mobile);
+    letter-spacing: var(--letter-spacing-preset-4-mobile);
+    font-weight: var(--font-weight-preset-4-mobile);
+  }
+
+  .text-preset-5 {
+    font-family: var(--font-family-preset-5), sans-serif;
+    font-size: var(--font-size-preset-5);
+    line-height: var(--line-height-preset-5);
+    letter-spacing: var(--letter-spacing-preset-5);
+    font-weight: var(--font-weight-preset-5);
+  }
+
+  .text-preset-5-regular {
+    font-family: var(--font-family-preset-5-regular), sans-serif;
+    font-size: var(--font-size-preset-5-regular);
+    line-height: var(--line-height-preset-5-regular);
+    letter-spacing: var(--letter-spacing-preset-5-regular);
+    font-weight: var(--font-weight-preset-5-regular);
+  }
+
+  .text-preset-5-mobile {
+    font-family: var(--font-family-preset-5-mobile), sans-serif;
+    font-size: var(--font-size-preset-5-mobile);
+    line-height: var(--line-height-preset-5-mobile);
+    letter-spacing: var(--letter-spacing-preset-5-mobile);
+    font-weight: var(--font-weight-preset-5-mobile);
+    font-style: italic;
+  }
+
+  .text-preset-6 {
+    font-family: var(--font-family-preset-6), sans-serif;
+    font-size: var(--font-size-preset-6);
+    line-height: var(--line-height-preset-6);
+    letter-spacing: var(--letter-spacing-preset-6);
+    font-weight: var(--font-weight-preset-6);
+    font-style: italic;
+  }
+}
+
+:host {
+  font-family: 'Rubik', sans-serif;
+}

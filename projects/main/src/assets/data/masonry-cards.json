@@ -13,6 +13,16 @@
     "golden": true
   },
   {
+    "imgUrl": "assets/quiz-app/preview.jpg",
+    "link": "/quiz-app",
+    "cardContent": "",
+    "cardTitle": "Frontend Quiz App",
+    "tags": [
+      "Angular",
+      "TailwindCSS"
+    ]
+  },
+  {
     "imgUrl": "assets/pwd-generator/preview.jpg",
     "link": "/pwd-generator",
     "cardContent": "A secure password generator that creates strong, customizable passwords with options for length and character types.",
@@ -50,6 +60,27 @@
     "cardTitle": "Newsletter Form",
     "tags": [
       "Angular",
+      "TailwindCSS"
+    ]
+  },
+  {
+    "imgUrl": "assets/four-card-feature/screenshot-desktop.png",
+    "link": "/four-card-feature",
+    "cardContent": "A layout showcasing four feature cards in a clean grid design.",
+    "cardTitle": "Four Card Feature",
+    "tags": [
+      "Angular",
+      "CSS Grid",
+      "Responsive Layout"
+    ]
+  },
+  {
+    "imgUrl": "assets/article-preview-card/screenshot-tablet.png",
+    "link": "/article-preview",
+    "cardContent": "A responsive article preview card with hover effects, showcasing the use of layout techniques.",
+    "cardTitle": "Article Preview Card",
+    "tags": [
+      "Javascript",
       "TailwindCSS"
     ]
   },
@@ -109,17 +140,6 @@
     ]
   },
   {
-    "imgUrl": "assets/four-card-feature/screenshot-desktop.png",
-    "link": "/four-card-feature",
-    "cardContent": "A layout showcasing four feature cards in a clean grid design.",
-    "cardTitle": "Four Card Feature",
-    "tags": [
-      "Angular",
-      "CSS Grid",
-      "Responsive Layout"
-    ]
-  },
-  {
     "imgUrl": "assets/testimonials-grid/screenshot-desktop.png",
     "link": "/testimonials-grid",
     "cardContent": "Grid-based testimonials layout with user reviews and ratings.",
@@ -138,16 +158,6 @@
     "tags": [
       "HTML",
       "CSS"
-    ]
-  },
-  {
-    "imgUrl": "assets/article-preview-card/screenshot-tablet.png",
-    "link": "/article-preview",
-    "cardContent": "A responsive article preview card with hover effects, showcasing the use of layout techniques.",
-    "cardTitle": "Article Preview Card",
-    "tags": [
-      "Javascript",
-      "TailwindCSS"
     ]
   },
   {

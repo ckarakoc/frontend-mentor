@@ -38,7 +38,7 @@ import { UpperCasePipe } from '@angular/common';
             <div class="text-preset-2 text-green">{{ pwdLength() }}</div>
           </div>
           <input #pwdLengthSlider
-                 type="range" min="0" max="20" name="pwdLengthSlider"
+                 type="range" [min]="min" [max]="max" name="pwdLengthSlider"
                  [ngModel]="pwdLength()"
                  (ngModelChange)="onSliderChange(+$event)">
         </div>
@@ -254,6 +254,8 @@ export class PwdGenerator implements OnInit, OnDestroy {
   pwdLengthSlider = viewChild<ElementRef>('pwdLengthSlider');
 
   private renderer = inject(Renderer2);
+  min: number = 0;
+  max: number = 20;
 
   ngOnInit() {
     this.renderer.setStyle(this.pwdLengthSlider()?.nativeElement, 'background', '#18171F');
@@ -282,10 +284,11 @@ export class PwdGenerator implements OnInit, OnDestroy {
     else this.password.set(null);
   }
 
-  // document.getElementById("myinput").oninput = function() {
-  //   var value = (this.value-this.min)/(this.max-this.min)*100
-  //   this.style.background = 'linear-gradient(to right, #82CFD0 0%, #82CFD0 ' + value + '%, #fff ' + value + '%, white 100%)'
-  // };
+  onSliderChange(v: number) {
+    const value = (v - this.min) / (this.max - this.min) * 100;
+    this.pwdLength.set(v);
+    this.renderer.setStyle(this.pwdLengthSlider()?.nativeElement, 'background', 'linear-gradient(to right, #A4FFAF 0%, #A4FFAF ' + value + '%, #18171F ' + value + '%, #18171F 100%)');
+  }
 
   private generatePwd() {
     let allowedChars: string[] = [];
@@ -307,13 +310,5 @@ export class PwdGenerator implements OnInit, OnDestroy {
       pwd += allowedChars[Math.floor(Math.random() * allowedChars.length)];
     }
     return pwd;
-  }
-
-  onSliderChange(v: number) {
-    const min = 0;
-    const max = 20;
-    const value = (v - min) / (max - min) * 100;
-    this.pwdLength.set(v);
-    this.renderer.setStyle(this.pwdLengthSlider()?.nativeElement, 'background', 'linear-gradient(to right, #A4FFAF 0%, #A4FFAF ' + value + '%, #18171F ' + value + '%, #18171F 100%)');
   }
 }

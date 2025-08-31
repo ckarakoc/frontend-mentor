@@ -12,14 +12,14 @@ import { TipCalculator } from 'tip-calculator';
     </div>
   `,
   styles: `
-    /*:host {*/
-    /*  display: block;*/
-    /*  width: 100dvw;*/
-    /*  height: 100dvh;*/
-    /*  background-color: #F6F5F6;*/
-    /*  overflow: auto;*/
-    /*  box-sizing: border-box;*/
-    /*}*/
+    :host {
+      display: block;
+      width: 100dvw;
+      height: 100dvh;
+      background-color: #C5E4E7;
+      overflow: auto;
+      box-sizing: border-box;
+    }
   `
 })
 export class TipCalculatorContainer {

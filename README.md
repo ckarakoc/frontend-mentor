@@ -17,14 +17,14 @@
 - [Newsletter Form](projects/newsletter-form/README.md)
 - [Time Tracking Dashboard](projects/time-tracking-dashboard/README.md)
 - [Tip Calculator](projects/tip-calculator/README.md)
-
+- [Password Generator](projects/pwd-generator/README.md)
 
 ### ✅ Todo
 
 ---
+
+- [Frontend Quiz App](projects/quiz-app/README.md)
 - [JellyNote](projects/jellynote/README.md)
 - [JellyCash](https://github.com/ckarakoc/jellycash/blob/master/README.md)
+
 ---
-
-
-[//]: # (todo: write all the tests of all libs and afterwards all the apps after reading Effective Software Testing - Mauricio Aniche; A test a day keeps the bugs away :P)
