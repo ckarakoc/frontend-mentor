@@ -110,6 +110,11 @@
                 "glob": "**/*",
                 "input": "projects/dictionary/src/assets",
                 "output": "assets/dictionary"
+              },
+              {
+                "glob": "**/*",
+                "input": "projects/extension-manager/src/assets",
+                "output": "assets/extension-manager"
               }
             ],
             "styles": [
@@ -269,7 +274,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-          "baseHref": "/frontend-mentor/dictionary/",
+            "baseHref": "/frontend-mentor/dictionary/",
             "browser": "projects/dictionary/src/main.ts",
             "polyfills": [
               "zone.js"
@@ -342,6 +347,98 @@
             ],
             "styles": [
               "projects/dictionary/src/styles.css"
+            ]
+          }
+        }
+      }
+    },
+    "extension-manager": {
+      "projectType": "application",
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/extension-manager",
+      "sourceRoot": "projects/extension-manager/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:application",
+          "options": {
+            "baseHref": "/frontend-mentor/extension-manager/",
+            "browser": "projects/extension-manager/src/main.ts",
+            "polyfills": [
+              "zone.js"
+            ],
+            "tsConfig": "projects/extension-manager/tsconfig.app.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/extension-manager/public"
+              }
+            ],
+            "styles": [
+              "projects/extension-manager/src/styles.scss"
+            ]
+          },
+          "configurations": {
+            "production": {
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "500kB",
+                  "maximumError": "1MB"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "4kB",
+                  "maximumError": "8kB"
+                }
+              ],
+              "outputHashing": "all"
+            },
+            "development": {
+              "optimization": false,
+              "extractLicenses": false,
+              "sourceMap": true
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "serve": {
+          "builder": "@angular/build:dev-server",
+          "configurations": {
+            "production": {
+              "buildTarget": "extension-manager:build:production"
+            },
+            "development": {
+              "buildTarget": "extension-manager:build:development"
+            }
+          },
+          "defaultConfiguration": "development"
+        },
+        "extract-i18n": {
+          "builder": "@angular/build:extract-i18n"
+        },
+        "test": {
+          "builder": "@angular/build:karma",
+          "options": {
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ],
+            "tsConfig": "projects/extension-manager/tsconfig.spec.json",
+            "inlineStyleLanguage": "scss",
+            "assets": [
+              {
+                "glob": "**/*",
+                "input": "projects/extension-manager/public"
+              }
+            ],
+            "styles": [
+              "projects/extension-manager/src/styles.scss"
             ]
           }
         }

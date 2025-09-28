@@ -12,7 +12,7 @@
     "isolatedModules": true,
     "experimentalDecorators": true,
     "paths": {
-      "articlePreviewCard": [
+      "article-preview-card": [
         "./projects/article-preview-card/src/public-api.ts"
       ],
       "blog-preview-card": [
@@ -187,6 +187,12 @@
     },
     {
       "path": "./projects/quiz-app/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/extension-manager/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/extension-manager/tsconfig.spec.json"
     }
   ]
 }

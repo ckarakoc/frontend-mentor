@@ -26,5 +26,6 @@
 - [Frontend Quiz App](projects/quiz-app/README.md)
 - [JellyNote](projects/jellynote/README.md)
 - [JellyCash](https://github.com/ckarakoc/jellycash/blob/master/README.md)
+- [Extension Manager](projects/extension-manager/README.md)
 
 ---

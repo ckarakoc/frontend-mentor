@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ArticlePreviewCard } from 'articlePreviewCard';
+import { ArticlePreviewCard } from 'article-preview-card';
 
 @Component({
   standalone: true,
